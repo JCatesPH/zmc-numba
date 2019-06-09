@@ -1,0 +1,54 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  2
+sigma_multiplication =  100000.0
+num_trials =  8
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.001 :  1.407127063312303  with error:  0.3199780262950204
+================================================================
+Computed in  6056.825667858124  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.009611111111111112 :  0.9064985560955174  with error:  0.022319439454671616
+================================================================
+Computed in  6036.519725561142  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.018222222222222223 :  0.8897419309026312  with error:  0.0077699493982065874
+================================================================
+Computed in  6034.84733915329  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.026833333333333334 :  0.8626629081150923  with error:  0.012956109374111449
+================================================================
+Computed in  6034.391457796097  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.035444444444444445 :  0.8618070763809166  with error:  0.014989710989071928
+================================================================
+Computed in  6033.3702981472015  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.044055555555555556 :  0.8516759504379374  with error:  0.016517875680079872
+================================================================
+Computed in  6032.828129768372  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.05266666666666667 :  0.8607769666558225  with error:  0.011800167299899637
+================================================================
+Computed in  6034.281311273575  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.06127777777777778 :  0.8714180127579817  with error:  0.0028747830276370937
+================================================================
+Computed in  6033.301953554153  seconds.
+================================================================

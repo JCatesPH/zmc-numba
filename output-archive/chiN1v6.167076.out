@@ -1,0 +1,18 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  2
+sigma_multiplication =  100
+num_trials =  6
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+10 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.

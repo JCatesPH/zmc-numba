@@ -1,0 +1,29 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  2
+sigma_multiplication =  1000
+num_trials =  12
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.001 :  0.9782664610761377  with error:  0.06045169850304769
+================================================================
+Computed in  105.7590606212616  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.009611111111111112 :  1.0771844553929857  with error:  0.23994523449379052
+================================================================
+Computed in  106.21442770957947  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.018222222222222223 :  1.01392790533489  with error:  0.1545659418128881
+================================================================
+Computed in  106.04787349700928  seconds.
+================================================================

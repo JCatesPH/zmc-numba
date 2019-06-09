@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "./range-03.py", line 29, in <module>
+    import cudabesselj
+  File "/home/jmcates/my-phys-util/ZMCIntegral/cudabesselj.py", line 113
+    @cuda.jit(device=True)vvvvvvvvvvvvvvv
+                                        ^
+SyntaxError: invalid syntax
+srun: error: gpu-0-0: task 0: Exited with exit code 1

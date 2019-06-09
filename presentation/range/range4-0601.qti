@@ -1,0 +1,617 @@
+QtiPlot 0.9.8 project file
+<scripting-lang>	muParser
+<windows>	6
+<table>
+Table2	100	4	6/1/19 12:00 PM
+geometry	1	3	445	220	
+header	r[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/3	0;0/2	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/range04_10pi_100-200.csv	2
+<data>
+0	100	1.61e-06	1.7e-07	330.8
+1	101	4.53e-06	1.8e-07	332.3
+2	102	6.88e-06	1.7e-07	332.4
+3	103	8.28e-06	1.7e-07	332.1
+4	104	8.85e-06	1.7e-07	332
+5	105	8.58e-06	1.7e-07	332.1
+6	106	7.48e-06	1.7e-07	331.9
+7	107	5.46e-06	1.7e-07	332
+8	108	3.16e-06	1.7e-07	331.8
+9	109	8.99e-07	1.6e-07	331.9
+10	110	-1.56e-06	1.7e-07	331.8
+11	111	-3.87e-06	1.6e-07	331.9
+12	112	-5.76e-06	1.7e-07	332
+13	113	-6.66e-06	1.6e-07	331.8
+14	114	-7.15e-06	1.6e-07	331.8
+15	115	-7.03e-06	1.6e-07	331.8
+16	116	-6.07e-06	1.6e-07	331.7
+17	117	-4.36e-06	1.6e-07	331.7
+18	118	-2.57e-06	1.6e-07	331.7
+19	119	-7.28e-07	1.6e-07	331.7
+20	120	1.25e-06	1.6e-07	331.7
+21	121	3e-06	1.6e-07	331.8
+22	122	4.48e-06	1.6e-07	331.7
+23	123	5.16e-06	1.6e-07	331.7
+24	124	5.57e-06	1.6e-07	331.9
+25	125	5.46e-06	1.5e-07	331.6
+26	126	4.62e-06	1.6e-07	331.6
+27	127	3.21e-06	1.6e-07	331.7
+28	128	1.73e-06	1.5e-07	331.8
+29	129	3.32e-07	1.6e-07	331.7
+30	130	-1.31e-06	1.5e-07	331.6
+31	131	-2.72e-06	1.5e-07	331.8
+32	132	-3.88e-06	1.6e-07	331.8
+33	133	-4.52e-06	1.5e-07	331.7
+34	134	-4.77e-06	1.5e-07	331.7
+35	135	-4.52e-06	1.5e-07	331.6
+36	136	-4.04e-06	1.5e-07	331.8
+37	137	-2.92e-06	1.5e-07	331.8
+38	138	-1.56e-06	1.5e-07	331.7
+39	139	-3.41e-07	1.5e-07	331.8
+40	140	1.03e-06	1.5e-07	331.7
+41	141	2.24e-06	1.5e-07	331.6
+42	142	3.15e-06	1.5e-07	331.6
+43	143	3.57e-06	1.5e-07	331.7
+44	144	3.69e-06	1.5e-07	331.8
+45	145	3.55e-06	1.5e-07	331.6
+46	146	3.07e-06	1.5e-07	331.6
+47	147	2.12e-06	1.5e-07	331.7
+48	148	1.01e-06	1.4e-07	331.7
+49	149	4.95e-08	1.5e-07	331.7
+50	150	-1.03e-06	1.4e-07	331.6
+51	151	-2.02e-06	1.4e-07	331.7
+52	152	-2.82e-06	1.5e-07	331.8
+53	153	-3.15e-06	1.4e-07	331.7
+54	154	-3.29e-06	1.4e-07	331.6
+55	155	-3.14e-06	1.4e-07	331.7
+56	156	-2.68e-06	1.4e-07	331.7
+57	157	-1.87e-06	1.4e-07	331.7
+58	158	-9.84e-07	1.4e-07	331.6
+59	159	-8.24e-08	1.4e-07	331.8
+60	160	7.38e-07	1.4e-07	331.7
+61	161	1.68e-06	1.4e-07	331.7
+62	162	2.21e-06	1.4e-07	331.7
+63	163	2.49e-06	1.4e-07	331.7
+64	164	2.52e-06	1.4e-07	331.6
+65	165	2.47e-06	1.4e-07	331.6
+66	166	2.14e-06	1.4e-07	331.7
+67	167	1.38e-06	1.4e-07	331.8
+68	168	6.74e-07	1.3e-07	331.8
+69	169	-5.96e-08	1.4e-07	331.6
+70	170	-7.66e-07	1.4e-07	331.6
+71	171	-1.59e-06	1.4e-07	331.7
+72	172	-2.04e-06	1.4e-07	331.7
+73	173	-2.26e-06	1.3e-07	331.6
+74	174	-2.24e-06	1.4e-07	331.8
+75	175	-2.2e-06	1.4e-07	331.7
+76	176	-1.9e-06	1.3e-07	331.6
+77	177	-1.26e-06	1.3e-07	331.7
+78	178	-6.34e-07	1.3e-07	331.7
+79	179	-3.49e-08	1.3e-07	331.7
+80	180	5.72e-07	1.3e-07	331.7
+81	181	1.21e-06	1.3e-07	331.7
+82	182	1.65e-06	1.3e-07	331.8
+83	183	1.9e-06	1.3e-07	331.7
+84	184	1.81e-06	1.3e-07	331.6
+85	185	1.82e-06	1.3e-07	331.6
+86	186	1.46e-06	1.3e-07	331.7
+87	187	8.65e-07	1.3e-07	331.6
+88	188	3.82e-07	1.3e-07	331.6
+89	189	-1.49e-07	1.3e-07	331.8
+90	190	-6.78e-07	1.3e-07	331.7
+91	191	-1.19e-06	1.3e-07	331.7
+92	192	-1.6e-06	1.3e-07	331.7
+93	193	-1.63e-06	1.3e-07	331.8
+94	194	-1.71e-06	1.2e-07	331.7
+95	195	-1.64e-06	1.3e-07	331.6
+96	196	-1.39e-06	1.3e-07	331.7
+97	197	-9.4e-07	1.3e-07	331.7
+98	198	-4.43e-07	1.3e-07	331.7
+99	199	9.7e-08	1.3e-07	331.6
+</data>
+</table>
+<multiLayer>
+Graph1	1	1	6/1/19 12:01 PM
+geometry	441	3	970	508	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	1086	353
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	4	5	953	448
+<PageGeometry>0.004158	0.0108696	0.990644	0.973913</PageGeometry>
+PlotTitle	Range Function vs. r	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Range Function		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	13	75	0	0	0
+ScaleFont0	FreeSerif	11	75	0	0	0
+ScaleFont1	Ubuntu	11	75	0	0	0
+ScaleFont2	FreeSerif	11	75	0	0	0
+ScaleFont3	Ubuntu	11	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	11	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	11	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	Table2_r	Table2_Integral	1	0	#000000	0	1	3	1	#000000	#000000	0	#000000	14	1	2	0	0	99	1
+ErrorBars	1	Table2_r	Table2_Integral	Table2_Error	1	8	#000000	1	1	1	0
+scale	0	-1e-05	1e-05	0	5	5	0	0
+scale	1	-1e-05	1e-05	0	5	5	0	0
+scale	2	80	200	0	7	5	0	0
+scale	3	80	200	0	7	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>158.63829787234</x>
+<y>8.7538940809969e-06</y>
+<right>194.63829787234</right>
+<bottom>7.00934579439252e-06</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+q<sub>x</sub> = [0.001, 10π/a]
+</Text>
+<Font>FreeSerif	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>0</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<table>
+Table3	100	4	6/1/19 12:11 PM
+geometry	-7	232	445	220	
+header	r[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/3	0;0/2	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/range04_12pi_100-200.csv	2
+<data>
+0	100	1.79e-06	2e-07	331
+1	101	4.66e-06	1.9e-07	331
+2	102	6.63e-06	1.9e-07	330.9
+3	103	8.21e-06	1.9e-07	331
+4	104	8.88e-06	1.9e-07	331
+5	105	8.57e-06	1.9e-07	331
+6	106	7.3e-06	1.9e-07	330.9
+7	107	5.63e-06	1.8e-07	331
+8	108	3.2e-06	1.8e-07	331
+9	109	8.55e-07	1.8e-07	331
+10	110	-1.79e-06	1.9e-07	330.9
+11	111	-3.76e-06	1.9e-07	330.9
+12	112	-5.59e-06	1.9e-07	331
+13	113	-6.56e-06	1.8e-07	330.9
+14	114	-7.34e-06	1.8e-07	330.9
+15	115	-6.92e-06	1.8e-07	330.9
+16	116	-6.08e-06	1.8e-07	331.1
+17	117	-4.47e-06	1.8e-07	331
+18	118	-2.6e-06	1.7e-07	330.9
+19	119	-5.1e-07	1.7e-07	330.9
+20	120	1.34e-06	1.8e-07	331.1
+21	121	3.09e-06	1.8e-07	331
+22	122	4.39e-06	1.8e-07	331
+23	123	5.4e-06	1.8e-07	330.9
+24	124	5.56e-06	1.7e-07	331.1
+25	125	5.49e-06	1.8e-07	330.9
+26	126	4.53e-06	1.7e-07	330.9
+27	127	3.38e-06	1.7e-07	330.9
+28	128	1.92e-06	1.7e-07	330.9
+29	129	2.64e-07	1.7e-07	331
+30	130	-1.37e-06	1.7e-07	331
+31	131	-2.61e-06	1.7e-07	331
+32	132	-3.91e-06	1.7e-07	330.9
+33	133	-4.47e-06	1.7e-07	331
+34	134	-4.77e-06	1.7e-07	330.9
+35	135	-4.5e-06	1.7e-07	330.9
+36	136	-3.85e-06	1.7e-07	330.9
+37	137	-2.8e-06	1.7e-07	331
+38	138	-1.66e-06	1.6e-07	330.9
+39	139	-2.02e-07	1.6e-07	330.9
+40	140	1.01e-06	1.6e-07	330.9
+41	141	2.16e-06	1.6e-07	331
+42	142	3.05e-06	1.6e-07	331.1
+43	143	3.63e-06	1.7e-07	330.9
+44	144	3.78e-06	1.6e-07	330.9
+45	145	3.62e-06	1.6e-07	330.9
+46	146	2.99e-06	1.6e-07	331
+47	147	2.35e-06	1.6e-07	330.9
+48	148	1.09e-06	1.6e-07	330.9
+49	149	1.59e-08	1.6e-07	330.9
+50	150	-1.08e-06	1.6e-07	331
+51	151	-1.96e-06	1.6e-07	331
+52	152	-2.72e-06	1.6e-07	330.9
+53	153	-3.13e-06	1.5e-07	330.9
+54	154	-3.45e-06	1.6e-07	330.9
+55	155	-3e-06	1.6e-07	331
+56	156	-2.7e-06	1.5e-07	330.9
+57	157	-1.86e-06	1.5e-07	331
+58	158	-1.03e-06	1.6e-07	330.9
+59	159	-1.15e-07	1.5e-07	331
+60	160	7.63e-07	1.5e-07	331
+61	161	1.58e-06	1.5e-07	330.9
+62	162	2.17e-06	1.6e-07	330.9
+63	163	2.56e-06	1.5e-07	330.9
+64	164	2.71e-06	1.5e-07	331.1
+65	165	2.44e-06	1.5e-07	330.9
+66	166	2.04e-06	1.5e-07	330.9
+67	167	1.37e-06	1.5e-07	330.9
+68	168	6.63e-07	1.5e-07	331.1
+69	169	-1.28e-07	1.5e-07	330.9
+70	170	-8.74e-07	1.5e-07	330.9
+71	171	-1.55e-06	1.5e-07	330.9
+72	172	-2.02e-06	1.4e-07	331.1
+73	173	-2.25e-06	1.5e-07	331
+74	174	-2.4e-06	1.5e-07	330.9
+75	175	-2.26e-06	1.5e-07	330.9
+76	176	-1.93e-06	1.5e-07	331
+77	177	-1.28e-06	1.5e-07	331
+78	178	-7.41e-07	1.4e-07	330.9
+79	179	-6.55e-08	1.4e-07	330.9
+80	180	6.38e-07	1.4e-07	331
+81	181	1.25e-06	1.4e-07	331.1
+82	182	1.55e-06	1.4e-07	330.9
+83	183	1.86e-06	1.5e-07	330.9
+84	184	1.88e-06	1.5e-07	330.9
+85	185	1.76e-06	1.4e-07	331.1
+86	186	1.4e-06	1.4e-07	330.9
+87	187	9.87e-07	1.4e-07	330.9
+88	188	4.53e-07	1.4e-07	330.9
+89	189	-8.47e-08	1.4e-07	331
+90	190	-7.48e-07	1.4e-07	330.9
+91	191	-1.2e-06	1.4e-07	330.9
+92	192	-1.54e-06	1.4e-07	330.9
+93	193	-1.76e-06	1.4e-07	331.1
+94	194	-1.77e-06	1.4e-07	331
+95	195	-1.62e-06	1.4e-07	330.9
+96	196	-1.38e-06	1.4e-07	330.9
+97	197	-8.61e-07	1.4e-07	330.9
+98	198	-4.85e-07	1.4e-07	331
+99	199	9.27e-08	1.4e-07	331
+</data>
+</table>
+<multiLayer>
+Graph2	1	1	6/1/19 12:12 PM
+geometry	441	2	971	507	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	5	5	949	444
+<PageGeometry>0.00519211	0.0108932	0.985462	0.96732</PageGeometry>
+PlotTitle	Range Function vs. r	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Range Function		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	14	75	0	0	0
+ScaleFont0	FreeSerif	12	75	0	0	0
+ScaleFont1	Ubuntu	12	75	0	0	0
+ScaleFont2	FreeSerif	12	75	0	0	0
+ScaleFont3	Ubuntu	12	75	0	0	0
+AxisFont0	Ubuntu	12	50	0	0	0
+AxisFont1	Ubuntu	12	50	0	0	0
+AxisFont2	Ubuntu	12	50	0	0	0
+AxisFont3	Ubuntu	12	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+ErrorBars	1	Table3_r	Table3_Integral	Table3_Error	1	8	#000000	1	1	1	1
+curve	Table3_r	Table3_Integral	1	0	#000000	0	1	3	1	#000000	#000000	0	#000000	14	1	2	0	0	99	1
+scale	0	-1e-05	1e-05	0	5	5	0	0
+scale	1	-1e-05	1e-05	0	5	5	0	0
+scale	2	80	200	0	7	5	0	0
+scale	3	80	200	0	7	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>154.58646616541</x>
+<y>9.3979933110368e-06</y>
+<right>196.992481203008</right>
+<bottom>7.52508361204013e-06</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+q<sub>x</sub> = [0.001, 12π/a]
+</Text>
+<Font>FreeSerif	12	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<multiLayer>
+Graph3	1	1	6/1/19 12:15 PM
+geometry	443	2	881	506	active
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	7	5	860	444
+<PageGeometry>0.00801833	0.010917	0.985109	0.969432</PageGeometry>
+PlotTitle	Range Function vs. r with Different Limits on q<sub>x</sub>	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Range Function		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	14	75	0	0	0
+ScaleFont0	FreeSerif	12	75	0	0	0
+ScaleFont1	Ubuntu	12	75	0	0	0
+ScaleFont2	FreeSerif	12	75	0	0	0
+ScaleFont3	Ubuntu	12	75	0	0	0
+AxisFont0	Ubuntu	12	50	0	0	0
+AxisFont1	Ubuntu	12	50	0	0	0
+AxisFont2	Ubuntu	12	50	0	0	0
+AxisFont3	Ubuntu	12	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	Table2_r	Table2_Integral	1	0	#000000	0	1	3	1	#0000ff	#0000ff	0	#000000	14	1	2	0	0	99	1
+ErrorBars	1	Table2_r	Table2_Integral	Table2_Error	1	8	#0000ff	1	1	1	0
+curve	Table3_r	Table3_Integral	1	0	#00ffff	0	1	3	1	#ff0000	#ff0000	0	#000000	14	1	2	0	0	99	1
+curve	Table4_r	Table4_Integral	1	0	#ff00ff	0	1	3	5	#ff00ff	#ff00ff	0	#000000	14	1	2	0	0	100	1
+scale	0	-1e-05	1e-05	0	5	5	0	0
+scale	1	-1e-05	1e-05	0	5	5	0	0
+scale	2	80	200	0	7	5	0	0
+scale	3	80	200	0	7	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>174.95376486129</x>
+<y>1e-05</y>
+<right>193.025099075297</right>
+<bottom>5.45454545454546e-06</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)10π/a
+\l(3)12π/a
+\l(4)4π/a
+</Text>
+<Font>FreeSerif	12	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<table>
+Table4	101	4	6/1/19 12:21 PM
+geometry	0	392	445	220	
+header	r[X]	Integral[Y]	Error[Y]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/13	0;0/13	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/range03_100-200.csv	2
+<data>
+0	100	1.57297836e-06	1.301e-07	334.7
+1	101	4.28911195e-06	1.273e-07	334.5
+2	102	6.8942003e-06	1.313e-07	334.4
+3	103	8.51442025e-06	1.285e-07	334.5
+4	104	8.61516477e-06	1.313e-07	334.4
+5	105	8.27196806e-06	1.271e-07	334.4
+6	106	7.55286197e-06	1.276e-07	334.4
+7	107	5.73502765e-06	1.276e-07	334.4
+8	108	3.1598903e-06	1.285e-07	334.4
+9	109	6.20177464e-07	1.272e-07	334.4
+10	110	-1.47745693e-06	1.273e-07	334.4
+11	111	-3.5208853e-06	1.259e-07	334.3
+12	112	-5.70692645e-06	1.25e-07	334.3
+13	113	-7.00415042e-06	1.249e-07	334.3
+14	114	-6.96410186e-06	1.257e-07	334.4
+15	115	-6.79622767e-06	1.251e-07	334.5
+16	116	-6.10722616e-06	1.254e-07	334.3
+17	117	-4.66081228e-06	1.266e-07	334.3
+18	118	-2.43628815e-06	1.235e-07	334.4
+19	119	-4.52279513e-07	1.244e-07	334.4
+20	120	1.09578689e-06	1.238e-07	334.4
+21	121	2.96108839e-06	1.226e-07	334.5
+22	122	4.59174658e-06	1.234e-07	334.3
+23	123	5.43845463e-06	1.231e-07	334.3
+24	124	5.56488703e-06	1.189e-07	334.3
+25	125	5.2291442e-06	1.208e-07	334.3
+26	126	4.75759802e-06	1.212e-07	334.3
+27	127	3.56827233e-06	1.189e-07	334.6
+28	128	1.74502011e-06	1.199e-07	334.3
+29	129	6.82710966e-08	1.207e-07	334.4
+30	130	-1.13959063e-06	1.181e-07	334.3
+31	131	-2.57377644e-06	1.187e-07	334.4
+32	132	-3.98874972e-06	1.187e-07	334.4
+33	133	-4.69788948e-06	1.173e-07	334.3
+34	134	-4.58292595e-06	1.163e-07	334.3
+35	135	-4.44408905e-06	1.181e-07	334.4
+36	136	-4.05160348e-06	1.168e-07	334.4
+37	137	-2.96681681e-06	1.173e-07	334.4
+38	138	-1.54475715e-06	1.132e-07	334.6
+39	139	-1.53615933e-07	1.165e-07	334.4
+40	140	9.03977361e-07	1.159e-07	334.3
+41	141	2.0018324e-06	1.164e-07	334.3
+42	142	3.16673257e-06	1.142e-07	334.5
+43	143	3.76402301e-06	1.14e-07	334.4
+44	144	3.62290503e-06	1.155e-07	334.4
+45	145	3.39056852e-06	1.097e-07	334.4
+46	146	3.08480272e-06	1.137e-07	334.3
+47	147	2.20242252e-06	1.104e-07	334.4
+48	148	9.38587014e-07	1.112e-07	334.4
+49	149	-1.12788475e-07	1.112e-07	334.5
+50	150	-9.01209216e-07	1.117e-07	334.7
+51	151	-1.92279316e-06	1.114e-07	335.8
+52	152	-2.81025518e-06	1.089e-07	334.5
+53	153	-3.29487426e-06	1.093e-07	334.5
+54	154	-3.22307891e-06	1.098e-07	334.4
+55	155	-3.03300674e-06	1.091e-07	334.3
+56	156	-2.72278966e-06	1.095e-07	334.4
+57	157	-1.96499029e-06	1.077e-07	334.3
+58	158	-8.60375467e-07	1.099e-07	334.5
+59	159	1.25961733e-08	1.067e-07	334.5
+60	160	7.91869965e-07	1.09e-07	334.3
+61	161	1.53296665e-06	1.097e-07	334.4
+62	162	2.29312625e-06	1.065e-07	334.4
+63	163	2.62361683e-06	1.071e-07	334.3
+64	164	2.50364403e-06	1.051e-07	334.6
+65	165	2.31509242e-06	1.062e-07	334.9
+66	166	2.15051369e-06	1.048e-07	334.9
+67	167	1.53680977e-06	1.057e-07	335
+68	168	5.82021414e-07	1.037e-07	335.2
+69	169	-2.22560377e-07	1.056e-07	335
+70	170	-8.01457769e-07	1.047e-07	335
+71	171	-1.40436184e-06	1.036e-07	335
+72	172	-2.10287393e-06	1.033e-07	334.9
+73	173	-2.39816629e-06	1.039e-07	334.9
+74	174	-2.33186379e-06	1.059e-07	334.9
+75	175	-2.1977372e-06	1.009e-07	334.9
+76	176	-1.90958504e-06	1.013e-07	334.9
+77	177	-1.35196415e-06	1.019e-07	334.8
+78	178	-6.16016579e-07	1.012e-07	334.8
+79	179	7.58374119e-08	1.016e-07	334.9
+80	180	5.42707825e-07	1.005e-07	334.7
+81	181	1.09346968e-06	1.01e-07	334.7
+82	182	1.71516997e-06	1.004e-07	334.8
+83	183	1.88479274e-06	9.912e-08	335
+84	184	1.82211632e-06	1e-07	334.7
+85	185	1.67205974e-06	1.01e-07	334.8
+86	186	1.47482136e-06	1.009e-07	334.7
+87	187	9.58905912e-07	1.013e-07	334.7
+88	188	2.94003773e-07	9.991e-08	334.7
+89	189	-2.54708096e-07	9.679e-08	334.7
+90	190	-6.70947991e-07	9.776e-08	334.8
+91	191	-1.06461875e-06	9.523e-08	334.8
+92	192	-1.64518823e-06	9.787e-08	334.6
+93	193	-1.75925239e-06	9.789e-08	334.6
+94	194	-1.72356252e-06	9.695e-08	334.7
+95	195	-1.55287693e-06	9.61e-08	334.6
+96	196	-1.39809465e-06	9.513e-08	334.6
+97	197	-1.05285256e-06	9.65e-08	334.7
+98	198	-3.52869392e-07	9.937e-08	334.6
+99	199	8.18183586e-08	9.974e-08	334.6
+</data>
+</table>
+<open>1</open>

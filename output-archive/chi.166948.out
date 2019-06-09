@@ -1,0 +1,110 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth = 2
+sigma_multiplication = 1,000,000
+num_trials = 5
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.01 :  0.9896801376633735  with error:  1.01865900713841e-05
+================================================================
+Computed in  43.04116082191467  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.031785714285714285 :  0.9865214021482527  with error:  6.075747839272741e-06
+================================================================
+Computed in  42.67798566818237  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.053571428571428575 :  0.9857219611468786  with error:  4.756021711194278e-06
+================================================================
+Computed in  42.564825773239136  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.07535714285714286 :  0.9866577348685657  with error:  3.6182491572225226e-06
+================================================================
+Computed in  42.479586124420166  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.09714285714285714 :  0.9866810666401987  with error:  3.171513666262795e-06
+================================================================
+Computed in  42.249499797821045  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.11892857142857143 :  0.985462259813554  with error:  3.2603862647773423e-06
+================================================================
+Computed in  42.14106011390686  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.14071428571428574 :  0.9851350365102658  with error:  2.9006494861354617e-06
+================================================================
+Computed in  42.12850284576416  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.1625 :  0.9852751613470366  with error:  2.673612265415697e-06
+================================================================
+Computed in  42.4336314201355  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.1842857142857143 :  0.9840351814417595  with error:  2.4182656707241378e-06
+================================================================
+Computed in  41.89767599105835  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.2060714285714286 :  0.9820355383603602  with error:  2.0070186865434307e-06
+================================================================
+Computed in  42.1871178150177  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.22785714285714287 :  0.979517281114987  with error:  1.909086436515992e-06
+================================================================
+Computed in  42.09495496749878  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.24964285714285717 :  0.976222411898398  with error:  2.3347165692475315e-06
+================================================================
+Computed in  42.04353976249695  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.27142857142857146 :  0.9732374677124478  with error:  1.9497291555210207e-06
+================================================================
+Computed in  41.910635471343994  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.29321428571428576 :  0.9643342367344637  with error:  1.8586468123629948e-06
+================================================================
+Computed in  41.82775020599365  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.315 :  0.8966175928265154  with error:  2.1533402286883617e-06
+================================================================
+Computed in  41.85737204551697  seconds.
+================================================================
+================================================================
+All values in csv format:
+0.010, 9.89680138E-01, 1.019E-05, 4.304E+01
+0.032, 9.86521402E-01, 6.076E-06, 4.268E+01
+0.054, 9.85721961E-01, 4.756E-06, 4.256E+01
+0.075, 9.86657735E-01, 3.618E-06, 4.248E+01
+0.097, 9.86681067E-01, 3.172E-06, 4.225E+01
+0.119, 9.85462260E-01, 3.260E-06, 4.214E+01
+0.141, 9.85135037E-01, 2.901E-06, 4.213E+01
+0.163, 9.85275161E-01, 2.674E-06, 4.243E+01
+0.184, 9.84035181E-01, 2.418E-06, 4.190E+01
+0.206, 9.82035538E-01, 2.007E-06, 4.219E+01
+0.228, 9.79517281E-01, 1.909E-06, 4.209E+01
+0.250, 9.76222412E-01, 2.335E-06, 4.204E+01
+0.271, 9.73237468E-01, 1.950E-06, 4.191E+01
+0.293, 9.64334237E-01, 1.859E-06, 4.183E+01
+0.315, 8.96617593E-01, 2.153E-06, 4.186E+01
+================================================================
+
+Process completed successfully!
+Total time is  651.3999001979828 seconds.

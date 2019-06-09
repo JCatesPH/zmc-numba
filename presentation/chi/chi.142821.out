@@ -1,0 +1,47 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth = 3
+sigma_multiplication = 100
+num_trials = 10
+available_GPU = [0]
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.01 :  0.986453090993172  with error:  1.0736703098833483e-05
+================================================================
+Computed in  74.44433689117432  seconds.
+================================================================
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.05 :  0.9863427792292206  with error:  5.001361962666249e-06
+================================================================
+Computed in  73.51182842254639  seconds.
+================================================================
+================================================================
+8 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.1 :  0.9842662497776735  with error:  3.38193411226402e-06
+================================================================
+Computed in  636.0837445259094  seconds.
+================================================================
+================================================================
+================================================================
+kxi  | kxf  | kyi  | kyf  | qx  | qy   | integrand | err
+================================================================
+-0.785|0.785|-0.785|0.785| 0.01 | 0    |9.86453091E-01| 1.074E-05 
+-0.785|0.785|-0.785|0.785| 0.05 | 0    |9.86342779E-01| 5.001E-06 
+-0.785|0.785|-0.785|0.785| 0.1  | 0    |9.84266250E-01| 3.382E-06 
+================================================================
+================================================================
+
+Process completed successfully!
+Total time is  784.0399720668793 seconds.

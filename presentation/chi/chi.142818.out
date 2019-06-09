@@ -1,0 +1,46 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth = 3
+sigma_multiplication = 100
+num_trials = 10
+available_GPU = [0]
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0 :  0.9864562845314845  with error:  1.0654536561581576e-05
+================================================================
+Computed in  74.46318054199219  seconds.
+================================================================
+================================================================
+1 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0 :  0.9861754244339409  with error:  5.002416940507536e-06
+================================================================
+Computed in  145.58092331886292  seconds.
+================================================================
+================================================================
+6 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0 :  0.9846841794977138  with error:  3.4149647572332723e-06
+================================================================
+Computed in  496.1723482608795  seconds.
+================================================================
+================================================================
+================================================================
+kxi  | kxf  | kyi  | kyf  | qx  | qy   | integrand | err
+================================================================
+-0.785|0.785|-0.785|0.785| 0.01 | 0    |9.86456285E-01| 1.065E-05 
+-0.785|0.785|-0.785|0.785| 0.05 | 0    |9.86175424E-01| 5.002E-06 
+-0.785|0.785|-0.785|0.785| 0.1  | 0    |9.84684179E-01| 3.415E-06 
+================================================================
+================================================================
+
+Process completed successfully!
+Total time is  716.2165243625641 seconds.

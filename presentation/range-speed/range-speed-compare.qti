@@ -1,0 +1,474 @@
+QtiPlot 0.9.8 project file
+<scripting-lang>	muParser
+<windows>	4
+<multiLayer>
+Graph3	2	1	6/1/19 12:15 PM
+geometry	453	3	1073	470	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	429	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	5	5	537	411
+<PageGeometry>0.00469484	0.0118483	0.504225	0.973934</PageGeometry>
+PlotTitle	Range Function vs. r with Different ZMCintegral Parameters	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Range Function		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	14	75	0	0	0
+ScaleFont0	FreeSerif	12	75	0	0	0
+ScaleFont1	Ubuntu	12	75	0	0	0
+ScaleFont2	FreeSerif	12	75	0	0	0
+ScaleFont3	Ubuntu	12	75	0	0	0
+AxisFont0	Ubuntu	12	50	0	0	0
+AxisFont1	Ubuntu	12	50	0	0	0
+AxisFont2	Ubuntu	12	50	0	0	0
+AxisFont3	Ubuntu	12	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	range_speedtest_r	range_speedtest_Integral	1	0	#ffff00	0	1	3	2	#0000a0	#0000a0	0	#000000	14	1	2	0	0	89	1
+curve	Table1_r	Table1_Integral	1	0	#808000	0	1	3	7	#800000	#800000	0	#000000	14	1	2	0	0	89	1
+ErrorBars	1	range_speedtest_r	range_speedtest_Integral	range_speedtest_Error	1	8	#0000a0	1	1	1	0
+ErrorBars	1	Table1_r	Table1_Integral	Table1_Error	1	8	#808000	1	1	1	1
+ErrorBars	1	Table1_r	Table1_Integral	Table1_Error	1	8	#800000	1	1	1	1
+scale	0	-0.0008	0.0004	0	7	5	0	0
+scale	1	-0.0008	0.0004	0	7	5	0	0
+scale	2	0	100	0	6	5	0	0
+scale	3	0	100	0	6	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>7.2681704260652</x>
+<y>0.00044765342960289</y>
+<right>108.020050125313</right>
+<bottom>0.000252707581227437</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1) num_trials = 5, depth = 2, sigma_mult = 1E6 (fast)
+\l(2) num_trials = 10, depth = 3, sigma_mult = 1E4 (original)
+</Text>
+<Font>FreeSerif	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<graph>
+ggeometry	533	7	535	404
+<PageGeometry>0.500469	0.0165877	0.502347	0.957346</PageGeometry>
+PlotTitle	Range Function vs. r with Different ZMCintegral Parameters	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Range Function		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	14	75	0	0	0
+ScaleFont0	FreeSerif	12	75	0	0	0
+ScaleFont1	Ubuntu	11	75	0	0	0
+ScaleFont2	FreeSerif	12	75	0	0	0
+ScaleFont3	Ubuntu	11	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	11	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	11	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	Table1_r	Table1_Integral	1	0	#000000	0	1	3	7	#800000	#800000	0	#000000	14	1	2	0	39	89	1
+curve	range_speedtest_r	range_speedtest_Integral	1	0	#ff0000	0	1	3	2	#0000a0	#0000a0	0	#000000	14	1	2	0	39	89	1
+ErrorBars	1	Table1_r	Table1_Integral	Table1_Error	1	8	#000000	1	1	1	0
+ErrorBars	1	Table1_r	Table1_Integral	Table1_Error	1	8	#800000	1	1	1	0
+ErrorBars	1	range_speedtest_r	range_speedtest_Integral	range_speedtest_Error	0.6	8	#0000a0	1	1	1	1
+scale	0	-5e-05	3e-05	0	9	5	0	0
+scale	1	-5e-05	3e-05	0	9	5	0	0
+scale	2	40	100	0	7	5	0	0
+scale	3	40	100	0	7	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<table>
+range_speedtest	90	4	6/6/19 12:23 PM
+geometry	-2	438	456	416	active
+header	r[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;2/3	0;0/2	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/range_speedtest.csv	2
+<data>
+0	10	0.0001964	2.6e-07	165.3
+1	11	-0.0001921	2.9e-07	165.1
+2	12	-0.0004739	2.8e-07	165.4
+3	13	-0.0006442	2.9e-07	165.4
+4	14	-0.0007064	3e-07	165.5
+5	15	-0.0006709	2.7e-07	165.7
+6	16	-0.0005606	2.4e-07	165.7
+7	17	-0.0004119	2.3e-07	166
+8	18	-0.0002601	2.2e-07	165.9
+9	19	-0.0001242	2.2e-07	165.9
+10	20	-6.423e-06	2.3e-07	166.1
+11	21	9.137e-05	2.4e-07	166.1
+12	22	0.0001638	2.3e-07	166
+13	23	0.0002095	2.4e-07	166
+14	24	0.0002296	2.3e-07	166.1
+15	25	0.000224	2.2e-07	166.4
+16	26	0.0001952	2.2e-07	166.3
+17	27	0.0001503	2.1e-07	166.2
+18	28	9.958e-05	2.1e-07	166.2
+19	29	4.933e-05	2.1e-07	166.2
+20	30	1.049e-06	2.3e-07	166.3
+21	31	-4.291e-05	2.3e-07	166.3
+22	32	-7.783e-05	2.3e-07	166.2
+23	33	-0.0001011	2.1e-07	166.4
+24	34	-0.0001129	2e-07	166.5
+25	35	-0.0001121	1.8e-07	166.4
+26	36	-9.882e-05	1.8e-07	166.4
+27	37	-7.597e-05	1.8e-07	166.4
+28	38	-4.944e-05	1.9e-07	166.3
+29	39	-2.258e-05	2e-07	166.5
+30	40	3.64e-06	2.3e-07	166.3
+31	41	2.752e-05	2.4e-07	166.3
+32	42	4.578e-05	2.4e-07	166.4
+33	43	5.781e-05	2.4e-07	166.4
+34	44	6.372e-05	2.3e-07	166.4
+35	45	6.339e-05	2.2e-07	166.4
+36	46	5.602e-05	2.1e-07	166.4
+37	47	4.348e-05	2e-07	166.4
+38	48	2.848e-05	2e-07	166.4
+39	49	1.284e-05	2e-07	166.3
+40	50	-3.028e-06	2e-07	166.7
+41	51	-1.757e-05	2.1e-07	166.7
+42	52	-2.929e-05	2.1e-07	166.6
+43	53	-3.73e-05	2.2e-07	166.6
+44	54	-4.13e-05	2.1e-07	166.6
+45	55	-4.101e-05	2.1e-07	166.6
+46	56	-3.623e-05	2e-07	166.6
+47	57	-2.829e-05	2e-07	166.6
+48	58	-1.801e-05	2.1e-07	166.6
+49	59	-7.552e-06	2e-07	166.5
+50	60	2.983e-06	2e-07	166.6
+51	61	1.282e-05	2e-07	166.5
+52	62	2.057e-05	2e-07	166.5
+53	63	2.519e-05	2e-07	166.6
+54	64	2.753e-05	2e-07	166.5
+55	65	2.749e-05	1.9e-07	166.5
+56	66	2.433e-05	1.9e-07	166.7
+57	67	1.869e-05	1.9e-07	166.5
+58	68	1.2e-05	1.9e-07	166.5
+59	69	4.779e-06	1.9e-07	166.5
+60	70	-2.473e-06	2e-07	166.6
+61	71	-9.446e-06	1.9e-07	166.5
+62	72	-1.479e-05	1.9e-07	166.7
+63	73	-1.823e-05	1.9e-07	166.6
+64	74	-2.014e-05	1.9e-07	166.6
+65	75	-2.019e-05	1.9e-07	166.6
+66	76	-1.789e-05	1.9e-07	166.6
+67	77	-1.335e-05	1.9e-07	166.6
+68	78	-8.356e-06	1.8e-07	166.6
+69	79	-3.216e-06	1.9e-07	166.7
+70	80	2.182e-06	1.8e-07	166.6
+71	81	7.463e-06	1.9e-07	166.6
+72	82	1.12e-05	1.8e-07	166.6
+73	83	1.362e-05	1.8e-07	166.6
+74	84	1.483e-05	1.8e-07	166.6
+75	85	1.446e-05	1.8e-07	166.6
+76	86	1.281e-05	1.8e-07	166.6
+77	87	9.601e-06	1.7e-07	166.6
+78	88	5.829e-06	1.7e-07	166.5
+79	89	2.066e-06	1.7e-07	166.5
+80	90	-1.883e-06	1.7e-07	166.6
+81	91	-6.045e-06	1.7e-07	166.6
+82	92	-8.945e-06	1.7e-07	166.7
+83	93	-1.055e-05	1.7e-07	166.6
+84	94	-1.145e-05	1.7e-07	166.6
+85	95	-1.126e-05	1.7e-07	166.6
+86	96	-9.876e-06	1.6e-07	166.6
+87	97	-7.369e-06	1.6e-07	166.5
+88	98	-4.452e-06	1.7e-07	166.6
+89	99	-1.454e-06	1.7e-07	166.8
+</data>
+</table>
+<table>
+Table1	90	4	6/6/19 12:27 PM
+geometry	0	0	448	437	
+header	r[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;2/3	0;2/2	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	 Integral	 Error	 Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/range3-0530.csv	2
+<data>
+0	10	0.0002003	1.73e-07	330.4
+1	11	-0.0001839	1.84e-07	329.6
+2	12	-0.0004768	1.91e-07	330.4
+3	13	-0.0006506	1.88e-07	330.6
+4	14	-0.000704	1.82e-07	330.9
+5	15	-0.0006659	1.75e-07	330.9
+6	16	-0.0005625	1.66e-07	331.1
+7	17	-0.000416	1.59e-07	331.4
+8	18	-0.0002587	1.46e-07	331.6
+9	19	-0.0001207	1.43e-07	331.8
+10	20	-7.712e-06	1.44e-07	331.8
+11	21	8.822e-05	1.46e-07	332.3
+12	22	0.0001652	1.53e-07	332.2
+13	23	0.0002123	1.54e-07	332.2
+14	24	0.0002285	1.52e-07	332.8
+15	25	0.0002219	1.54e-07	332.5
+16	26	0.0001962	1.44e-07	332.8
+17	27	0.0001524	1.41e-07	332.5
+18	28	9.881e-05	1.38e-07	333.1
+19	29	4.746e-05	1.35e-07	332.9
+20	30	1.642e-06	1.37e-07	332.9
+21	31	-4.117e-05	1.38e-07	332.8
+22	32	-7.854e-05	1.43e-07	332.9
+23	33	-0.0001027	1.39e-07	333.2
+24	34	-0.0001123	1.4e-07	333.3
+25	35	-0.0001108	1.44e-07	333.2
+26	36	-9.937e-05	1.44e-07	333.4
+27	37	-7.732e-05	1.36e-07	333.3
+28	38	-4.895e-05	1.34e-07	333.3
+29	39	-2.135e-05	1.32e-07	333.5
+30	40	3.14e-06	1.36e-07	333.4
+31	41	2.624e-05	1.34e-07	333.3
+32	42	4.62e-05	1.35e-07	334.2
+33	43	5.885e-05	1.37e-07	333.8
+34	44	6.331e-05	1.4e-07	333.7
+35	45	6.244e-05	1.38e-07	334
+36	46	5.647e-05	1.36e-07	333.7
+37	47	4.439e-05	1.35e-07	333.7
+38	48	2.814e-05	1.35e-07	333.8
+39	49	1.209e-05	1.33e-07	333.7
+40	50	-2.521e-06	1.31e-07	333.7
+41	51	-1.694e-05	1.27e-07	334
+42	52	-2.977e-05	1.28e-07	333.7
+43	53	-3.805e-05	1.31e-07	333.7
+44	54	-4.092e-05	1.38e-07	333.8
+45	55	-4.045e-05	1.38e-07	333.6
+46	56	-3.672e-05	1.41e-07	334.3
+47	57	-2.869e-05	1.39e-07	334.3
+48	58	-1.765e-05	1.38e-07	334.2
+49	59	-6.877e-06	1.28e-07	334
+50	60	2.754e-06	1.19e-07	334.1
+51	61	1.211e-05	1.12e-07	334
+52	62	2.067e-05	1.07e-07	334
+53	63	2.592e-05	1.1e-07	334
+54	64	2.749e-05	1.18e-07	334
+55	65	2.692e-05	1.36e-07	334
+56	66	2.457e-05	1.49e-07	334.1
+57	67	1.912e-05	1.55e-07	334
+58	68	1.16e-05	1.57e-07	333.9
+59	69	4.301e-06	1.56e-07	334.1
+60	70	-2.289e-06	1.48e-07	334
+61	71	-8.942e-06	1.41e-07	334
+62	72	-1.515e-05	1.36e-07	334
+63	73	-1.882e-05	1.33e-07	334
+64	74	-1.993e-05	1.31e-07	334.1
+65	75	-1.96e-05	1.38e-07	334
+66	76	-1.786e-05	1.34e-07	334
+67	77	-1.38e-05	1.35e-07	334
+68	78	-8.163e-06	1.36e-07	334.2
+69	79	-2.772e-06	1.39e-07	334
+70	80	2.078e-06	1.37e-07	334
+71	81	6.843e-06	1.35e-07	334
+72	82	1.129e-05	1.32e-07	334
+73	83	1.391e-05	1.34e-07	334.6
+74	84	1.46e-05	1.32e-07	334.6
+75	85	1.424e-05	1.34e-07	334.6
+76	86	1.285e-05	1.32e-07	334.5
+77	87	9.97e-06	1.32e-07	334.5
+78	88	5.776e-06	1.33e-07	334.6
+79	89	1.659e-06	1.33e-07	334.3
+80	90	-1.856e-06	1.32e-07	334.4
+81	91	-5.5e-06	1.33e-07	334.4
+82	92	-8.883e-06	1.32e-07	334.3
+83	93	-1.085e-05	1.29e-07	334.4
+84	94	-1.134e-05	1.3e-07	334.5
+85	95	-1.1e-05	1.32e-07	334.4
+86	96	-1.003e-05	1.31e-07	334.3
+87	97	-7.669e-06	1.29e-07	334.3
+88	98	-4.315e-06	1.32e-07	334.4
+89	99	-1.154e-06	1.29e-07	334.3
+</data>
+</table>
+<multiLayer>
+Graph1	1	1	6/6/19 12:38 PM
+geometry	535	461	560	470	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	5	5	542	407
+<PageGeometry>0.00905797	0.0118483	0.981884	0.964455</PageGeometry>
+PlotTitle	Time Comparison for Fast and Slow Runs	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	r	Time		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	FreeSerif	13	75	0	0	0
+ScaleFont0	FreeSerif	11	75	0	0	0
+ScaleFont1	Ubuntu	11	75	0	0	0
+ScaleFont2	FreeSerif	11	75	0	0	0
+ScaleFont3	Ubuntu	11	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	11	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	11	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	range_speedtest_r	range_speedtest_Time	2	1	#000000	0	1	7	1	#000000	#000000	0	#000000	14	1	2	0	0	89	1
+curve	Table1_r	Table1_Time	2	1	#ff0000	0	1	7	2	#ff0000	#ff0000	0	#000000	14	1	2	0	0	89	1
+scale	0	150	350	0	5	5	0	0
+scale	1	150	350	0	5	5	0	0
+scale	2	0	100	0	6	5	0	0
+scale	3	0	100	0	6	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>28.011204481793</x>
+<y>965.75342465753</y>
+<right>305.322128851541</right>
+<bottom>866.438356164384</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)%(1)
+\l(2)%(2)
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>51.276595744681</x>
+<y>301.55279503106</y>
+<right>92.9787234042553</right>
+<bottom>273.60248447205</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+The fast run was 4.16 hours.
+The original run was 6.71 hours.
+</Text>
+<Font>FreeSerif	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>0</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<open>1</open>

@@ -1,0 +1,76 @@
+37 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+72 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+210 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+60 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+168 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+116 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+195 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+40 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+45 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+55 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+336 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+73 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+56 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+49 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+80 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+52 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+114 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+239 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+55 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+459 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+129 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+39 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+62 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+125 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+447 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+57 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+200 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+433 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+69 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+152 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+56 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+113 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+117 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+190 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+91 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+184 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+65 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+181 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+======================================================================
+sigma multiplication |     result     |      std      |       time (s)
+======================================================================
+                  4  |     -1.046551  |     0.000008  |       122.882870
+                  8  |     -1.045884  |     0.000008  |         3.338532
+                 12  |     -1.045886  |     0.000008  |         3.174984
+                 16  |     -1.045892  |     0.000008  |         3.197880
+                 20  |     -1.045887  |     0.000008  |         3.173706
+======================================================================
+
+ The shortest calculation time was  3.173706293106079 seconds with an optimal value of sigma multiplication:  20 
+
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+======================================================================
+number of trials |     result     |      std      |       time (s)
+======================================================================
+                  2  |     -1.045892  |     0.000006  |         1.742915
+                  4  |     -1.045888  |     0.000007  |         2.708294
+                  6  |     -1.045886  |     0.000008  |         3.711842
+                  8  |     -1.045892  |     0.000008  |         4.802165
+                 10  |     -1.150488  |     0.003096  |         5.673014
+======================================================================
+
+ The shortest calculation time was  1.742915153503418 seconds with an optimal value of trials:  2 
+
+======================================================================
+Time Optimization Results:
+     Optimal Time:  1.742915153503418
+     Optimal Sigma Multiplication:  20
+     Optimal Trials:  2

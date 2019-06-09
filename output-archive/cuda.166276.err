@@ -1,0 +1,5 @@
+  File "./cuda-test.py", line 15
+    res = res + tmp
+                  ^
+TabError: inconsistent use of tabs and spaces in indentation
+srun: error: gpu-0-0: task 0: Exited with exit code 1

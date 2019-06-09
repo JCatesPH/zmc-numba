@@ -1,0 +1,122 @@
+Process Process-2:
+Traceback (most recent call last):
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 121, in multi_processing
+    result.append(self.MCkernel(domain, i_batch))
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 383, in MCkernel
+    integration_kernel[blockspergrid, threadsperblock](num_loops,                                                           MCresult,                                                           chunk_size,                                                           n_chunk_x,                                                           domain,                                                           domain_range,                                                           batch_size,                                                           i_batch,                                                           rng_states,                                                           n_chunk)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 765, in __call__
+    kernel = self.specialize(*args)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 776, in specialize
+    kernel = self.compile(argtypes)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 792, in compile
+    **self.targetoptions)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler_lock.py", line 32, in _acquire_compile_lock
+    return func(*args, **kwargs)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 62, in compile_kernel
+    cres = compile_cuda(pyfunc, types.void, args, debug=debug, inline=inline)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler_lock.py", line 32, in _acquire_compile_lock
+    return func(*args, **kwargs)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 51, in compile_cuda
+    locals={})
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 941, in compile_extra
+    return pipeline.compile_extra(func)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 372, in compile_extra
+    return self._compile_bytecode()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 872, in _compile_bytecode
+    return self._compile_core()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 859, in _compile_core
+    res = pm.run(self.status)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler_lock.py", line 32, in _acquire_compile_lock
+    return func(*args, **kwargs)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 253, in run
+    raise patched_exception
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 244, in run
+    stage()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 500, in stage_nopython_frontend
+    self.locals)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py", line 1044, in type_inference_stage
+    infer.propagate()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/typeinfer.py", line 861, in propagate
+    raise errors[0]
+numba.errors.TypingError: Failed in nopython mode pipeline (step: nopython frontend)
+Invalid use of Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b41e74a2ef0>) with argument(s) of type(s): (array(float64, 1d, C))
+ * parameterized
+In definition 0:
+    TypingError: Failed in nopython mode pipeline (step: nopython frontend)
+Invalid use of Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b4202b08a20>) with argument(s) of type(s): (float64)
+ * parameterized
+In definition 0:
+    TypeError: Failed in nopython mode pipeline (step: analyzing bytecode)
+Signature mismatch: 1 argument types given, but function takes 2 arguments
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py:399
+In definition 1:
+    TypeError: Failed in nopython mode pipeline (step: analyzing bytecode)
+Signature mismatch: 1 argument types given, but function takes 2 arguments
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py:399
+This error is usually caused by passing an argument of a type that is unsupported by the named function.
+[1] During: resolving callee type: Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b4202b08a20>)
+[2] During: typing of call at ./range-03.py (108)
+
+
+File "range-03.py", line 108:
+def modDs_real(x):
+    <source elided>
+
+    besk = cudabesselj.besselj(xk)
+    ^
+
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/typeinfer.py:861
+In definition 1:
+    TypingError: Failed in nopython mode pipeline (step: nopython frontend)
+Invalid use of Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b4202b08a20>) with argument(s) of type(s): (float64)
+ * parameterized
+In definition 0:
+    TypeError: Failed in nopython mode pipeline (step: analyzing bytecode)
+Signature mismatch: 1 argument types given, but function takes 2 arguments
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py:399
+In definition 1:
+    TypeError: Failed in nopython mode pipeline (step: analyzing bytecode)
+Signature mismatch: 1 argument types given, but function takes 2 arguments
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/compiler.py:399
+This error is usually caused by passing an argument of a type that is unsupported by the named function.
+[1] During: resolving callee type: Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b4202b08a20>)
+[2] During: typing of call at ./range-03.py (108)
+
+
+File "range-03.py", line 108:
+def modDs_real(x):
+    <source elided>
+
+    besk = cudabesselj.besselj(xk)
+    ^
+
+    raised from /home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/typeinfer.py:861
+This error is usually caused by passing an argument of a type that is unsupported by the named function.
+[1] During: resolving callee type: Function(<numba.cuda.compiler.DeviceFunctionTemplate object at 0x2b41e74a2ef0>)
+[2] During: typing of call at /home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py (375)
+
+
+File "ZMCIntegral.py", line 375:
+        def integration_kernel(num_loops,                               MCresult,                               chunk_size,                               n_chunk_x,                               domain,                               domain_range,                               batch_size,                               i_batch,                               rng_states,                               n_chunk):
+            <source elided>
+                        # feed in values to user defined function
+                        cuda.atomic.add(MCresult, thread_id, fun(x_tuple))
+                        ^
+
+Traceback (most recent call last):
+  File "./range-03.py", line 213, in <module>
+    result = MC.evaluate()
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 82, in evaluate
+    MCresult = self.importance_sampling_iteration(self.initial_domain, 0)
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 88, in importance_sampling_iteration
+    MCresult_chunks, large_std_chunk_id, MCresult_std_chunks = self.MCevaluate(domain)
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 140, in MCevaluate
+    MCresult.append(np.load(os.getcwd()+'/multi_temp/result'+str(i_batch)+'.npy'))
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/lib/npyio.py", line 422, in load
+    fid = open(os_fspath(file), "rb")
+FileNotFoundError: [Errno 2] No such file or directory: '/home/jmcates/my-phys-util/ZMCIntegral/multi_temp/result0.npy'
+srun: error: gpu-0-0: task 0: Exited with exit code 1

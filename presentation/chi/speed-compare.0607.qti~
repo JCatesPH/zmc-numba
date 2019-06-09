@@ -1,0 +1,587 @@
+QtiPlot 0.9.8 project file
+<scripting-lang>	muParser
+<windows>	7
+<table>
+original	100	4	6/7/19 9:07 PM
+geometry	-4	-31	441	318	active
+header	q[X]	Integral[Y]	Error[Y]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/13	0;0/13	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	r	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/chi/chi.original.csv	2
+<data>
+0	0.01	0.986460606	1.073e-05	74.48
+1	0.018	0.986451866	8.216e-06	73.98
+2	0.026	0.98643949	6.992e-06	73.76
+3	0.033	0.986418882	6.059e-06	73.69
+4	0.041	0.98638803	5.543e-06	73.65
+5	0.049	0.986347728	5.068e-06	73.5
+6	0.057	0.985911812	4.665e-06	215.5
+7	0.065	0.986095109	4.434e-06	145.2
+8	0.073	0.985178871	4.066e-06	425.9
+9	0.08	0.984633897	3.788e-06	566.1
+10	0.088	0.985405644	3.763e-06	285.4
+11	0.096	0.984612904	3.446e-06	566.1
+12	0.104	0.98361303	3.229e-06	778.4
+13	0.112	0.983432608	3.159e-06	778.4
+14	0.12	0.983328256	2.983e-06	778.2
+15	0.127	0.982832778	2.817e-06	918.4
+16	0.135	0.982511868	2.729e-06	988.7
+17	0.143	0.982896478	2.666e-06	846.7
+18	0.151	0.982618759	2.63e-06	846.7
+19	0.159	0.982699221	2.548e-06	846.6
+20	0.167	0.982448243	2.507e-06	778
+21	0.174	0.981677816	2.365e-06	916.9
+22	0.182	0.981078682	2.275e-06	1057
+23	0.19	0.981975417	2.358e-06	636.2
+24	0.198	0.981624501	2.283e-06	636
+25	0.206	0.980746398	2.227e-06	848.1
+26	0.214	0.980685055	2.202e-06	708.2
+27	0.221	0.981072923	2.175e-06	710.3
+28	0.229	0.979236078	2.14e-06	849.6
+29	0.237	0.978960813	2.076e-06	565.7
+30	0.245	0.977226247	2.124e-06	705.9
+31	0.253	0.976589291	2.112e-06	565.7
+32	0.261	0.975946473	2.1e-06	355.2
+33	0.268	0.974234462	2.124e-06	285.1
+34	0.276	0.972551669	2.083e-06	144.7
+35	0.284	0.969450625	2.096e-06	144.8
+36	0.292	0.96491205	2.109e-06	144.7
+37	0.3	0.957754418	2.155e-06	72.85
+38	0.307	0.942191063	2.19e-06	144.7
+39	0.315	0.893650551	2.37e-06	72.88
+40	0.323	0.788690522	1.304e-06	72.84
+41	0.331	0.706275617	9.971e-07	72.86
+42	0.339	0.6441548	8.057e-07	72.88
+43	0.347	0.59409352	6.644e-07	72.88
+44	0.354	0.552090653	5.621e-07	72.84
+45	0.362	0.515937472	4.934e-07	72.83
+46	0.37	0.484266553	4.294e-07	72.85
+47	0.378	0.456162848	3.912e-07	72.83
+48	0.386	0.430976349	3.556e-07	72.82
+49	0.394	0.408225948	3.251e-07	72.81
+50	0.401	0.387543017	2.958e-07	72.87
+51	0.409	0.368637741	2.719e-07	72.85
+52	0.417	0.351277541	2.563e-07	72.84
+53	0.425	0.335272355	2.392e-07	72.8
+54	0.433	0.320464677	2.246e-07	72.8
+55	0.441	0.306722174	2.098e-07	72.82
+56	0.448	0.293932736	1.981e-07	72.84
+57	0.456	0.282000154	1.877e-07	72.88
+58	0.464	0.270841434	1.764e-07	72.86
+59	0.472	0.260384633	1.675e-07	72.82
+60	0.48	0.250566676	1.583e-07	72.83
+61	0.488	0.241332068	1.517e-07	72.8
+62	0.495	0.232631651	1.458e-07	72.83
+63	0.503	0.224421785	1.389e-07	72.8
+64	0.511	0.216663514	1.332e-07	72.87
+65	0.519	0.209322247	1.276e-07	72.86
+66	0.527	0.202366379	1.228e-07	72.82
+67	0.534	0.1957676	1.164e-07	72.85
+68	0.542	0.189500596	1.119e-07	72.83
+69	0.55	0.18354171	1.083e-07	72.78
+70	0.558	0.177870165	1.041e-07	72.77
+71	0.566	0.172466437	1.01e-07	72.81
+72	0.574	0.167312709	9.728e-08	72.82
+73	0.581	0.162392695	9.408e-08	72.86
+74	0.589	0.157691122	9.039e-08	72.78
+75	0.597	0.153193812	8.741e-08	72.78
+76	0.605	0.148887128	8.418e-08	72.76
+77	0.613	0.144757018	8.197e-08	72.77
+78	0.621	0.140786238	7.923e-08	73.05
+79	0.628	0.13692284	7.732e-08	72.76
+80	0.636	0.132993292	7.395e-08	72.76
+81	0.644	0.129029721	7.098e-08	72.78
+82	0.652	0.125085571	6.93e-08	72.79
+83	0.66	0.121183822	6.715e-08	72.79
+84	0.668	0.11733699	6.506e-08	72.74
+85	0.675	0.113552661	6.318e-08	72.79
+86	0.683	0.109835408	6.162e-08	72.93
+87	0.691	0.106188275	5.943e-08	72.75
+88	0.699	0.102613097	5.724e-08	72.74
+89	0.707	0.0991111972	5.595e-08	72.74
+90	0.715	0.0956831108	5.434e-08	72.74
+91	0.722	0.0923292264	5.305e-08	72.71
+92	0.73	0.0890495476	5.132e-08	72.84
+93	0.738	0.085844014	4.982e-08	72.73
+94	0.746	0.0827125209	4.878e-08	72.79
+95	0.754	0.0796548151	4.758e-08	72.7
+96	0.762	0.0766706856	4.594e-08	72.73
+97	0.769	0.0737597955	4.45e-08	72.66
+98	0.777	0.0709221221	4.363e-08	72.75
+99	0.785	0.0681574256	4.279e-08	72.74
+</data>
+</table>
+<table>
+Fast	15	4	6/7/19 9:26 PM
+geometry	-5	282	464	380	
+header	qx[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;2/3	0;2/2	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	qx	Integral	Error	Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/chi/chi.fast.csv	2
+<data>
+0	0.01	0.9897	1.02e-05	43.04
+1	0.032	0.9865	6.08e-06	42.68
+2	0.054	0.9857	4.76e-06	42.56
+3	0.075	0.9867	3.62e-06	42.48
+4	0.097	0.9867	3.17e-06	42.25
+5	0.119	0.9855	3.26e-06	42.14
+6	0.141	0.9851	2.9e-06	42.13
+7	0.163	0.9853	2.67e-06	42.43
+8	0.184	0.984	2.42e-06	41.9
+9	0.206	0.982	2.01e-06	42.19
+10	0.228	0.9795	1.91e-06	42.09
+11	0.25	0.9762	2.34e-06	42.04
+12	0.271	0.9732	1.95e-06	41.91
+13	0.293	0.9643	1.86e-06	41.83
+14	0.315	0.8966	2.15e-06	41.86
+</data>
+</table>
+<multiLayer>
+Graph1	1	1	6/7/19 9:03 PM
+geometry	445	-31	560	470	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	4	4	542	407
+<PageGeometry>0.00724638	0.00947867	0.981884	0.964455</PageGeometry>
+PlotTitle	Spin Susceptibility vs. q<sub>x</sub>	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	q<sub>x</sub>	Spin Susceptibility		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	Ubuntu	13	75	0	0	0
+ScaleFont0	Ubuntu	11	75	0	0	0
+ScaleFont1	Ubuntu	11	75	0	0	0
+ScaleFont2	Ubuntu	11	75	0	0	0
+ScaleFont3	Ubuntu	11	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	11	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	11	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	original_q	original_Integral	1	0	#ff0000	0	1	5	2	#ff0000	#ff0000	0	#000000	14	1	2	0	0	99	1
+scale	0	0	1	0	6	5	0	0
+scale	1	0	1	0	6	5	0	0
+scale	2	0	0.8	0	9	5	0	0
+scale	3	0	0.8	0	9	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>28.0112</x>
+<y>965.753</y>
+<right>0.187418655097614</right>
+<bottom>0.878125</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>0</visible>
+<Text>
+\l(2)Original
+
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>0.017647058823529</x>
+<y>0.54534161490683</y>
+<right>0.187418655097614</right>
+<bottom>0.878125</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>0</visible>
+<Text>
+\l(1)Original
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<multiLayer>
+Graph2	1	1	6/7/19 9:18 PM
+geometry	1002	-31	559	469	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	5	5	541	406
+<PageGeometry>0.00907441	0.0118765	0.981851	0.964371</PageGeometry>
+PlotTitle	Time vs. q<sub>x</sub>	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	q<sub>x</sub>	Time for Point		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	Ubuntu	13	75	0	0	0
+ScaleFont0	Ubuntu	11	75	0	0	0
+ScaleFont1	Ubuntu	11	75	0	0	0
+ScaleFont2	Ubuntu	11	75	0	0	0
+ScaleFont3	Ubuntu	11	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	11	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	11	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	original_q	original_Time	1	0	#000000	0	1	7	1	#000000	#000000	0	#000000	14	1	2	0	0	99	1
+scale	0	0	1200	0	7	5	0	0
+scale	1	0	1200	0	7	5	0	0
+scale	2	0	0.8	0	9	5	0	0
+scale	3	0	0.8	0	9	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<multiLayer>
+Graph3	1	1	6/7/19 9:27 PM
+geometry	467	441	560	470	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	4	4	542	407
+<PageGeometry>0.00724638	0.00947867	0.981884	0.964455</PageGeometry>
+PlotTitle	Spin Susceptibility vs. q<sub>x</sub>	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	q<sub>x</sub>	Spin Susceptibility		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	Ubuntu	13	75	0	0	0
+ScaleFont0	Ubuntu	11	75	0	0	0
+ScaleFont1	Ubuntu	12	75	0	0	0
+ScaleFont2	Ubuntu	11	75	0	0	0
+ScaleFont3	Ubuntu	12	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	10	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	10	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	original_q	original_Integral	1	0	#ff0000	0	1	5	2	#ff0000	#ff0000	0	#000000	14	1	2	0	0	39	1
+curve	Fast_qx	Fast_Integral	1	0	#00ff00	0	1	7	3	#000080	#000080	0	#000000	14	1	2	0	0	14	1
+ErrorBars	1	original_q	original_Integral	original_Error	1	8	#ff0000	1	1	1	0
+ErrorBars	1	Fast_qx	Fast_Integral	Fast_Error	1	8	#000080	1	1	1	1
+curve	single_qx	single_Integral	1	0	#800080	0	1	7	2	#800080	#800080	0	#000000	14	1	2	0	0	14	1
+ErrorBars	1	single_qx	single_Integral	single_Error	1	8	#800080	1	1	1	4
+scale	0	0.88	1	0	7	5	0	0
+scale	1	0.88	1	0	7	5	0	0
+scale	2	0	0.35	0	8	5	0	0
+scale	3	0	0.35	0	8	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>28.0112</x>
+<y>965.753</y>
+<right>0.0827133479212254</right>
+<bottom>0.985375</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>0</visible>
+<Text>
+\l(1)%(1)
+\l(2)%(2)
+\l(5)%(5)
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>0.017647058823529</x>
+<y>0.54534161490683</y>
+<right>0.0827133479212254</right>
+<bottom>0.985375</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)Original
+\l(2)Fast
+\l(5)%(5)
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>0.034698275862069</x>
+<y>0.92360248447205</y>
+<right>0.0827133479212254</right>
+<bottom>0.985375</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)Original
+\l(2)Fast
+\l(5)%(5)
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<multiLayer>
+Graph4	1	1	6/7/19 9:31 PM
+geometry	1027	438	559	469	
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	300
+Alignement	0	0
+<AlignPolicy>0</AlignPolicy>
+<CommonAxes>0</CommonAxes>
+<graph>
+ggeometry	5	5	541	406
+<PageGeometry>0.00907441	0.0118765	0.981851	0.964371</PageGeometry>
+PlotTitle	Time vs. q<sub>x</sub>	#000000	4228
+<Antialiasing>0</Antialiasing>
+<Autoscaling>1</Autoscaling>
+<ScaleFonts>1</ScaleFonts>
+<GridOnTop>0</GridOnTop>
+<MissingDataGap>1</MissingDataGap>
+Background	#ffffff	0
+Margin	0
+Border	0	#000000
+grid	0	0	0	0	#0000ff	0	0.5	#a0a0a4	2	0.4	#0000ff	0	0.5	#a0a0a4	2	0.4	0	0	2	0	0
+EnabledAxes	1	0	1	0	
+AxesTitles	q<sub>x</sub>	Time for Point		%(?Y)	
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	5124	4	5124	4
+AxesTitleDistance	2	-1	2	-1
+InvertedTitle	0	0	0	0
+TitleFont	Ubuntu	13	75	0	0	0
+ScaleFont0	Ubuntu	11	75	0	0	0
+ScaleFont1	Ubuntu	12	75	0	0	0
+ScaleFont2	Ubuntu	11	75	0	0	0
+ScaleFont3	Ubuntu	12	75	0	0	0
+AxisFont0	Ubuntu	11	50	0	0	0
+AxisFont1	Ubuntu	10	50	0	0	0
+AxisFont2	Ubuntu	11	50	0	0	0
+AxisFont3	Ubuntu	10	50	0	0	0
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#3c3c3c	#3c3c3c	#3c3c3c	#3c3c3c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	0
+curve	original_q	original_Time	1	0	#000000	0	1	7	1	#ff0000	#ff0000	0	#000000	14	1	2	0	0	39	1
+curve	Fast_qx	Fast_Time	1	0	#ff0000	0	1	7	2	#000080	#000080	0	#000000	14	1	2	0	0	14	1
+scale	0	0	1200	0	7	5	0	0
+scale	1	0	1200	0	7	5	0	0
+scale	2	0	0.35	0	8	5	0	0
+scale	3	0	0.35	0	8	5	0	0
+LabelsFormat	0	6	0	6	0	6	0	6
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1
+MinorTicks	1	1	1	1
+TicksLength	5	9
+DrawAxesBackbone	1	1	1	1	1
+AxesLineWidth	1
+LabelsRotation	0	0	0	0
+LabelsPrefix				
+LabelsSuffix				
+TickLabelsSpace	4	4	4	4
+ShowTicksPolicy	0	0	0	0
+EnabledTickLabels	1	1	1	1
+<Legend>
+<Frame>1</Frame>
+<Color>#000000</Color>
+<FrameWidth>1</FrameWidth>
+<LineStyle>0</LineStyle>
+<x>0.0076923076923077</x>
+<y>1162.6168224299</y>
+<right>0.0828947368421053</right>
+<bottom>1053.29153605016</bottom>
+<attachTo>1</attachTo>
+<onTop>1</onTop>
+<visible>1</visible>
+<Text>
+\l(1)Original
+\l(2)Fast
+</Text>
+<Font>Ubuntu	11	50	0	0	0</Font>
+<TextColor>#000000</TextColor>
+<Background>#ffffff</Background>
+<Alpha>0</Alpha>
+<Angle>0</Angle>
+<AutoUpdate>1</AutoUpdate>
+<TeXOutput>0</TeXOutput>
+</Legend>
+</graph>
+<LinkXAxes>0</LinkXAxes>
+<ScaleLayers>1</ScaleLayers>
+</multiLayer>
+<table>
+single	15	4	6/9/19 3:38 PM
+geometry	-8	657	472	246	
+header	qx[X]	Integral[Y]	Error[yEr]	Time[Y]
+ColWidth	100	100	100	100	
+<com>
+</com>
+ColType	0;0/13	0;0/13	0;2/13	0;0/13
+ReadOnlyColumn	0	0	0	0
+HiddenColumn	0	0	0	0
+Comments	qx	 Integral	 Error	 Time	
+WindowLabel	/home/jmcates/github/my-phys-util/ZMCIntegral/presentation/chi/chi.single.csv	2
+<data>
+0	0.01	0.990388275	9.833e-06	38.46
+1	0.032	0.986583807	5.986e-06	37.85
+2	0.054	0.985958428	4.787e-06	37.88
+3	0.075	0.986469553	3.953e-06	37.7
+4	0.097	0.986331337	3.459e-06	37.71
+5	0.119	0.985514404	2.841e-06	37.83
+6	0.141	0.985101694	2.748e-06	37.77
+7	0.163	0.985489821	2.688e-06	37.88
+8	0.184	0.98471035	2.541e-06	37.68
+9	0.206	0.982118289	2.069e-06	37.56
+10	0.228	0.979583247	2.208e-06	37.75
+11	0.25	0.976200506	1.914e-06	37.56
+12	0.271	0.97346592	2.059e-06	37.9
+13	0.293	0.96411948	2.075e-06	37.68
+14	0.315	0.896710645	2.205e-06	37.67
+</data>
+</table>
+<open>1</open>

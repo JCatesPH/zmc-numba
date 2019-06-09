@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "./chi-N1_v6.py", line 239, in <module>
+    result = MC.evaluate()
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 75, in evaluate
+    MCresult = self.importance_sampling_iteration(self.initial_domain, 0)
+  File "/home/jmcates/my-phys-util/ZMCIntegral/ZMCIntegral.py", line 95, in importance_sampling_iteration
+    setChunks(MCresult_chunks)
+NameError: name 'setChunks' is not defined
+srun: error: gpu-0-0: task 0: Exited with exit code 1

@@ -1,0 +1,6 @@
+srun: got SIGCONT
+slurmstepd: error: *** STEP 167075.0 ON gpu-0-0 CANCELLED AT 2019-06-09T10:57:16 ***
+slurmstepd: error: *** JOB 167075 ON gpu-0-0 CANCELLED AT 2019-06-09T10:57:16 ***
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+srun: forcing job termination
+srun: error: gpu-0-0: task 0: Terminated

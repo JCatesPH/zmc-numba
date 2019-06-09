@@ -1,0 +1,39 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  2
+sigma_multiplication =  1000
+num_trials =  6
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.001 :  0.9413662141086685  with error:  0.0896747318691895
+================================================================
+Computed in  54.780779123306274  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.009611111111111112 :  1.4871443944557545  with error:  0.7912281256171433
+================================================================
+Computed in  55.07402062416077  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.018222222222222223 :  0.9659565473910241  with error:  0.15438072128239338
+================================================================
+Computed in  54.85002517700195  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.026833333333333334 :  1.45983036064567  with error:  1.0361481770404393
+================================================================
+Computed in  54.98562836647034  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.035444444444444445 :  0.9865015274070423  with error:  0.04812784078676665
+================================================================
+Computed in  54.78393340110779  seconds.
+================================================================
