@@ -226,6 +226,14 @@ resultArr = np.zeros(7)
 errorArr = np.zeros(7)
 timeArr = np.zeros(7)
 
+#############################################################################################
+# sampling points reconfiguration
+# total sampling points is equal to (chunk_size_x*chunk_size_multiplier)**dim, which is huge.
+#MC.chunk_size_x = 20
+#MC.chunk_size_multiplier = 3
+#############################################################################################
+
+
 j = 0
 for i in [0.1, 0.3, 0.4, 0.45, 0.55, 0.7, 0.9]:
 
@@ -235,6 +243,8 @@ for i in [0.1, 0.3, 0.4, 0.45, 0.55, 0.7, 0.9]:
     MC.depth = depths
     MC.sigma_multiplication = sigmults
     MC.num_trials = trials
+    MC.chunk_size_x = 50
+    MC.chunk_size_multiplier = 500   
     start = time.time()
     result = MC.evaluate()
     print('Result for qx = ',i, ': ', result[0], ' with error: ', result[1])
@@ -255,7 +265,7 @@ print('================================================================')
 
 j = 0
 print('All values in csv format:')
-for i in np.linspace(qinitial, qfinal, spacing):
+for i in [0.1, 0.3, 0.4, 0.45, 0.55, 0.7, 0.9]:
     print('%5.3f, %11.8E, %5.3E, %5.3E' % (i, resultArr[j], errorArr[j], timeArr[j]))
     j = j + 1
 

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "./chi-N3-single_v65.py", line 232, in <module>
+    MC.chunk_size_x = 20
+NameError: name 'MC' is not defined
+srun: error: gpu-0-0: task 0: Exited with exit code 1

@@ -5,48 +5,56 @@ import numpy as np
 import numba
 from numba import cuda
 
-# @numba.cuda.jit(device=True)
+import cupy as cp
+
+#@numba.cuda.jit(device=True)
 def nestedfoo(x):
-    res = 0
-    for i in range(1,21):
-        for j in range(1,21):
-            for k in range(1,21):
-                tmp = math.sin(i*x) * math.sin(j*x) * math.sin(k*x)
-                res = res + tmp
-    return res
+    y = cp.eye(3, dtype=cupy.float)
+    return y
 
-
-nestedfoo(0)
-
-start = time.time()
-print('Result:', nestedfoo(5))
-end = time.time()
-
-print('Time = ', end-start)
 
 @numba.cuda.jit
-def nestedfoo2(x):
-    tmp = 0
-    for i in range(1,21):
-        for j in range(1,21):
-            for k in range(1,21):
-                tmp += math.sin(float(i)*x) * math.sin(float(j)*x) * math.sin(float(k)*x)
+def nestedfoo2(x, N):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
 
-    return tmp
+    i = tid + blkid * blkdim
+
+    if (i >= N):
+        return
+
+    x[i] = math.sin(float(i))
 
 
-
+N = 1000000
 # Create the data array - usually initialized some other way
-data = np.ones(256)
+data = np.ones(N)
 
 # Set the number of threads in a block
-threadsperblock = 32 
+threadsperblock = 32
 
 # Calculate the number of thread blocks in the grid
 blockspergrid = (data.size + (threadsperblock - 1)) // threadsperblock
 
 # Now start the kernel
-nestedfoo2[blockspergrid, threadsperblock](data)
+nestedfoo2[blockspergrid, threadsperblock](data, N)
 
 # Print the result
-print(data)
+tic = time.time()
+npsum = data.sum()
+toc = time.time()
+print('npsum gives ', npsum)
+print(' in time ', toc-tic)
+
+
+with cp.cuda.Device(0):
+    cpdat = cp.asarray(data)
+tic = time.time()
+with cp.cuda.Device(0):
+    cpsum = cp.sum(cpdat)
+toc = time.time()
+print('cpsum gives ', cpsum)
+print(' in time ', toc-tic)
+
+

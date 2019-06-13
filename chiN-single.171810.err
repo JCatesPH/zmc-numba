@@ -1,0 +1,16 @@
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:117: RuntimeWarning: invalid value encountered in subtract
+  x = asanyarray(arr - arrmean)
+/home/jmcates/zmc-numba/ZMCIntegral.py:141: RuntimeWarning: invalid value encountered in greater_equal
+  large_std_chunk_id = np.concatenate([np.nonzero(MCresult_std[i] >= threshold)[0] + i*len_std for i in range(len(MCresult_std))])
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numpy/core/_methods.py:121: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
