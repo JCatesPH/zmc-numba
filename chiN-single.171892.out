@@ -1,0 +1,94 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  3
+sigma_multiplication =  100
+num_trials =  10
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+16 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.1 :  1.0259763533207147  with error:  0.004194131549243869
+================================================================
+Computed in  6271.697345733643  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.3 :  0.8800191954369948  with error:  0.0015316080440039561
+================================================================
+Computed in  371.1949665546417  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.4 :  0.9228319836807302  with error:  0.013623235128623517
+================================================================
+Computed in  371.3228223323822  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.45 :  0.867214018183472  with error:  0.006641627342377661
+================================================================
+Computed in  371.03047132492065  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.55 :  0.820928278824911  with error:  0.003930478222642687
+================================================================
+Computed in  372.92247676849365  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.7 :  0.43461135961531683  with error:  0.0008310246921053282
+================================================================
+Computed in  373.03704738616943  seconds.
+================================================================
+16 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.9 :  0.16345302288902522  with error:  0.002606596937519243
+================================================================
+Computed in  6296.149298667908  seconds.
+================================================================
+================================================================
+All values in csv format:
+0.100, 1.02597635E+00, 4.194E-03, 6.272E+03
+0.300, 8.80019195E-01, 1.532E-03, 3.712E+02
+0.400, 9.22831984E-01, 1.362E-02, 3.713E+02
+0.450, 8.67214018E-01, 6.642E-03, 3.710E+02
+0.550, 8.20928279E-01, 3.930E-03, 3.729E+02
+0.700, 4.34611360E-01, 8.310E-04, 3.730E+02
+0.900, 1.63453023E-01, 2.607E-03, 6.296E+03
+================================================================
+
+Process completed successfully!
+Total time is  14427.72805404663 seconds.

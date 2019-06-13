@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./cuda-test.py", line 39, in <module>
-    an_array[0] = 5
-IndexError: too many indices for array
-srun: error: gpu-0-0: task 0: Exited with exit code 1

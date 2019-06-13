@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./chi-N3_v6.py", line 16, in <module>
-    import originalscript as mma
-ModuleNotFoundError: No module named 'originalscript'
-srun: error: gpu-0-0: task 0: Exited with exit code 1

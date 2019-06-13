@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./cuda-test.py", line 22, in <module>
-    nestedfoo[blockspergrid, threadsperblock](an_array)
-TypeError: 'DeviceFunctionTemplate' object is not subscriptable
-srun: error: gpu-0-0: task 0: Exited with exit code 1

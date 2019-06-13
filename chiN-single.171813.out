@@ -1,0 +1,62 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  2
+sigma_multiplication =  1000.0
+num_trials =  10
+available_GPU = [0]
+kxi = - math.pi / a
+kxf = math.pi / a
+kyi = - math.pi / a
+kyf = math.pi / a
+
+========================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.1 :  1.0182259093104622  with error:  0.011597998110669297
+================================================================
+Computed in  372.2080681324005  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.3 :  0.8799647955597502  with error:  0.0015317883340683135
+================================================================
+Computed in  372.29242992401123  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.4 :  0.9223615603524193  with error:  0.004400617863998244
+================================================================
+Computed in  371.2754442691803  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.45 :  0.8586510175731658  with error:  0.009555614426185178
+================================================================
+Computed in  371.84824872016907  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.55 :  0.8334661008892686  with error:  0.013524243134023325
+================================================================
+Computed in  372.28158497810364  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.7 :  0.43417785189811936  with error:  0.0017749967743178677
+================================================================
+Computed in  371.3533546924591  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for qx =  0.9 :  0.16222376197731386  with error:  0.0008927440672045284
+================================================================
+Computed in  371.2343008518219  seconds.
+================================================================
+================================================================
+All values in csv format:
+0.100, 1.01822591E+00, 1.160E-02, 3.722E+02
+0.300, 8.79964796E-01, 1.532E-03, 3.723E+02
+0.400, 9.22361560E-01, 4.401E-03, 3.713E+02
+0.450, 8.58651018E-01, 9.556E-03, 3.718E+02
+0.550, 8.33466101E-01, 1.352E-02, 3.723E+02
+0.700, 4.34177852E-01, 1.775E-03, 3.714E+02
+0.900, 1.62223762E-01, 8.927E-04, 3.712E+02
+================================================================
+
+Process completed successfully!
+Total time is  2602.868193626404 seconds.

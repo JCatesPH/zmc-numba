@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./cuda-test.py", line 26, in <module>
-    @numba.cuda.jit
-AttributeError: module 'numba' has no attribute 'cuda'
-srun: error: gpu-0-0: task 0: Exited with exit code 1

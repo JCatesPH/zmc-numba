@@ -194,8 +194,8 @@ def modDsN2(x):
 
 tic = time.time()
 
-depths = 2
-sigmults = 1E3
+depths = 3
+sigmults = 100
 trials = 10
 
 print('Following values are constant for all integrations.')

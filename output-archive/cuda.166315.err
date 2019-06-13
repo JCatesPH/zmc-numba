@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./cuda-test.py", line 40, in <module>
-    data = numpy.ones(256)
-NameError: name 'numpy' is not defined
-srun: error: gpu-0-0: task 0: Exited with exit code 1
