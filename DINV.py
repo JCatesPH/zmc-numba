@@ -35,9 +35,26 @@ d = np.zeros((3,3))
 
 # res = np.matmul(inx, x)
 
-@numba.cuda.jit()
+N = 3
+
+Ginkq = np.eye(N, N, k=1) * topkq + np.eye(N, N, k=-1) * botkq + innkq * np.eye(N, N) - d
+
+Gink = np.eye(N, N, k=1) * topk + np.eye(N, N, k=-1) * botk + innk * np.eye(N, N) - d
+
+Grkq = np.linalg.inv(Ginkq)
+Gakq = np.transpose(np.conj(Grkq))
+
+Grk = np.linalg.inv(Gink)
+Gak = np.transpose(np.conj(Grk))
+
+fer = np.heaviside(-(d + np.eye(N, N) * (om - mu)), 0)
+
+in1 = np.matmul(Grkq, np.matmul(Grk, np.matmul(fer, Gak)))
+in2 = np.matmul(Grkq, np.matmul(fer, np.matmul(Gakq, Gak)))
+
+@numba.cuda.jit(device=True)
 def ds(kx, ky, qx, qy, om, d):
-    N = 3
+
 
     topkq = -complex(0, 1) * V0 * ((kx + qx) - complex(0, 1) * (ky + qy))
     botkq = complex(0, 1) * V0 * ((kx + qx) + complex(0, 1) * (ky + qy))
@@ -48,16 +65,14 @@ def ds(kx, ky, qx, qy, om, d):
     innk = om + complex(0, 1) * Gamm - A * (kx ** 2 + ky ** 2) - V2
 
 
-#    cent = cp.arange(-(N - 1) / 2, (N - 1) / 2 + 1, 1)
-    cent = cp.arange(3)
+    cent = cp.arange(-(N - 1) / 2, (N - 1) / 2 + 1, 1)
 
     d = hOmg * cp.diag(cent, dtype=cp.float32)
     
     return d
 
-'''
-    Ginkq = np.eye(N, N, k=1) * topkq + np.eye(N, N, k=-1) * botkq + innkq * np.eye(N, N) - d
 
+    Ginkq = np.eye(N, N, k=1) * topkq + np.eye(N, N, k=-1) * botkq + innkq * np.eye(N, N) - d
     Gink = np.eye(N, N, k=1) * topk + np.eye(N, N, k=-1) * botk + innk * np.eye(N, N) - d
 
     Grkq = np.linalg.inv(Ginkq)
@@ -76,7 +91,7 @@ def ds(kx, ky, qx, qy, om, d):
     dchi = -(4) * Gamm * tr / math.pi ** 2
 
     return dchi
-'''
+
     
 test = ds[1,32](0.1, 0.1, 0.01, 0, 0.09,d)
 result = cp.asnumpy(test)
