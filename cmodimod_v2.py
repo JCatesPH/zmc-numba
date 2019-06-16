@@ -1,8 +1,11 @@
-import math
+import cmath
 import time
 import numpy as np
 from numba import cuda
 import ZMCIntegral
+
+# import time
+# start = time.time()
 
 ef = 0.
 charge = 1.600000000 * 10 ** -19
@@ -31,50 +34,34 @@ def fermi(x):
 
 
 @cuda.jit(device=True)
-def exi(x, sgn):
-    return math.cos(x) + complex(0, 1) * sgn * math.sin(x)
-
-
-@cuda.jit(device=True)
 def integrand(x):
-    # Note: q=2pi/a
-    # Inset of fig 2  (phi=0)
-
-    # 2  the Kpoint and M-point: reference of testing
-
-    # qy=[]
-
-    # In PRB 
-    qx = 0.1 / (2 * math.pi)
+    qx = 0.1 / (2 * cmath.pi)
     qy = 0
-    sq3 = math.sqrt(float(3))
-
-    sq3x1 = sq3 * x[1]
-    sq3x1pi = sq3x1 * math.pi
-    phi = x[0] * 2 * math.pi
-    tau = sq3x1 * 2 * math.pi / 2
-    rho = phi / 2
-    psi = x[0] + qx
-    eta = psi * 2 * math.pi
-    zeta = x[1] + qy
-    sq3zetapi = sq3 * math.pi * zeta
-
-    nu = eta / 2 - sq3 * (zeta) * 2 * math.pi / 2
-    mu = eta / 2 + sq3 * (zeta) * 2 * math.pi / 2
-
-
     om = getom()
 
-    hkxky = exi(phi, 1) * (exi((rho - tau), 1) + exi((rho + tau), 1) + exi(phi, -1))
-    chkxky = exi(phi, -1) * (exi((rho - tau), -1) + exi((rho + tau), -1) + exi(phi, 1))
+    sq3 = cmath.sqrt(3)
+    rho = x[0] * 2 * cmath.pi
+    rho2 = rho / 2 
+    irho = complex(0,rho)
+    tau = sq3 * x[1] * 2 * cmath.pi
+    tau2 = tau / 2
 
-    hkxqxky = exi(eta, 1) * (exi(nu, 1) + exi(mu, 1) + exi(eta, -1))
-    chkxqxky = exi(eta, -1) * (exi(nu, -1) + exi(mu, -1) + exi(eta, 1))
+    irt2 = complex(0,rho2 + tau2)
+    irt2d = complex(0,rho2 - tau2)
+    mu = x[0] + qx
+    mu2pi = mu * 2 * cmath.pi
+    nu = sq3 * (x[1] + qy) * 2 * cmath.pi
 
-    ekp = math.sqrt(3 + 2 * math.cos(sq3x1pi * 2) + 4 * math.cos(sq3x1pi) * math.cos(3 * x[0] * math.pi))
+    # MORE TO COME
+
+    hkxky = cmath.exp(irho) * (cmath.exp(irt2d) + cmath.exp(irt2) + cmath.exp(-irho))
+    chkxky = cmath.exp(-irho) * (cmath.exp(-irt2d) + cmath.exp(-irt2) + cmath.exp(irho))
+    hkxqxky = cmath.exp(complex(0, 1) * mu2pi) * (cmath.exp(complex(0, 1) * (mu2pi / 2 - nu / 2)) + cmath.exp(complex(0, 1) * (mu2pi / 2 + nu / 2)) + cmath.exp(-complex(0, mu2pi)))
+    chkxqxky = cmath.exp(-complex(0, 1) * mu2pi) * (cmath.exp(-complex(0, 1) * (mu2pi / 2 - nu / 2)) + cmath.exp(-complex(0, 1) * (mu2pi / 2 + nu / 2)) + cmath.exp(complex(0, mu2pi)))
+
+    ekp = cmath.sqrt(3 + 2 * cmath.cos(tau) + 4 * cmath.cos( sq3 * x[1] * cmath.pi) * cmath.cos(3 * x[0] * cmath.pi))
     ekm = -ekp
-
-    ekqp = math.sqrt(3 + 2 * math.cos(sq3zetapi * 2) + 4 * math.cos(sq3zetapi) * math.cos(3 * psi * math.pi))
+    ekqp = cmath.sqrt(3 + 2 * cmath.cos(nu) + 4 * cmath.cos(sq3 * (x[1] + qy) * cmath.pi) * cmath.cos(3 * (mu) * cmath.pi))
     ekqm = -ekqp
 
     hp = (chkxky * hkxqxky / (ekp * ekqp) + 1) * (hkxky * chkxqxky / (ekp * ekqp) + 1) / 4
@@ -85,7 +72,7 @@ def integrand(x):
     a3 = hm * (fermi(ekp) - fermi(ekqm)) / (ekp - ekqm + 1j * eta + om)
     a4 = hp * (fermi(ekp) - fermi(ekqp)) / (ekp - ekqp + 1j * eta + om)
 
-    a = (a1 + a2 + a3 + a4) / (2 * math.pi) ** 2
+    a = (a1 + a2 + a3 + a4) / (2 * cmath.pi) ** 2
 
     return a.imag
 
