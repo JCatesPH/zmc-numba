@@ -103,7 +103,7 @@ end = 51
 spacing = 50
 
 depths = 3
-sigmults = 10
+sigmults = 100
 trials = 10
 
 print('Following values are constant for all integrations.')

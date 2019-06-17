@@ -1,3 +1,4 @@
+import datetime
 import math
 import time
 import numpy as np
@@ -51,26 +52,26 @@ def integrand(x):
     om = getom()
 
     hkxky = exi(x[0] * 2 * math.pi, 1) * (
-                exi((x[0] * 2 * math.pi / 2 - math.sqrt(3) * x[1] * 2 * math.pi / 2), 1) + exi(
-            (x[0] * 2 * math.pi / 2 + math.sqrt(3) * x[1] * 2 * math.pi / 2), 1) + exi((x[0] * 2 * math.pi), -1))
+                exi((x[0] * 2 * math.pi / 2 - math.sqrt(float(3)) * x[1] * 2 * math.pi / 2), 1) + exi(
+            (x[0] * 2 * math.pi / 2 + math.sqrt(float(3)) * x[1] * 2 * math.pi / 2), 1) + exi((x[0] * 2 * math.pi), -1))
     chkxky = exi(x[0] * 2 * math.pi, -1) * (
-                exi((x[0] * 2 * math.pi / 2 - math.sqrt(3) * x[1] * 2 * math.pi / 2), -1) + exi(
-            (x[0] * 2 * math.pi / 2 + math.sqrt(3) * x[1] * 2 * math.pi / 2), -1) + exi((x[0] * 2 * math.pi), 1))
+                exi((x[0] * 2 * math.pi / 2 - math.sqrt(float(3)) * x[1] * 2 * math.pi / 2), -1) + exi(
+            (x[0] * 2 * math.pi / 2 + math.sqrt(float(3)) * x[1] * 2 * math.pi / 2), -1) + exi((x[0] * 2 * math.pi), 1))
     hkxqxky = exi((x[0] + qx) * 2 * math.pi, 1) * (
-                exi(((x[0] + qx) * 2 * math.pi / 2 - math.sqrt(3) * (x[1] + qy) * 2 * math.pi / 2), 1) + exi(
-            ((x[0] + qx) * 2 * math.pi / 2 + math.sqrt(3) * (x[1] + qy) * 2 * math.pi / 2), 1) + exi(
+                exi(((x[0] + qx) * 2 * math.pi / 2 - math.sqrt(float(3)) * (x[1] + qy) * 2 * math.pi / 2), 1) + exi(
+            ((x[0] + qx) * 2 * math.pi / 2 + math.sqrt(float(3)) * (x[1] + qy) * 2 * math.pi / 2), 1) + exi(
             ((x[0] + qx) * 2 * math.pi), -1))
     chkxqxky = exi((x[0] + qx) * 2 * math.pi, -1) * (
-                exi(((x[0] + qx) * 2 * math.pi / 2 - math.sqrt(3) * (x[1] + qy) * 2 * math.pi / 2), -1) + exi(
-            ((x[0] + qx) * 2 * math.pi / 2 + math.sqrt(3) * (x[1] + qy) * 2 * math.pi / 2), -1) + exi(
+                exi(((x[0] + qx) * 2 * math.pi / 2 - math.sqrt(float(3)) * (x[1] + qy) * 2 * math.pi / 2), -1) + exi(
+            ((x[0] + qx) * 2 * math.pi / 2 + math.sqrt(float(3)) * (x[1] + qy) * 2 * math.pi / 2), -1) + exi(
             ((x[0] + qx) * 2 * math.pi), 1))
 
     ekp = math.sqrt(
-        3 + 2 * math.cos(math.sqrt(3) * x[1] * 2 * math.pi) + 4 * math.cos(math.sqrt(3) * x[1] * math.pi) * math.cos(
+        3 + 2 * math.cos(math.sqrt(float(3)) * x[1] * 2 * math.pi) + 4 * math.cos(math.sqrt(float(3)) * x[1] * math.pi) * math.cos(
             3 * x[0] * math.pi))
     ekm = -ekp
-    ekqp = math.sqrt(3 + 2 * math.cos(math.sqrt(3) * (x[1] + qy) * 2 * math.pi) + 4 * math.cos(
-        math.sqrt(3) * (x[1] + qy) * math.pi) * math.cos(3 * (x[0] + qx) * math.pi))
+    ekqp = math.sqrt(3 + 2 * math.cos(math.sqrt(float(3)) * (x[1] + qy) * 2 * math.pi) + 4 * math.cos(
+        math.sqrt(float(3)) * (x[1] + qy) * math.pi) * math.cos(3 * (x[0] + qx) * math.pi))
     ekqm = -ekqp
 
     hp = (chkxky * hkxqxky / (ekp * ekqp) + 1) * (hkxky * chkxqxky / (ekp * ekqp) + 1) / 4
@@ -86,13 +87,21 @@ def integrand(x):
     return a.imag
 
 
-tic = time.time()
+###################################################################
+# Setting parameters and printing them
 
-print('Following values are constant for all integrations.')
-print('\n========================================================')
-print('\ndepth = 3')
-print('sigma_multiplication = 100')
-print('num_trials = 10')
+depths = 3
+sigmults = 100
+trials = 10
+
+print('\n========================================================\n')
+
+print(__file__)
+print(datetime.date.today())
+
+print('\ndepth = ', depths)
+print('sigma_multiplication = ', sigmults)
+print('num_trials = ', trials)
 
 kxi = -1 / 3
 kxf = 1 / 3
@@ -100,20 +109,36 @@ kxf = 1 / 3
 kyi = -0.1925
 kyf = 0.385
 
-resultArr = np.zeros(100)
-errorArr = np.zeros(100)
-timeArr = np.zeros(100)
+print('\nkxi = ', kxi)
+print('kxf = ', kxf)
+
+print('\nkyi = ', kyi)
+print('kyf = ', kyf)
+
+beg = 1
+end = 51
+spacing = 50
+
+print('\nlinspace parameters: %3f,%3f,%3f' % (beg, end, spacing))
+
+print('=======================================================')
+resultArr = np.zeros(spacing)
+errorArr = np.zeros(spacing)
+timeArr = np.zeros(spacing)
+
+tic = time.time()
 j = 0
-for i in range(1, 51, 1):
-    setom(1.98 + i * 0.05 / (50))
+for i in np.linspace(beg, end, spacing):
+    setom(1.98 + i * 0.05 / spacing)
     MC = ZMCIntegral.MCintegral(integrand, [[kxi, kxf], [kyi, kyf]])
     # Setting the zmcintegral parameters
-    MC.depth = 3
-    MC.sigma_multiplication = 100
-    MC.num_trials = 10
+    MC.depth = depths
+    MC.sigma_multiplication = sigmults
+    MC.num_trials = trials
     start = time.time()
     result = MC.evaluate()
-    print('Result for r = ', i, ': ', result[0], ' with error: ', result[1])
+    print('================================================================')
+    print('Result for om = ', 1.98 + i * 0.05 / spacing, ': ', result[0], ' with error: ', result[1])
     print('================================================================')
     end = time.time()
     print('Computed in ', end - start, ' seconds.')
@@ -123,13 +148,13 @@ for i in range(1, 51, 1):
     timeArr[j] = end - start
     j = j + 1
 
-print('================================================================')
+print('\n\n================================================================')
 
 j = 0
 print('All values in csv format:')
-print('r,Integral,Error,Time')
-for i in range(1, 51, 1):
-    print('%5.3f, %11.8E, %5.3E, %5.3E' % (i, resultArr[j], errorArr[j], timeArr[j]))
+print('om,Integral,Error,Time')
+for i in np.linspace(beg, end, spacing):
+    print('%5.3f, %11.8E, %5.3E, %5.3E' % (1.98 + i * 0.05 / spacing, resultArr[j], errorArr[j], timeArr[j]))
     j = j + 1
 
 toc = time.time()

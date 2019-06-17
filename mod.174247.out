@@ -1,0 +1,22 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth = 3
+sigma_multiplication = 100
+num_trials = 10
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for r =  1 :  -8.120548455867103e-05  with error:  1.4792921348632471e-08
+================================================================
+Computed in  108.54172658920288  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for r =  2 :  -8.175150386167825e-05  with error:  1.4576422648508768e-08
+================================================================
+Computed in  108.69475483894348  seconds.
+================================================================
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+Result for r =  3 :  -8.231811549329529e-05  with error:  1.4798304514091785e-08
+================================================================
+Computed in  108.52387881278992  seconds.
+================================================================

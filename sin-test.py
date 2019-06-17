@@ -1,4 +1,5 @@
 import math
+import time
 from numba import cuda
 from ZMCintegral import ZMCintegral
 
@@ -13,9 +14,15 @@ MC.depth = 2
 MC.sigma_multiplication = 5
 MC.num_trials = 5
 
+
+start = time.time()
 # obtaining the result
 result = MC.evaluate()
+
+end = time.time()
 
 # print the formatted result
 print('result = %s    std = %s' % (result[0], result[1]))
 
+
+print('Time to calculate: %5.4f s' % (end-start))

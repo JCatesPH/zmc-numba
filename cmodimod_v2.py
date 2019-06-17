@@ -1,3 +1,4 @@
+import math
 import cmath
 import time
 import numpy as np
@@ -7,7 +8,7 @@ import ZMCIntegral
 # import time
 # start = time.time()
 
-ef = 0.
+cef = 0. + 0j
 charge = 1.600000000 * 10 ** -19
 lattice = 1.420000000 * 10 ** (-10)
 t = 4.8000000 * 10 ** (-19)
@@ -27,7 +28,7 @@ def getom():
 
 @cuda.jit(device=True)
 def fermi(x):
-    if x > ef:
+    if (x.real > cef.real) and (x.imag > cef.imag):
         return 0
     else:
         return 1
@@ -35,22 +36,22 @@ def fermi(x):
 
 @cuda.jit(device=True)
 def integrand(x):
-    qx = 0.1 / (2 * cmath.pi)
+    qx = 0.1 / (2 * math.pi)
     qy = 0
     om = getom()
 
     sq3 = cmath.sqrt(3)
-    rho = x[0] * 2 * cmath.pi
+    rho = x[0] * 2 * math.pi
     rho2 = rho / 2 
     irho = complex(0,rho)
-    tau = sq3 * x[1] * 2 * cmath.pi
+    tau = sq3 * x[1] * 2 * math.pi
     tau2 = tau / 2
 
     irt2 = complex(0,rho2 + tau2)
     irt2d = complex(0,rho2 - tau2)
     mu = x[0] + qx
-    mu2pi = mu * 2 * cmath.pi
-    nu = sq3 * (x[1] + qy) * 2 * cmath.pi
+    mu2pi = mu * 2 * math.pi
+    nu = sq3 * (x[1] + qy) * 2 * math.pi
 
     # MORE TO COME
 
@@ -90,7 +91,7 @@ end = 51
 spacing = 50
 
 depths = 3
-sigmults = 10
+sigmults = 100
 trials = 10
 
 print('Following values are constant for all integrations.')

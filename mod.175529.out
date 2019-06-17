@@ -1,0 +1,16 @@
+Following values are constant for all integrations.
+
+========================================================
+
+depth =  3
+sigma_multiplication =  100
+num_trials =  10
+
+kxi =  -0.3333333333333333
+kxf =  0.3333333333333333
+
+kyi =  -0.1925
+kyf =  0.385
+
+linspace parameters: 1.000000,51.000000,50.000000
+=======================================================
