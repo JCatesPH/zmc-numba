@@ -88,7 +88,7 @@ def integrand(x):
     a3 = hm * (fermi(ekp) - fermi(ekqm)) / (ekp - ekqm + 1j * eta + om)
     a4 = hp * (fermi(ekp) - fermi(ekqp)) / (ekp - ekqp + 1j * eta + om)
 
-    a = (a1 + a2 + a3 + a4) / (pi2) ** 2
+    a = -2 * (a1 + a2 + a3 + a4)
 
     return a.imag
 
@@ -125,9 +125,10 @@ beg = 1
 end = 51
 spacing = 50
 
-print('\nlinspace parameters: %3f,%3f,%3f' % (beg, end, spacing))
+print('\nlinspace parameters: %3.3f,%3.3f,%3.3f' % (beg, end, spacing))
 
 print('=======================================================')
+omArr = np.zeros(spacing)
 resultArr = np.zeros(spacing)
 errorArr = np.zeros(spacing)
 timeArr = np.zeros(spacing)
@@ -135,7 +136,8 @@ timeArr = np.zeros(spacing)
 tic = time.time()
 j = 0
 for i in np.linspace(beg, end, spacing):
-    setom(1.98 + i * 0.05 / spacing)
+    omArr[j] = 1.98 + i * 0.05 / spacing
+    setom(omArr[j])
     MC = ZMCIntegral.MCintegral(integrand, [[kxi, kxf], [kyi, kyf]])
     # Setting the zmcintegral parameters
     MC.depth = depths
@@ -144,7 +146,7 @@ for i in np.linspace(beg, end, spacing):
     start = time.time()
     result = MC.evaluate()
     print('================================================================')
-    print('Result for om = ', 1.98 + i * 0.05 / spacing, ': ', result[0], ' with error: ', result[1])
+    print('Result for om = ', omArr[j], ': ', result[0], ' with error: ', result[1])
     print('================================================================')
     end = time.time()
     print('Computed in ', end - start, ' seconds.')
@@ -156,12 +158,12 @@ for i in np.linspace(beg, end, spacing):
 
 print('\n\n================================================================')
 
-j = 0
+
 print('All values in csv format:')
 print('om,Integral,Error,Time')
-for i in np.linspace(beg, end, spacing):
-    print('%5.3f, %11.8E, %5.3E, %5.3E' % (1.98 + i * 0.05 / spacing, resultArr[j], errorArr[j], timeArr[j]))
-    j = j + 1
+for j in range(0, spacing):
+    print('%5.3f, %11.8E, %5.3E, %5.3E' % (omArr[j], resultArr[j], errorArr[j], timeArr[j]))
+
 
 toc = time.time()
 print('================================================================\n')
