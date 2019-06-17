@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "./modimod.py", line 132, in <module>
-    MC.sigma_multiplication = sigmults
-NameError: name 'sigmults' is not defined
-srun: error: gpu-0-0: task 0: Exited with exit code 1
