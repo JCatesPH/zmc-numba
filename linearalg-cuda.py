@@ -101,6 +101,32 @@ def trace(arr, N):
     
     return tr
 
+@cuda.jit(device=True)
+def TZdagger(arr, N, adag):
+    '''
+    A CUDA device function that computes the conjugate transpose of a 
+        complex matrix.
+
+    Parameters 
+    ----------
+        arr : complex array
+            The complex (N x N) array that is having its trace computed
+        N : int 
+            Size of square matrix
+
+    Returns
+    -------
+        adag : complex array
+            The conjugate transpose of arr
+    '''
+
+    for i in range(0, N):
+        for j in range(0, N):
+            tmp = complex(arr[j, i].real, -arr[j, i].imag)
+            adag[i, j] = tmp
+
+    return adag
+
 
 #%%
 @numba.cuda.jit()
@@ -122,6 +148,16 @@ def tktr(array, N, tr):
     i = tid + blkid * blkdim
     if(i < 2):
         tr[i] = trace(array, N)
+
+@numba.cuda.jit()
+def tkcj(A, N, A_dag):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
+
+    i = tid + blkid * blkdim
+    if(i < 1):
+        A_dag = TZdagger(A, N, A_dag)
 
 
 #%%
@@ -156,5 +192,38 @@ tr = np.array([12j])
 tktr[1, 32](A, N, tr)
 
 print('tr = ', tr[0])
+
+#%%
+
+contran = np.ones((N,N), dtype=np.complex)
+tkcj[1, 32](A, N, contran)
+print('A = \n', A)
+print('A* = \n', contran)
+
+#%%
+N = 10000
+
+for k in range(0,10):
+    top = np.random.rand(N-1)
+    bot = np.random.rand(N-1)
+    inn = np.random.rand(N)
+
+    iden = np.identity(N, dtype=np.complex)
+
+    A = np.diag(top, k=1) + np.diag(bot, k=-1) + np.diag(inn)
+
+    tic1 = time.time()
+    inv = np.linalg.inv(A)
+    toc1 = time.time()
+
+    tic2 = time.time()
+    tkinvtz[1, 32](N, bot, inn, top, iden)
+    toc2 = time.time()
+
+    print(np.isclose(inv,iden))
+
+    print('numpy time = ', toc1-tic1)
+    print('my time = ', toc2-tic2)
+
 
 #%%
