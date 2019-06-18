@@ -1,0 +1,162 @@
+def invZTmat(N, DL, D, DU, X):
+    '''
+    Computes the inverse matrix for a complex-valued tridiagonal matrix.
+    This is:  A * A**-1 = I
+        A : Tridiagonal, N x N matrix
+        A**-1 : Inverse of A
+        I : N x N Identity matrix
+
+    Translated and adapted from LAPACK file cgtsv.f, which is found at http://www.netlib.org/lapack/explore-html/d3/dc4/cgtsv_8f_source.html
+
+    INPUT:
+        N : (int) Size of square matrix
+        DL : (complex array) Vector of size (N-1) that is the lower diagonal entries of A
+        D : (complex array) Vector of size N that is the diagonal entries of A
+        DU : (complex array) Vector of size (N-1) that is the upper diagonal entries of A
+        X : N x N Identity matrix
+
+    OUTPUT:
+        X : (complex matrix) Matrix of size N x N that is the inverse of A
+    '''
+
+    mult = complex(1,1)
+    temp = complex(1,1)
+
+    ## N = 3 : A =
+    #   [a11 a12 0  ]  : R1
+    #   [a21 a22 a23]  : R2
+    #   [  0 a32 a33]  : R3
+    #   
+    #   DU = [a12, a23]
+    #   D = [a11, a22, a33]
+    #   DL = [a21, a32]
+
+    ## DO 30 k = 1, n - 1
+        ## N = 3 : 1, 2 -> 0, 1    <= This indent is for tracking this case
+    for k in range(0, N-1):
+
+        # Checks if no row interchange is required
+
+        ## IF( cabs1( d( k ) ).GE.cabs1( dl( k ) ) ) THEN
+            ## if : a11 >= a21, a22 >= a32
+        if(abs(D[k].real) >= abs(DL[k].real) and abs(D[k].imag) >= abs(DL[k].imag)):
+                ## mult = dl( k ) / d( k )
+                    ## = a21 / a11 , a32 / a22
+                ## d( k+1 ) = d( k+1 ) - mult*du( k )
+                    ## a22 = a22 - (a21 / a11) * a12, a33 = a33 - (a32 / a22) * a23
+
+            mult = DL[k] / D[k]
+            D[k+1] = D[k+1] - mult * DU[k]
+
+            ## DO 10 j = 1, nrhs
+                ## 1, 2, 3 -> 0, 1, 2
+                
+                ## b( k+1, j ) = b( k+1, j ) - mult*b( k, j )
+                    ## x2j = x2j - (a21 / a11) * x1j, x3j = x3j - (a32 / a22) * x2j
+
+            for j in range(0, N):
+                X[k+1, j] = X[k+1, j] - mult * X[k, j]
+            
+
+        ## IF( k.LT.( n-1 ) )
+            ## if : k = 1 -> 0
+
+            ## dl( k ) = zero
+
+        if(k < (N-2)):
+            DL[k] = complex(0,0)
+
+
+        # Interchange rows k and k+1
+
+        ## ELSE
+
+            ## N = 3 : A =
+            #   [a11 a12 0  ]  : R1
+            #   [a21 a22 a23]  : R2
+            #   [  0 a32 a33]  : R3
+            #   
+            #   DU = [a12, a23]
+            #   D = [a11, a22, a33]
+            #   DL = [a21, a32]
+    
+        else:
+            ## mult = d( k ) / dl( k )
+                ## = a11 / a21 , a22 / a32
+
+            ## d( k ) = dl( k )
+                ## a11 = a21 , a22 = a32
+
+            ## temp = d( k+1 )
+                ## temp = a22, a33
+
+            ## d( k+1 ) = du( k ) - mult*temp
+                ## a22 = a12 - (a11 / a21) * a22 , a33 = a23 - (a22 / a32) * a33
+
+            mult = D[k] / DL[k]
+            D[k] = DL[k]
+            temp = D[k+1]
+            D[k+1] = DU[k] - mult * temp
+
+            ## IF( k.LT.( n-1 ) ) THEN
+                ## if : k = 1 -> k = 0
+
+                ## dl( k ) = du( k+1 )
+                    ## a21 = a23, a32 = nan
+
+                ## du( k+1 ) = -mult*dl( k )
+                    ## a23 = -(a11 / a21) * a21, nan
+
+            if(k < (N-2)):
+                DL[k] = DU[k+1]
+                DU[k+1] = -mult * DL[k]
+            
+            ## du( k ) = temp
+                ## a12 = a22, nan
+
+            DU[k] = temp
+            
+            ## DO 20 j = 1, nrhs
+                ## j = 1, 2, 3 -> j = 0, 1, 2
+
+               ## temp = b( k, j )
+                ## temp = x11, x12, x13
+
+               ## b( k, j ) = b( k+1, j )
+                ## x11 = x21 , x12 = x22 , x13 = x23 
+               ## b( k+1, j ) = temp - mult*b( k+1, j )
+                ## x21 = x11 - (a11 / a21) * x21 , x22 = x12 - (a11 / a21) * a22, x23 = x13 - (a11 / a21) * x23
+
+            for j in range(0, N):
+                temp = X[k, j]
+                X[k, j] = X[k+1, j]
+                X[k+1, j] = temp - mult * X[k+1, j]
+    
+    ## IF( d( n ).EQ.zero ) THEN
+        ##  info = n
+        ##  RETURN
+
+    if(D[N-1] == 0.+0j):
+        return X
+
+    # Back solve with matrix U from the factorization
+          
+    ## DO 50 j = 1, nrhs
+        ## b( n, j ) = b( n, j ) / d( n )
+
+    for j in range(0, N):
+        X[j, N-1] = X[j, N-1] / D[N-1]
+
+        ## IF( n.GT.1 )
+            ## b( n-1, j ) = ( b( n-1, j )-du( n-1 )*b( n, j ) ) / d( n-1 )
+
+        if(N > 1):
+            X[j, N-2] = (X[j, N-2] - DU[N-2] * X[j, N-1]) / D[N-2]
+
+        ## DO 40 k = n - 2, 1, -1
+            ## b( k, j ) = ( b( k, j )-du( k )*b( k+1, j )-dl( k )* b( k+2, j ) ) / d( k )
+
+        for k in range(N-3, -1, -1):
+            X[k, j] = (X[k, j] - DU[k] * X[k+1, j] - DL[k] * X[j, k+2]) / D[k]
+    
+    return X

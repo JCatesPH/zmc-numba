@@ -4,7 +4,7 @@ linearalg.py declares the following linear algebra functions to be used in cuda 
 They must all work as device functions (without CUDA kernels)
 '''
 #%%
-def invZTmat(N, DL, D, DU, X):
+def invZTmat(N, lower, diag, upper, inv):
     '''
     Computes the inverse matrix for a complex-valued tridiagonal matrix.
     This is:  A * A**-1 = I
@@ -16,69 +16,69 @@ def invZTmat(N, DL, D, DU, X):
 
     INPUT:
         N : (int) Size of square matrix
-        DL : (complex array) Vector of size (N-1) that is the lower diagonal entries of A
-        D : (complex array) Vector of size N that is the diagonal entries of A
-        DU : (complex array) Vector of size (N-1) that is the upper diagonal entries of A
-        X : N x N Identity matrix
+        lower : (complex array) Vector of size (N-1) that is the lower diagonal entries of A
+        diag : (complex array) Vector of size N that is the diagonal entries of A
+        upper : (complex array) Vector of size (N-1) that is the upper diagonal entries of A
+        inv : N x N Identity matrix
 
     OUTPUT:
-        X : (complex matrix) Matrix of size N x N that is the inverse of A
+        inv : (complex matrix) Matrix of size N x N that is the inverse of A
     '''
 
     mult = complex(1,1)
     temp = complex(1,1)
 
     for k in range(0, N-1):
+
         # Checks if no row interchange is required
-        if(abs(D[k].real) >= abs(DL[k].real) and abs(D[k].imag) >= abs(DL[k].imag)):
-            mult = DL[k] / D[k]
-            D[k+1] = D[k+1] - mult * DU[k]
+        if(abs(diag[k].real) >= abs(lower[k].real) and abs(diag[k].imag) >= abs(lower[k].imag)):
+                
+            mult = lower[k] / diag[k]
+            diag[k+1] = diag[k+1] - mult * upper[k]
 
             for j in range(0, N):
-                X[j, k+1] = X[j, k+1] - mult * X[j, k]
+                inv[k+1, j] = inv[k+1, j] - mult * inv[k, j]
             
-            if(k < (N-2)):
-                DL[k] = complex(0,0)
 
-        # Interchange rows k and k+1
+            if(k < (N-2)):
+                lower[k] = complex(0,0)
+
+
         else:
-            mult = D[k] / DL[k]
-            D[k] = DL[k]
-            temp = D[k+1]
-            D[k+1] = DU[k] - mult * temp
+
+            mult = diag[k] / lower[k]
+            diag[k] = lower[k]
+            temp = diag[k+1]
+            diag[k+1] = upper[k] - mult * temp
 
             if(k < (N-2)):
-                DL[k] = DU[k+1]
-                DU[k+1] = -mult * DL[k]
+                lower[k] = upper[k+1]
+                upper[k+1] = -mult * lower[k]
             
-            DU[k] = temp
-
+            upper[k] = temp
+            
             for j in range(0, N):
-                temp = X[j, k]
-                X[j, k] = X[j, k+1]
-                X[j, k+1] = temp - mult * X[j, k+1]
-    
-    if(D[N-1] == 0.+0j):
-        return X
+                temp = inv[k, j]
+                inv[k, j] = inv[k+1, j]
+                inv[k+1, j] = temp - mult * inv[k+1, j]
+        
+
+    if(diag[N-1] == 0.+0j):
+        return inv
 
     # Back solve with matrix U from the factorization
     for j in range(0, N):
-        X[j, N-1] = X[j, N-1] / D[N-1]
+        inv[N-1, j] = inv[N-1, j] / diag[N-1]
 
         if(N > 1):
-            X[j, N-2] = (X[j, N-2] - DU[N-2] * X[j, N-1]) / D[N-2]
-        
+            inv[N-2, j] = (inv[N-2, j] - upper[N-2] * inv[N-1, j]) / diag[N-2]
+
         for k in range(N-3, -1, -1):
-            X[j, k] = (X[j, k] - DU[k] * X[j, k+1] - DL[k] * X[j, k+2]) / D[k]
+            inv[k, j] = (inv[k, j] - upper[k] * inv[k+1, j] - lower[k] * inv[k+2, j]) / diag[k]
     
-    return X
+    return inv
 
 
-
-#%%
-N = 3
-for j in range(0,N-1):
-    print(j)
 
 
 #%%
