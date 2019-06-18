@@ -16,24 +16,32 @@ from numba import cuda
 @numba.cuda.jit(device=True)
 def myInvTZ(N, lower, diag, upper, inv):
     '''
-    My own function computes the inverse matrix for a complex-valued tridiagonal matrix.
-   
-    From my solution on paper using naive Gauss-Jordan Elimination
+    A CUDA device function that computes the inverse matrix for a 
+        complex-valued tridiagonal matrix. From my solution on paper 
+        using naive Gauss-Jordan Elimination
 
     This is:  A * A**-1 = I
         A : Tridiagonal, N x N matrix
         A**-1 : Inverse of A
         I : N x N Identity matrix
 
-    INPUT:
-        N : (int) Size of square matrix
-        lower : (complex array) Vector of size (N-1) that is the lower diagonal entries of A
-        diag : (complex array) Vector of size N that is the diagonal entries of A
-        upper : (complex array) Vector of size (N-1) that is the upper diagonal entries of A
-        inv : N x N Identity matrix
+    Parameters 
+    ----------
+        N : int 
+            Size of square matrix
+        lower : complex array 
+            Vector of size (N-1) that is the lower diagonal entries of A
+        diag : complex array 
+            Vector of size N that is the diagonal entries of A
+        upper : complex array 
+            Vector of size (N-1) that is the upper diagonal entries of A
+        inv : complex array
+            N x N Identity matrix
 
-    OUTPUT:
-        inv : (complex matrix) Matrix of size N x N that is the inverse of A
+    Returns
+    -------
+        inv : complex matrix
+            Matrix of size N x N that is the inverse of A
     '''
     #           0    1    2
     # lower = [a21, a32]
@@ -70,7 +78,23 @@ def myInvTZ(N, lower, diag, upper, inv):
     return inv
 
 @cuda.jit(device=True)
-def trace(arr, N, tr):
+def trace(arr, N):
+    '''
+    A CUDA device function that computes the trace of a complex matrix.
+        In other words, the sum of the diagonal entries of an array.
+
+    Parameters 
+    ----------
+        arr : complex array
+            The complex (N x N) array that is having its trace computed
+        N : int 
+            Size of square matrix
+
+    Returns
+    -------
+        tr : complex 
+            The trace, or sum of diagonal entries of arr
+    '''
     tr = 0+0j
     for i in range(0, N):
         tr = tr + arr[i,i]
@@ -96,8 +120,8 @@ def tktr(array, N, tr):
     blkdim = cuda.blockDim.x
 
     i = tid + blkid * blkdim
-    if(i < 1):
-        tr = trace(array, N, tr)
+    if(i < 2):
+        tr[i] = trace(array, N)
 
 
 #%%
@@ -128,9 +152,9 @@ print('\nnumpy result: \n', np.linalg.inv(A))
 
 #%%
 
-tr = 12j
+tr = np.array([12j])
 tktr[1, 32](A, N, tr)
 
-print('tr = ', tr)
+print('tr = ', tr[0])
 
 #%%
