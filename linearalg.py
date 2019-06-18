@@ -82,3 +82,107 @@ def invZTmat(N, lower, diag, upper, inv):
 
 
 #%%
+def myInvTZN3(N, lower, diag, upper, inv):
+    '''
+    My own function computes the inverse matrix for a complex-valued tridiagonal matrix.
+   
+    From my solution on paper using naive Gauss-Jordan Elimination
+
+    This is:  A * A**-1 = I
+        A : Tridiagonal, N x N matrix
+        A**-1 : Inverse of A
+        I : N x N Identity matrix
+
+    INPUT:
+        N : (int) Size of square matrix
+        lower : (complex array) Vector of size (N-1) that is the lower diagonal entries of A
+        diag : (complex array) Vector of size N that is the diagonal entries of A
+        upper : (complex array) Vector of size (N-1) that is the upper diagonal entries of A
+        inv : N x N Identity matrix
+
+    OUTPUT:
+        inv : (complex matrix) Matrix of size N x N that is the inverse of A
+    '''
+    #           0    1    2
+    # lower = [a21, a32]
+    # diag  = [a11, a22, a33]
+    # upper = [a12, a23]
+    ###########################################################################
+    # # Gaussian elimination of lower triangle
+    ###########################################################################
+    # R2 = R2 - a21 / a11 * R1   for I
+    for i in range(0, N):
+        inv[1,i] = inv[1,i] - lower[0] / diag[0] * inv[0, i]
+    
+    # R2 = R2 - a21 / a11 * R1   for A
+    diag[1] = diag[1] - lower[0] / diag[0] * upper[1]
+    lower[0] = 0
+
+    # R3 = R3 - a32 / a22 * R2   for I
+    for i in range(0,N):
+        inv[2,i] = inv[2,i] - lower[1] / diag[1] * inv[1, i]
+
+    # R3 = R3 - a32 / a22 * R2   for A
+    diag[2] = diag[2] - lower[1] / diag[1] * upper[2]
+    lower[1] = 0
+    
+    ###########################################################################
+    # # Gaussian elimination of upper triangle
+    ###########################################################################
+    # R2 = R2 - a23 / a33 * R3   for I
+    for i in range(0, N):
+        inv[1,i] = inv[1,i] - upper[2] / diag[2] * inv[2, i]
+
+    # R2 = R2 - a23 / a33 * R3   for A
+    upper[2] = 0
+
+    # R1 = R1 - a12 / a22 * R2   for I
+    for i in range(0, N):
+        inv[0,i] = inv[0,i] - upper[1] / diag[1] * inv[1, i]
+    
+    # R1 = R1 - a12 / a22 * R2   for A
+    upper[1] = 0
+
+    ###########################################################################
+    # # Row reduction
+    ###########################################################################
+    # R1 / a11, R2 / a22, R3 / a33
+    for j in range(0,N):
+        inv[0,j] = inv[0,j] / diag[0]
+        inv[1,j] = inv[1,j] / diag[1]
+        inv[2,j] = inv[2,j] / diag[2]
+
+    return inv
+
+#%%
+import numpy as np
+
+N = 3
+
+top = np.array([0, 2+2j, -4-4j])
+bot = np.array([2+2j, 2-2j, 0])
+inn = np.array([2+2j, 2-2j, 2-2j])
+
+iden = np.identity(3, dtype=np.complex)
+
+A = np.eye(N, N, k=1) * top + np.eye(N, N, k=-1) * bot + inn * np.eye(N, N)
+
+print('A = \n', A)
+
+np.set_printoptions(precision=4, suppress=True)
+
+Ainv = myInvTZN3(N, bot, inn, top, iden)
+
+print('Ainv = \n', Ainv)
+
+#b = np.matmul(A, Ainv)
+#print('\nb = \n', b)
+
+#print('or is it...')
+
+b = np.matmul(A, Ainv)
+print('b = \n', b)
+
+print('\nnumpy result: \n', np.linalg.inv(Ainv))
+
+#%%

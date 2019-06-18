@@ -36,24 +36,29 @@ cent = np.arange(-(N - 1) / 2, (N - 1) / 2 + 1, 1, dtype=np.complex)
 d = hOmg * np.diag(cent)
 
 iden = np.identity(N, dtype=np.complex)
+print(iden)
 
-Gink = np.eye(N, N, k=1) * topk + np.eye(N, N, k=-1) * botk + innk * np.eye(N, N) - d
 
 np.set_printoptions(precision=4, suppress=True)
 
 #%%
+
+
+Gink = np.eye(N, N, k=1) * topk + np.eye(N, N, k=-1) * botk + innk * np.eye(N, N) - d
 Gk = la.invZTmat(N, botd, innd, topd, iden)
 
 print('Gink = \n', Gink)
 print('Gk = \n', Gk)
 
 b = np.matmul(Gk, Gink)
-print('b = \n', b)
+print('\nb = \n', b)
 
 print('or is it...')
 
 b = np.matmul(Gink, Gk)
 print('b = \n', b)
+
+print('\nnumpy result: \n', np.linalg.inv(Gink))
 
 #%%
 
