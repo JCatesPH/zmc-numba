@@ -201,7 +201,7 @@ print('A = \n', A)
 print('A* = \n', contran)
 
 #%%
-N = 10000
+N = 1000
 
 for k in range(0,10):
     top = np.random.rand(N-1)
