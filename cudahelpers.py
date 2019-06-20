@@ -1,6 +1,7 @@
 '''
 These are the functions that are needed for the other scripts in this directory. 
 This version of helpers has the functions that need to decorated with cuda.jit decorated.
+Hi Jalen
 '''
 
 import math
