@@ -1,0 +1,128 @@
+A = 
+ [[ 2.+2.j  2.+2.j  0.+0.j  0.+0.j  0.+0.j]
+ [ 2.+2.j  2.-2.j -4.-4.j  0.+0.j  0.+0.j]
+ [ 0.+0.j  2.-2.j  2.-2.j  8.+4.j  0.+0.j]
+ [ 0.+0.j  0.+0.j  2.+1.j  8.+2.j  4.-2.j]
+ [ 0.+0.j  0.+0.j  0.+0.j  4.-2.j  4.+1.j]]
+Ainv = 
+ [[ 0.1753-0.5632j  0.0747+0.3132j -0.6379-0.4885j  0.7701+0.2414j -0.8046+0.3448j]
+ [ 0.0747+0.3132j -0.0747-0.3132j  0.6379+0.4885j -0.7701-0.2414j  0.8046-0.3448j]
+ [ 0.2443-0.319j  -0.2443+0.319j  -0.0747-0.5632j  0.2644+0.5057j -0.5747-0.2299j]
+ [-0.0302+0.0963j  0.0302-0.0963j  0.0661+0.1264j -0.0287-0.1782j  0.1494+0.1264j]
+ [-0.0431-0.1006j  0.0431+0.1006j -0.1437-0.0575j  0.1494+0.1264j  0.023 -0.0575j]]
+b = 
+ [[ 1.+0.j  0.+0.j  0.-0.j -0.+0.j  0.-0.j]
+ [ 0.+0.j  1.+0.j  0.+0.j  0.+0.j  0.-0.j]
+ [ 0.+0.j  0.+0.j  1.-0.j  0.+0.j  0.+0.j]
+ [ 0.+0.j -0.+0.j -0.-0.j  1.+0.j -0.-0.j]
+ [ 0.-0.j -0.+0.j  0.-0.j  0.-0.j  1.+0.j]]
+
+numpy result: 
+ [[ 0.1753-0.5632j  0.0747+0.3132j -0.6379-0.4885j  0.7701+0.2414j -0.8046+0.3448j]
+ [ 0.0747+0.3132j -0.0747-0.3132j  0.6379+0.4885j -0.7701-0.2414j  0.8046-0.3448j]
+ [ 0.2443-0.319j  -0.2443+0.319j  -0.0747-0.5632j  0.2644+0.5057j -0.5747-0.2299j]
+ [-0.0302+0.0963j  0.0302-0.0963j  0.0661+0.1264j -0.0287-0.1782j  0.1494+0.1264j]
+ [-0.0431-0.1006j  0.0431+0.1006j -0.1437-0.0575j  0.1494+0.1264j  0.023 -0.0575j]]
+tr =  (18+1j)
+A = 
+ [[ 2.+2.j  2.+2.j  0.+0.j  0.+0.j  0.+0.j]
+ [ 2.+2.j  2.-2.j -4.-4.j  0.+0.j  0.+0.j]
+ [ 0.+0.j  2.-2.j  2.-2.j  8.+4.j  0.+0.j]
+ [ 0.+0.j  0.+0.j  2.+1.j  8.+2.j  4.-2.j]
+ [ 0.+0.j  0.+0.j  0.+0.j  4.-2.j  4.+1.j]]
+A* = 
+ [[ 2.-2.j  2.-2.j  0.-0.j  0.-0.j  0.-0.j]
+ [ 2.-2.j  2.+2.j  2.+2.j  0.-0.j  0.-0.j]
+ [ 0.-0.j -4.+4.j  2.+2.j  2.-1.j  0.-0.j]
+ [ 0.-0.j  0.-0.j  8.-4.j  8.-2.j  4.+2.j]
+ [ 0.-0.j  0.-0.j  0.-0.j  4.+2.j  4.-1.j]]
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.2297375202178955
+my time =  1.8115198612213135
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11221981048583984
+my time =  1.4592101573944092
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11667394638061523
+my time =  1.4587757587432861
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11464834213256836
+my time =  1.460749864578247
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11414766311645508
+my time =  1.458777904510498
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11346817016601562
+my time =  1.4587621688842773
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11423635482788086
+my time =  1.4602270126342773
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11349654197692871
+my time =  1.4592828750610352
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.1132504940032959
+my time =  1.4593853950500488
+[[ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ ...
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]
+ [ True  True  True ...  True  True  True]]
+numpy time =  0.11176848411560059
+my time =  1.4590811729431152

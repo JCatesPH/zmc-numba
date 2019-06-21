@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 680, in _attempt_allocation
+    allocator()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 695, in allocator
+    driver.cuMemAlloc(byref(ptr), bytesize)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 290, in safe_cuda_api_call
+    self._check_error(fname, retcode)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 325, in _check_error
+    raise CudaAPIError(retcode, msg)
+numba.cuda.cudadrv.driver.CudaAPIError: [2] Call to cuMemAlloc results in CUDA_ERROR_OUT_OF_MEMORY
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./linearalg-cuda.py", line 220, in <module>
+    tkinvtz[1, 32](N, bot, inn, top, iden)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 767, in __call__
+    cfg(*args)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 497, in __call__
+    sharedmem=self.sharedmem)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 564, in _kernel_call
+    self._prepare_args(t, v, stream, retr, kernelargs)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/compiler.py", line 630, in _prepare_args
+    devary = wrap_arg(val).to_device(retr, stream)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/args.py", line 63, in to_device
+    stream=stream)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/devicearray.py", line 686, in auto_device
+    devobj = from_array_like(obj, stream=stream)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/devicearray.py", line 624, in from_array_like
+    writeback=ary, stream=stream, gpu_data=gpu_data)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/devicearray.py", line 102, in __init__
+    gpu_data = devices.get_context().memalloc(self.alloc_size)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 697, in memalloc
+    self._attempt_allocation(allocator)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 687, in _attempt_allocation
+    allocator()
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 695, in allocator
+    driver.cuMemAlloc(byref(ptr), bytesize)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 290, in safe_cuda_api_call
+    self._check_error(fname, retcode)
+  File "/home/jmcates/miniconda3/envs/zmcint/lib/python3.6/site-packages/numba/cuda/cudadrv/driver.py", line 325, in _check_error
+    raise CudaAPIError(retcode, msg)
+numba.cuda.cudadrv.driver.CudaAPIError: [2] Call to cuMemAlloc results in CUDA_ERROR_OUT_OF_MEMORY
