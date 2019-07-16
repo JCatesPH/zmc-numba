@@ -132,7 +132,7 @@ def TZdagger(arr, N, adag):
 ###########################################################################
 # # Matrix Multiplication
 ###########################################################################
-@cuda.jit()
+@cuda.jit(device=True)
 def squareMatMul(A, B, C, N):
     '''
     A CUDA device function that multiplies two square, NxN matrices.
@@ -205,11 +205,11 @@ def gsmm(A, B, C, N):
 
     i = tid + blkid * blkdim
     if(i < 1):
-        A_dag = squareMatMul(A, B, C, N)
+        C = squareMatMul(A, B, C, N)
 
 
 #%%
-
+'''
 N = 5
 
 
@@ -234,21 +234,21 @@ print('\nnumpy result: \n', np.linalg.inv(A))
 
 
 
-#%%
+
 
 tr = np.array([12j])
 tktr[1, 32](A, N, tr)
 
 print('tr = ', tr[0])
 
-#%%
+
 
 contran = np.ones((N,N), dtype=np.complex)
 tkcj[1, 32](A, N, contran)
 print('A = \n', A)
 print('A* = \n', contran)
 
-#%%
+
 N = 1000
 
 for k in range(0,10):
@@ -273,9 +273,9 @@ for k in range(0,10):
     print('numpy time = ', toc1-tic1)
     print('my time = ', toc2-tic2)
 
-
+'''
 #%%
-N = 3
+N = 7
 
 mat1 = np.random.randint(-50, 50, (N,N))
 mat2 = np.random.randint(-50, 50, (N,N))
@@ -284,4 +284,9 @@ res = np.zeros((N,N))
 
 gsmm[1, 32](mat1, mat2, res, N)
 
+test = np.matmul(mat1,mat2)
+
 print(res)
+
+print('\nSame:', (test==res).all())
+#%%
