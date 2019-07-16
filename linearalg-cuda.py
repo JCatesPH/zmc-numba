@@ -128,7 +128,45 @@ def TZdagger(arr, N, adag):
     return adag
 
 
+
+###########################################################################
+# # Matrix Multiplication
+###########################################################################
+@cuda.jit()
+def squareMatMul(A, B, C, N):
+    '''
+    A CUDA device function that multiplies two square, NxN matrices.
+
+    AB=C
+
+    Parameters 
+    ----------
+        A : NxN matrix
+            First matrix to be multiplied
+        B : NxN matrix
+            Second matrix to be multiplied
+        C : NxN matrix
+            Product of AB
+        N : int 
+            Size of square matrix
+
+    Returns
+    -------
+        C : NxN matrix
+            Product of AB
+    '''
+
+    for i in range(N):
+        for j in range(N):
+            for l in range(N):
+                C[i,j] = A[i,l] * B[l,j] + C[i,j]
+    
+    return C
+
 #%%
+#####################################################################
+# # Kernel Functions
+#####################################################################
 @numba.cuda.jit()
 def tkinvtz(N, bot, inn, top, iden):
     tid = cuda.threadIdx.x
@@ -158,6 +196,16 @@ def tkcj(A, N, A_dag):
     i = tid + blkid * blkdim
     if(i < 1):
         A_dag = TZdagger(A, N, A_dag)
+
+@numba.cuda.jit()
+def gsmm(A, B, C, N):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
+
+    i = tid + blkid * blkdim
+    if(i < 1):
+        A_dag = squareMatMul(A, B, C, N)
 
 
 #%%
@@ -227,3 +275,13 @@ for k in range(0,10):
 
 
 #%%
+N = 3
+
+mat1 = np.random.randint(-50, 50, (N,N))
+mat2 = np.random.randint(-50, 50, (N,N))
+
+res = np.zeros((N,N))
+
+gsmm[1, 32](mat1, mat2, res, N)
+
+print(res)
