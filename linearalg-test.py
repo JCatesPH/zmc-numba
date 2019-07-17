@@ -1,4 +1,5 @@
 #%%
+import time
 import numpy as np
 import linearalg as la
 
@@ -45,7 +46,7 @@ np.set_printoptions(precision=4, suppress=True)
 
 
 Gink = np.eye(N, N, k=1) * topk + np.eye(N, N, k=-1) * botk + innk * np.eye(N, N) - d
-Gk = la.invZTmat(N, botd, innd, topd, iden)
+Gk = la.myInvZT(N, botd, innd, topd, iden)
 
 print('Gink = \n', Gink)
 print('Gk = \n', Gk)
@@ -87,7 +88,7 @@ print('C before:\n', C)
 print('\nA:\n', A)
 print('B:\n', B)
 
-C = squareMatMul(A, B, C, N)
+C = la.squareMatMul(A, B, C, N)
 
 print('\nC=\n', C)
 
@@ -96,7 +97,7 @@ print('\nC=\n', C)
 # # MATRIX MULT TESTING
 #####################################################################
 N = 11
-trials = 25
+trials = 100
 
 timarr = np.zeros(trials)
 stdarr = np.zeros(trials)
@@ -109,7 +110,7 @@ for x in range(trials):
     C = np.zeros((N, N))
 
     tic = time.time()
-    C = squareMatMul(A, B, C, N)
+    C = la.squareMatMul(A, B, C, N)
     toc = time.time()
 
     timarr[x] = toc - tic
@@ -127,12 +128,70 @@ for x in range(trials):
         comparr[x] = False
 
 
+diffarr = timarr - stdarr
+
 print('\nN =', N)
 print('============')
 print(' Time diff ')
 print('============')
 for k in range(0,trials):
-    print('%8.5f ' % (timarr[k]))
-    print(comparr[k])
+    print('%8.5f | %r' % (diffarr[k], comparr[k]))
+    #print(comparr[k])
 print('============')
-print('Average: %5.3E'% (timarr.sum()/trials))
+print('Average: %5.3E'% (diffarr.sum()/trials))
+
+#%%
+#####################################################################
+# # GENERAL MATRIX INVERSION
+#####################################################################
+N = 5
+trials = 100
+
+timarr = np.zeros(trials)
+stdarr = np.zeros(trials)
+comparr = np.zeros(trials)
+
+A = np.random.rand(N,N)
+I = np.eye(N)
+
+inv = la.myInvSZ(A, I, N)
+
+
+for x in range(trials):
+    A = np.random.rand(N, N)
+
+    I = np.eye(N)
+
+    tic = time.time()
+    test = np.linalg.inv(A)
+    toc = time.time()
+
+    stdarr[x] = toc - tic
+
+
+    tic = time.time()
+    C = la.myInvSZ(A, I, N)
+    toc = time.time()
+
+    timarr[x] = toc - tic
+
+
+    if (test==C).all():
+        comparr[x] = True
+
+    else:
+        comparr[x] = False
+
+diffarr = timarr - stdarr
+
+print('\nN =', N)
+print('============')
+print(' Time diff ')
+print('============')
+for k in range(0,trials):
+    print('%8.5f | %r' % (diffarr[k], comparr[k]))
+    #print(comparr[k])
+print('============')
+print('Average: %5.3E'% (diffarr.sum()/trials))
+
+#%%

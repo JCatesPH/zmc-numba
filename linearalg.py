@@ -212,6 +212,7 @@ def squareMatMul(A, B, C, N):
 ############S##############################################################
 # # General Inverse
 ###########################################################################
+@numba.jit()
 def myInvSZ(A, I, N):
     '''
     A CUDA device function that computes the inverse for a 
@@ -245,7 +246,7 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
@@ -256,7 +257,7 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
@@ -274,11 +275,7 @@ np.set_printoptions(precision=4, suppress=True)
 
 N = 5
 
-A = np.array([[5.,1,1,1,1],
-              [2,6,2,2,2],
-              [3,3,7,3,3],
-              [4,4,4,8,4],
-              [0,0,0,0,9]])  #, dtype=np.complex)
+A = np.random.rand(N,N)
 I = np.eye(N)
 
 test = np.linalg.inv(A)
@@ -292,4 +289,6 @@ print('A:\n', A)
 print('\nAinv:\n', I)
 
 print('\nTest:\n', test)
+
+print('Same: ', (test==inv).all())
 #%%
