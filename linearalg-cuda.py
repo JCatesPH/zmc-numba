@@ -128,7 +128,45 @@ def TZdagger(arr, N, adag):
     return adag
 
 
+
+###########################################################################
+# # Matrix Multiplication
+###########################################################################
+@cuda.jit(device=True)
+def squareMatMul(A, B, C, N):
+    '''
+    A CUDA device function that multiplies two square, NxN matrices.
+
+    AB=C
+
+    Parameters 
+    ----------
+        A : NxN matrix
+            First matrix to be multiplied
+        B : NxN matrix
+            Second matrix to be multiplied
+        C : NxN matrix
+            Product of AB
+        N : int 
+            Size of square matrix
+
+    Returns
+    -------
+        C : NxN matrix
+            Product of AB
+    '''
+
+    for i in range(N):
+        for j in range(N):
+            for l in range(N):
+                C[i,j] = A[i,l] * B[l,j] + C[i,j]
+    
+    return C
+
 #%%
+#####################################################################
+# # Kernel Functions
+#####################################################################
 @numba.cuda.jit()
 def tkinvtz(N, bot, inn, top, iden):
     tid = cuda.threadIdx.x
@@ -159,9 +197,19 @@ def tkcj(A, N, A_dag):
     if(i < 1):
         A_dag = TZdagger(A, N, A_dag)
 
+@numba.cuda.jit()
+def gsmm(A, B, C, N):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
+
+    i = tid + blkid * blkdim
+    if(i < 1):
+        C = squareMatMul(A, B, C, N)
+
 
 #%%
-
+'''
 N = 5
 
 
@@ -186,21 +234,21 @@ print('\nnumpy result: \n', np.linalg.inv(A))
 
 
 
-#%%
+
 
 tr = np.array([12j])
 tktr[1, 32](A, N, tr)
 
 print('tr = ', tr[0])
 
-#%%
+
 
 contran = np.ones((N,N), dtype=np.complex)
 tkcj[1, 32](A, N, contran)
 print('A = \n', A)
 print('A* = \n', contran)
 
-#%%
+
 N = 1000
 
 for k in range(0,10):
@@ -225,5 +273,20 @@ for k in range(0,10):
     print('numpy time = ', toc1-tic1)
     print('my time = ', toc2-tic2)
 
+'''
+#%%
+N = 7
 
+mat1 = np.random.randint(-50, 50, (N,N))
+mat2 = np.random.randint(-50, 50, (N,N))
+
+res = np.zeros((N,N))
+
+gsmm[1, 32](mat1, mat2, res, N)
+
+test = np.matmul(mat1,mat2)
+
+print(res)
+
+print('\nSame:', (test==res).all())
 #%%

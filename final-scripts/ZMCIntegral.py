@@ -19,17 +19,20 @@ import random
 import os
 from numba.cuda.random import create_xoroshiro128p_states, xoroshiro128p_uniform_float64
 
-def setChunks(x): 
+
+def setChunks(x):
     global CHUNK_RESULTS
     CHUNK_RESULTS = x
     return
 
+
 def getChunks():
     return CHUNK_RESULTS
 
+
 class MCintegral():
 
-    def __init__(self, my_func = None, domain = None, available_GPU = None, num_trials = 2, depth = 2, sigma_multiplication = 5):
+    def __init__(self, my_func=None, domain=None, available_GPU=None, num_trials=2, depth=2, sigma_multiplication=5):
 
         '''
         Parameters:
@@ -46,15 +49,15 @@ class MCintegral():
 
         if available_GPU == None:
             def is_gpu_available():
-                np.save(os.getcwd()+'/multi_temp/gpu_available', [i for i in range(len(list(cuda.gpus)))])
+                np.save(os.getcwd() + '/multi_temp/gpu_available', [i for i in range(len(list(cuda.gpus)))])
 
             # check gpu condition
-            p = multiprocessing.Process(target = is_gpu_available)
+            p = multiprocessing.Process(target=is_gpu_available)
             p.daemon = True
             p.start()
             p.join()
 
-            available_GPU =  np.load(os.getcwd() + '/multi_temp/gpu_available.npy')
+            available_GPU = np.load(os.getcwd() + '/multi_temp/gpu_available.npy')
 
         if len(available_GPU) == 0:
             raise AssertionError("Your computer does not support GPU calculation.")
@@ -76,7 +79,6 @@ class MCintegral():
         # initial domain
         self.initial_domain = domain
 
-
     def evaluate(self):
         self.configure_chunks()
         MCresult = self.importance_sampling_iteration(self.initial_domain, 0)
@@ -86,22 +88,25 @@ class MCintegral():
     def importance_sampling_iteration(self, domain, depth):
         depth += 1
         MCresult_chunks, large_std_chunk_id, MCresult_std_chunks = self.MCevaluate(domain)
-        print('{} hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.'.format(len(large_std_chunk_id)))
+        print(
+            '{} hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.'.format(
+                len(large_std_chunk_id)))
         if depth < self.depth:
             for chunk_id in large_std_chunk_id:
                 # domain of this chunk
                 domain_next_level = self.chunk_domian(chunk_id, domain)
 
                 # iteration
-                MCresult_chunks[chunk_id],MCresult_std_chunks[chunk_id] = self.importance_sampling_iteration(domain_next_level, depth)
+                MCresult_chunks[chunk_id], MCresult_std_chunks[chunk_id] = self.importance_sampling_iteration(
+                    domain_next_level, depth)
 
         # Stop digging if there are no more large stddev chunk
         if len(large_std_chunk_id) == 0:
-            return np.sum(MCresult_chunks,0), np.sqrt(np.sum(MCresult_std_chunks**2))
+            return np.sum(MCresult_chunks, 0), np.sqrt(np.sum(MCresult_std_chunks ** 2))
 
         setChunks(MCresult_chunks)
 
-        return np.sum(MCresult_chunks,0), np.sqrt(np.sum(MCresult_std_chunks**2))
+        return np.sum(MCresult_chunks, 0), np.sqrt(np.sum(MCresult_std_chunks ** 2))
 
     def MCevaluate(self, domain):
 
@@ -111,7 +116,7 @@ class MCintegral():
             domain: the integration domain, type:list or numpy_array.
         '''
 
-        p={}
+        p = {}
         for i_batch in range(self.n_batches):
             def multi_processing():
                 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -121,13 +126,13 @@ class MCintegral():
                     result.append(self.MCkernel(domain, i_batch))
 
                 result = np.array(result)
-                std_result = np.std(result,0)
-                mean_result = np.mean(result,0)
-                np.save(os.getcwd()+'/multi_temp/result'+str(i_batch), np.array(mean_result))
-                np.save(os.getcwd()+'/multi_temp/result_std'+str(i_batch), np.array(std_result))
+                std_result = np.std(result, 0)
+                mean_result = np.mean(result, 0)
+                np.save(os.getcwd() + '/multi_temp/result' + str(i_batch), np.array(mean_result))
+                np.save(os.getcwd() + '/multi_temp/result_std' + str(i_batch), np.array(std_result))
 
             # start multi-processing to allocate
-            p[i_batch] = multiprocessing.Process(target = multi_processing)
+            p[i_batch] = multiprocessing.Process(target=multi_processing)
             p[i_batch].daemon = True
             p[i_batch].start()
 
@@ -137,17 +142,17 @@ class MCintegral():
         MCresult = []
         MCresult_std = []
         for i_batch in range(self.n_batches):
-            MCresult.append(np.load(os.getcwd()+'/multi_temp/result'+str(i_batch)+'.npy'))
-            MCresult_std.append(np.load(os.getcwd()+'/multi_temp/result_std'+str(i_batch)+'.npy'))
+            MCresult.append(np.load(os.getcwd() + '/multi_temp/result' + str(i_batch) + '.npy'))
+            MCresult_std.append(np.load(os.getcwd() + '/multi_temp/result_std' + str(i_batch) + '.npy'))
 
         MCresult, MCresult_std = np.concatenate(MCresult), np.array(MCresult_std)
 
         # find out the index of chunks that have very large stddev
         threshold = np.mean(MCresult_std) + self.sigma_multiplication * np.std(MCresult_std)
         len_std = len(MCresult_std[0])
-        large_std_chunk_id = np.concatenate([np.nonzero(MCresult_std[i] >= threshold)[0] + i*len_std for i in range(len(MCresult_std))])
+        large_std_chunk_id = np.concatenate(
+            [np.nonzero(MCresult_std[i] >= threshold)[0] + i * len_std for i in range(len(MCresult_std))])
         return MCresult, large_std_chunk_id, np.concatenate(MCresult_std)
-
 
     def initial(self, my_func, domain):
         '''
@@ -249,7 +254,7 @@ class MCintegral():
             self.n_one_gpu = 2
 
         n_gpu = len(self.available_GPU)
-        self.chunk_size_multiplier = math.floor((n_gpu*(self.n_one_gpu**self.dim))**(1/self.dim))
+        self.chunk_size_multiplier = math.floor((n_gpu * (self.n_one_gpu ** self.dim)) ** (1 / self.dim))
 
     def configure_chunks(self):
         '''receieve self.dim, self.n_grid and self.chunk_size'''
@@ -259,29 +264,29 @@ class MCintegral():
             eg: in Python, you may get 7.99999 from 64^(1/2)
         '''
 
-        self.chunk_size = self.chunk_size_x**self.dim
-        self.n_grid = (self.chunk_size_x*self.chunk_size_multiplier)**self.dim
+        self.chunk_size = self.chunk_size_x ** self.dim
+        self.n_grid = (self.chunk_size_x * self.chunk_size_multiplier) ** self.dim
 
         # number of samplings in one chunk along one dimension
-        self.n_grid_x_one_chunk = int(np.round(self.chunk_size**(1/self.dim)))
+        self.n_grid_x_one_chunk = int(np.round(self.chunk_size ** (1 / self.dim)))
 
         # number of chunks
-        self.n_chunk = int(np.round(self.n_grid/self.chunk_size))
+        self.n_chunk = int(np.round(self.n_grid / self.chunk_size))
 
         # number of samplings along one dimension
-        self.n_grid_x = int(np.round(self.n_grid**(1/self.dim)))
+        self.n_grid_x = int(np.round(self.n_grid ** (1 / self.dim)))
 
         # number of chunks along one dimension
-        self.n_chunk_x = int(np.round(self.n_chunk**(1/self.dim)))
+        self.n_chunk_x = int(np.round(self.n_chunk ** (1 / self.dim)))
 
         # number of batches
         self.n_batches = min([len(self.available_GPU), self.n_chunk])
 
         # batch_size
-        self.batch_size = int(np.ceil(self.n_chunk/self.n_batches))
+        self.batch_size = int(np.ceil(self.n_chunk / self.n_batches))
 
     def clean_temp(self):
-        folder = os.getcwd()+'/multi_temp/'
+        folder = os.getcwd() + '/multi_temp/'
         if not os.path.exists(folder):
             os.makedirs(folder)
 
@@ -302,8 +307,12 @@ class MCintegral():
         '''
 
         chunk_id_d_dim = np.unravel_index(chunk_id, [self.n_chunk_x for _ in range(self.dim)])
-        domain_range = np.array([(original_domain[idim][1] - original_domain[idim][0]) / self.n_chunk_x for idim in range(self.dim)], dtype=np.float64)
-        domain_left = np.array([original_domain[idim][0] + chunk_id_d_dim[idim] * domain_range[idim] for idim in range(self.dim)], dtype=np.float64)
+        domain_range = np.array(
+            [(original_domain[idim][1] - original_domain[idim][0]) / self.n_chunk_x for idim in range(self.dim)],
+            dtype=np.float64)
+        domain_left = np.array(
+            [original_domain[idim][0] + chunk_id_d_dim[idim] * domain_range[idim] for idim in range(self.dim)],
+            dtype=np.float64)
         current_domain = [[domain_left[i], domain_left[i] + domain_range[i]] for i in range(self.dim)]
         return current_domain
 
@@ -319,30 +328,32 @@ class MCintegral():
         fun = self.my_func
         dim = self.dim
         batch_size = self.batch_size
-        MCresult = cuda.device_array(batch_size,dtype=np.float64)
+        MCresult = cuda.device_array(batch_size, dtype=np.float64)
         n_chunk = self.n_chunk
         chunk_size = self.chunk_size
         num_loops = chunk_size * batch_size
         n_chunk_x = self.n_chunk_x
-        domain_range = np.array([(domain[j_dim][1] - domain[j_dim][0]) / n_chunk_x for j_dim in range(dim)],                                dtype = np.float64)
-        domain = np.array(domain,dtype=np.float64)
+        domain_range = np.array([(domain[j_dim][1] - domain[j_dim][0]) / n_chunk_x for j_dim in range(dim)],
+                                dtype=np.float64)
+        domain = np.array(domain, dtype=np.float64)
 
         # change one dimensional index into
         @cuda.jit(device=True)
-        def oneD_to_nD(num_of_points_in_each_dim,new_i,digit_store):
+        def oneD_to_nD(num_of_points_in_each_dim, new_i, digit_store):
             j_dim_index = 0
-            a1 = new_i//num_of_points_in_each_dim
-            digit_store[j_dim_index] = new_i%num_of_points_in_each_dim
+            a1 = new_i // num_of_points_in_each_dim
+            digit_store[j_dim_index] = new_i % num_of_points_in_each_dim
 
             # convert to n-dim index
             for j_dim in range(dim):
-                j_dim_index+=1
+                j_dim_index += 1
                 if a1 != 0.:
-                    digit_store[j_dim+1] = a1%num_of_points_in_each_dim
-                    a1 = a1//num_of_points_in_each_dim
+                    digit_store[j_dim + 1] = a1 % num_of_points_in_each_dim
+                    a1 = a1 // num_of_points_in_each_dim
 
         @cuda.jit
-        def integration_kernel(num_loops,                               MCresult,                               chunk_size,                               n_chunk_x,                               domain,                               domain_range,                               batch_size,                               i_batch,                               rng_states,                               n_chunk):
+        def integration_kernel(num_loops, MCresult, chunk_size, n_chunk_x, domain, domain_range, batch_size, i_batch,
+                               rng_states, n_chunk):
 
             thread_id = cuda.grid(1)
             if thread_id < batch_size:
@@ -357,7 +368,7 @@ class MCintegral():
 
                     # convert one_d index to dim_d index
                     # result will be stored in digit_store
-                    oneD_to_nD(n_chunk_x,chunk_id,digit_store)
+                    oneD_to_nD(n_chunk_x, chunk_id, digit_store)
 
                     # specisify the local domain
                     domain_left = cuda.local.array(dim, dtype=nb.float64)
@@ -369,7 +380,8 @@ class MCintegral():
                         x_tuple = cuda.local.array(dim, dtype=nb.float64)
 
                         for j_dim in range(dim):
-                            x_tuple[j_dim] = xoroshiro128p_uniform_float64(rng_states, thread_id)                                                            *domain_range[j_dim] + domain_left[j_dim]
+                            x_tuple[j_dim] = xoroshiro128p_uniform_float64(rng_states, thread_id) * domain_range[
+                                j_dim] + domain_left[j_dim]
 
                         # feed in values to user defined function
                         cuda.atomic.add(MCresult, thread_id, fun(x_tuple))
@@ -377,17 +389,17 @@ class MCintegral():
         # Configure the blocks
         threadsperblock = 16
         blockspergrid = (batch_size + (threadsperblock - 1)) // threadsperblock
-        rng_states = create_xoroshiro128p_states(threadsperblock * blockspergrid,                                                  seed=random.sample(range(0,1000),1)[0])
+        rng_states = create_xoroshiro128p_states(threadsperblock * blockspergrid,
+                                                 seed=random.sample(range(0, 1000), 1)[0])
 
         # Start the kernel
-        integration_kernel[blockspergrid, threadsperblock](num_loops,                                                           MCresult,                                                           chunk_size,                                                           n_chunk_x,                                                           domain,                                                           domain_range,                                                           batch_size,                                                           i_batch,                                                           rng_states,                                                           n_chunk)
+        integration_kernel[blockspergrid, threadsperblock](num_loops, MCresult, chunk_size, n_chunk_x, domain,
+                                                           domain_range, batch_size, i_batch, rng_states, n_chunk)
 
         # volumn of the domain
-        volumn = np.prod(domain_range)/chunk_size
+        volumn = np.prod(domain_range) / chunk_size
 
         MCresult = MCresult.copy_to_host()
-        MCresult = volumn*MCresult
+        MCresult = volumn * MCresult
 
         return MCresult
-
-

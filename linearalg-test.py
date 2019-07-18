@@ -73,3 +73,66 @@ for m in range(0,N-1):
     print(m)
 for k in range(N-3, -1, -1):
     print(k)
+
+#%%
+N = 3
+
+A = np.array([[2,2,2],[3,3,3],[5,5,5]])
+B = np.array([[1,0,0],[0,1,0],[0,0,1]])
+
+C = np.zeros((3,3))
+
+print('C before:\n', C)
+
+print('\nA:\n', A)
+print('B:\n', B)
+
+C = squareMatMul(A, B, C, N)
+
+print('\nC=\n', C)
+
+#%%
+#####################################################################
+# # MATRIX MULT TESTING
+#####################################################################
+N = 11
+trials = 25
+
+timarr = np.zeros(trials)
+stdarr = np.zeros(trials)
+comparr = np.zeros(trials)
+
+for x in range(trials):
+    A = np.random.randint(-50, 50, (N, N))
+    B = np.random.randint(-50, 50, (N, N))
+
+    C = np.zeros((N, N))
+
+    tic = time.time()
+    C = squareMatMul(A, B, C, N)
+    toc = time.time()
+
+    timarr[x] = toc - tic
+
+    tic = time.time()
+    test = np.matmul(A,B)
+    toc = time.time()
+
+    stdarr[x] = toc - tic
+
+    if (test==C).all():
+        comparr[x] = True
+
+    else:
+        comparr[x] = False
+
+
+print('\nN =', N)
+print('============')
+print(' Time diff ')
+print('============')
+for k in range(0,trials):
+    print('%8.5f ' % (timarr[k]))
+    print(comparr[k])
+print('============')
+print('Average: %5.3E'% (timarr.sum()/trials))

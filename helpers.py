@@ -154,16 +154,23 @@ def bessj1(x):
     return bessj1
 
 
+#%%
+def outcsv(numpt, inp, inarr, intarr, errarr, timarr):
+    import datetime
 
-def outcsv(numpt, inarr, intarr, errarr, timarr):
     filename = str(datetime.datetime.today()) + '.csv'
 
     with open(filename, 'w') as csvout:
-        csvout.write('om')
+        csvout.write(inp,'Integral,Error,Time')
 
         for i in range(0, numpt):
             csvout.write('\n')
             csvout.write(str(inarr[i]))
             csvout.write(',')
-            csvout.write(str(arr[j]))
+            csvout.write(str(intarr[j]))
+            csvout.write(',')
+            csvout.write(str(errarr[j]))
+            csvout.write(',')
+            csvout.write(str(timarr[j]))
             j = j + 1
+

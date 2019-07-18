@@ -9,7 +9,7 @@ import time
 
 import numba
 import numpy as np
-from numba import cuda
+
 
 
 #%%
@@ -173,4 +173,123 @@ print('============')
 print('Average: ', timarr.sum()/20)
 
 
+#%%
+###########################################################################
+# # Matrix Multiplication
+###########################################################################
+@numba.jit()
+def squareMatMul(A, B, C, N):
+    '''
+    A CUDA device function that multiplies two square, NxN matrices.
+
+    AB=C
+
+    Parameters 
+    ----------
+        A : NxN matrix
+            First matrix to be multiplied
+        B : NxN matrix
+            Second matrix to be multiplied
+        C : NxN matrix
+            Product of AB
+        N : int 
+            Size of square matrix
+
+    Returns
+    -------
+        C : NxN matrix
+            Product of AB
+    '''
+
+    for i in range(N):
+        for j in range(N):
+            for l in range(N):
+                C[i,j] = A[i,l] * B[l,j] + C[i,j]
+    
+    return C
+
+#%%
+############S##############################################################
+# # General Inverse
+###########################################################################
+def myInvSZ(A, I, N):
+    '''
+    A CUDA device function that computes the inverse for a 
+        complex-valued, square matrix.
+
+    This is:  A * A**-1 = I
+        A : Square, N x N matrix
+        A**-1 : Inverse of A
+        I : N x N Identity matrix
+
+    Parameters 
+    ----------
+        A : complex matrix
+            N x N matrix having its inverse computed
+        I : complex matrix
+            N x N identity matrix that will have its values altered to the inverse of A
+        N : int 
+            Size of square matrix
+        
+    Returns
+    -------
+        I : complex matrix
+            Matrix of size N x N that is the inverse of A
+    '''
+    # # ELIMINATE LOWER TRIANGLE
+    for k in range(N-1):
+        diag = A[k,k]
+        
+        for i in range(k+1, N):
+            ratio =  A[i,k] / diag
+
+            for j in range(N):
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * A[k,j]
+
+    # # ELIMINATE UPPER TRIANGLE
+    for k in range(N-1, 0, -1):
+        diag = A[k,k]
+        
+        for i in range(k-1, -1, -1):
+            ratio = A[i,k] / diag
+
+            for j in range(N):
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * A[k,j]
+
+    # # REDUCE ROWS
+    for i in range(N):
+        diag = A[i,i]
+
+        for j in range(N):
+            I[i,j] = I[i,j] / diag
+
+    return I
+
+
+#%%
+np.set_printoptions(precision=4, suppress=True)
+
+
+N = 5
+
+A = np.array([[5.,1,1,1,1],
+              [2,6,2,2,2],
+              [3,3,7,3,3],
+              [4,4,4,8,4],
+              [0,0,0,0,9]])  #, dtype=np.complex)
+I = np.eye(N)
+
+test = np.linalg.inv(A)
+
+print('A:\n', A)
+
+inv = myInvSZ(A, I, N)
+
+print('A:\n', A)
+
+print('\nAinv:\n', I)
+
+print('\nTest:\n', test)
 #%%
