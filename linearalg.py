@@ -212,6 +212,7 @@ def squareMatMul(A, B, C, N):
 ############S##############################################################
 # # General Inverse
 ###########################################################################
+@numba.jit()
 def myInvSZ(A, I, N):
     '''
     A CUDA device function that computes the inverse for a 
@@ -245,7 +246,7 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
@@ -256,7 +257,7 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
@@ -292,4 +293,55 @@ print('A:\n', A)
 print('\nAinv:\n', I)
 
 print('\nTest:\n', test)
+#%%
+N = 11
+trials = 100
+
+timarr = np.zeros(trials)
+stdarr = np.zeros(trials)
+comparr = np.zeros(trials)
+
+A = np.random.rand(N,N)
+I = np.eye(N)
+
+inv = myInvSZ(A, I, N)
+
+
+for x in range(trials):
+    A = np.random.rand(N, N)
+
+    I = np.eye(N)
+
+    tic = time.time()
+    test = np.linalg.inv(A)
+    toc = time.time()
+
+    stdarr[x] = toc - tic
+
+
+    tic = time.time()
+    C = myInvSZ(A, I, N)
+    toc = time.time()
+
+    timarr[x] = toc - tic
+
+
+    if (test==C).all():
+        comparr[x] = True
+
+    else:
+        comparr[x] = False
+
+diffarr = timarr - stdarr
+
+print('\nN =', N)
+print('============')
+print(' Time diff ')
+print('============')
+for k in range(0,trials):
+    print('%8.5E | %r' % (timarr[k], comparr[k]))
+    #print(comparr[k])
+print('============')
+print('Average: %5.3E'% (diffarr.sum()/trials))
+
 #%%
