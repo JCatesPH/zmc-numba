@@ -13,6 +13,9 @@ from numba import cuda
 
 
 #%%
+###########################################################################
+# # Inverse for Tridiagonal Matrices
+###########################################################################
 @numba.cuda.jit(device=True)
 def myInvTZ(N, lower, diag, upper, inv):
     '''
@@ -77,6 +80,11 @@ def myInvTZ(N, lower, diag, upper, inv):
 
     return inv
 
+
+
+###########################################################################
+# # Trace function
+###########################################################################
 @cuda.jit(device=True)
 def trace(arr, N):
     '''
@@ -101,6 +109,11 @@ def trace(arr, N):
     
     return tr
 
+
+
+###########################################################################
+# # Conjugate-Transpose
+###########################################################################
 @cuda.jit(device=True)
 def TZdagger(arr, N, adag):
     '''
@@ -162,6 +175,67 @@ def squareMatMul(A, B, C, N):
                 C[i,j] = A[i,l] * B[l,j] + C[i,j]
     
     return C
+
+
+
+############S##############################################################
+# # General Inverse
+###########################################################################
+@cuda.jit(device=True)
+def myInvSZ(A, I, N):
+    '''
+    A CUDA device function that computes the inverse for a 
+        complex-valued, square matrix.
+
+    This is:  A * A**-1 = I
+        A : Square, N x N matrix
+        A**-1 : Inverse of A
+        I : N x N Identity matrix
+
+    Parameters 
+    ----------
+        A : complex matrix
+            N x N matrix having its inverse computed
+        I : complex matrix
+            N x N identity matrix that will have its values altered to the inverse of A
+        N : int 
+            Size of square matrix
+        
+    Returns
+    -------
+        I : complex matrix
+            Matrix of size N x N that is the inverse of A
+    '''
+    # # ELIMINATE LOWER TRIANGLE
+    for k in range(N-1):
+        diag = A[k,k]
+        
+        for i in range(k+1, N):
+            ratio =  A[i,k] / diag
+
+            for j in range(N):
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
+
+    # # ELIMINATE UPPER TRIANGLE
+    for k in range(N-1, 0, -1):
+        diag = A[k,k]
+        
+        for i in range(k-1, -1, -1):
+            ratio = A[i,k] / diag
+
+            for j in range(N):
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - ratio * I[k,j]
+
+    # # REDUCE ROWS
+    for i in range(N):
+        diag = A[i,i]
+
+        for j in range(N):
+            I[i,j] = I[i,j] / diag
+
+    return I
 
 #%%
 #####################################################################
