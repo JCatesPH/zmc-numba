@@ -294,7 +294,7 @@ print('\nAinv:\n', I)
 
 print('\nTest:\n', test)
 #%%
-N = 5
+N = 11
 trials = 100
 
 timarr = np.zeros(trials)
@@ -339,7 +339,9 @@ print('============')
 print(' Time diff ')
 print('============')
 for k in range(0,trials):
-    print('%8.5E | %r' % (diffarr[k], comparr[k]))
+    print('%8.5E | %r' % (timarr[k], comparr[k]))
     #print(comparr[k])
 print('============')
 print('Average: %5.3E'% (diffarr.sum()/trials))
+
+#%%
