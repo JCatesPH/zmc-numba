@@ -275,7 +275,11 @@ np.set_printoptions(precision=4, suppress=True)
 
 N = 5
 
-A = np.random.rand(N,N)
+A = np.array([[5.,1,1,1,1],
+              [2,6,2,2,2],
+              [3,3,7,3,3],
+              [4,4,4,8,4],
+              [0,0,0,0,9]])  #, dtype=np.complex)
 I = np.eye(N)
 
 test = np.linalg.inv(A)
@@ -289,6 +293,53 @@ print('A:\n', A)
 print('\nAinv:\n', I)
 
 print('\nTest:\n', test)
-
-print('Same: ', (test==inv).all())
 #%%
+N = 5
+trials = 100
+
+timarr = np.zeros(trials)
+stdarr = np.zeros(trials)
+comparr = np.zeros(trials)
+
+A = np.random.rand(N,N)
+I = np.eye(N)
+
+inv = myInvSZ(A, I, N)
+
+
+for x in range(trials):
+    A = np.random.rand(N, N)
+
+    I = np.eye(N)
+
+    tic = time.time()
+    test = np.linalg.inv(A)
+    toc = time.time()
+
+    stdarr[x] = toc - tic
+
+
+    tic = time.time()
+    C = myInvSZ(A, I, N)
+    toc = time.time()
+
+    timarr[x] = toc - tic
+
+
+    if (test==C).all():
+        comparr[x] = True
+
+    else:
+        comparr[x] = False
+
+diffarr = timarr - stdarr
+
+print('\nN =', N)
+print('============')
+print(' Time diff ')
+print('============')
+for k in range(0,trials):
+    print('%8.5E | %r' % (diffarr[k], comparr[k]))
+    #print(comparr[k])
+print('============')
+print('Average: %5.3E'% (diffarr.sum()/trials))
