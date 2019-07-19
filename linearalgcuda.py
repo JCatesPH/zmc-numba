@@ -182,7 +182,7 @@ def squareMatMul(A, B, C, N):
 # # General Inverse
 ###########################################################################
 @cuda.jit(device=True)
-def myInvSZ(A, I, Inverse, N):
+def myInvSZ(A, Inverse, N):
     '''
     A CUDA device function that computes the inverse for a 
         complex-valued, square matrix.
