@@ -42,7 +42,7 @@ MC = ZMCIntegral.MCintegral(my_func,[
 
 MC.depth = 2
 MC.sigma_multiplication = 10
-MC.num_trials = 5
+MC.num_trials = 2
 
 
 start = time.time()
