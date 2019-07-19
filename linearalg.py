@@ -121,7 +121,7 @@ def TZdagger(arr, N, adag):
             The complex (N x N) array that is having its trace computed
         N : int 
             Size of square matrix
-
+Lin
     Returns
     -------
         adag : complex array
