@@ -17,16 +17,16 @@ def my_func(x):
     B = numba.cuda.shared.array((N,N),dtype=numba.types.complex64)
 
     # Assign the values in the array
-    A[0][0] = math.cos(x[0]) + math.cos(x[1])
-    A[0][1] = complex( math.sin(x[1]), math.sin(x[0]))
-    A[1][0] = complex(-math.sin(x[1]), math.sin(x[0]))
-    A[1][1] = math.cos(x[0]) + math.cos(x[1])
+    A[0][0] = 1 / x[0]
+    A[0][1] = 0
+    A[1][0] = 0
+    A[1][1] = 1 / x[1]
 
     B = la.myInvSZ(A, B, N)
 
     tr = la.trace(B, N)
 
-    return tr.real
+    return tr
 
 MC = ZMCIntegral.MCintegral(my_func,[
     [0,1],
@@ -34,7 +34,7 @@ MC = ZMCIntegral.MCintegral(my_func,[
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 100
+MC.sigma_multiplication = 10
 MC.num_trials = 5
 
 
