@@ -17,9 +17,9 @@ def my_func(x):
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
-    for i in range(N):
-        for j in range(N):
-            B[i,j] = I[i,j]
+    #for i in range(N):
+    #    for j in range(N):
+    #        B[i,j] = I[i,j]
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
