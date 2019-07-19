@@ -16,17 +16,13 @@ def my_func(x):
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
-    for i in range(N):
-        for j in range(N):
-            B[i][j] = I[i][j]
-
     # Assign the values in the array
     A[0][0] = math.cos(x[0])
     A[0][1] = complex(math.cos(x[1]), math.sin(x[2]))
     A[1][0] = complex(math.cos(x[1]), -math.sin(x[2]))
     A[1][1] = math.cos(x[3])
 
-    la.myInvSZ(A, B, N)
+    la.myInvSZ(A, I, B, N)
 
     tr = la.trace(B, N)
 

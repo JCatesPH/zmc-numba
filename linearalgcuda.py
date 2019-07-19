@@ -182,7 +182,7 @@ def squareMatMul(A, B, C, N):
 # # General Inverse
 ###########################################################################
 @cuda.jit(device=True)
-def myInvSZ(A, I, N):
+def myInvSZ(A, I, Inverse, N):
     '''
     A CUDA device function that computes the inverse for a 
         complex-valued, square matrix.
@@ -203,9 +203,14 @@ def myInvSZ(A, I, N):
         
     Returns
     -------
-        I : complex matrix
+        Inverse : complex matrix
             Matrix of size N x N that is the inverse of A
     '''
+
+    for i in range(N):
+        for j in range(N):
+            Inverse[i][j] = I[i][j]
+
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
         #diag = A[k,k]
@@ -215,7 +220,7 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 #A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - A[i,k] / A[k,k] * I[k,j]
+                Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
@@ -226,16 +231,16 @@ def myInvSZ(A, I, N):
 
             for j in range(N):
                 #A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - A[i,k] / A[k,k] * I[k,j]
+                Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
         #diag = A[i,i]
 
         for j in range(N):
-            I[i,j] = I[i,j] / A[i,i]
+            Inverse[i,j] = Inverse[i,j] / A[i,i]
 
-    return I
+    return Inverse
 
 #%%
 #####################################################################
