@@ -168,6 +168,7 @@ def squareMatMul(A, B, C, N):
         C : NxN matrix
             Product of AB
     '''
+    C = C * 0
 
     for i in range(N):
         for j in range(N):
