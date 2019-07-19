@@ -16,10 +16,7 @@ def my_func(x):
     # and the inverse of A into B
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-
-    for i in range(N):
-        for j in range(N):
-            B[i,j] = I[i,j]
+    C = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
@@ -27,9 +24,14 @@ def my_func(x):
     A[1, 0] = complex(math.cos(x[1]), -math.sin(x[2]))
     A[1, 1] = math.cos(x[3])
 
-    la.myInvSZ(A, B, N)
+    B[0, 0] = math.cos(x[0])
+    B[0, 1] = complex(math.cos(x[1]), -math.sin(x[2]))
+    B[1, 0] = complex(math.cos(x[1]), math.sin(x[2]))
+    B[1, 1] = math.cos(x[3])
 
-    tr = la.trace(B, N)
+    la.squareMatMul(A, B, C, N)
+
+    tr = la.trace(C, N)
 
     return tr.real
 
