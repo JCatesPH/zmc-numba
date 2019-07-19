@@ -19,7 +19,7 @@ def my_func(x):
 
     for i in range(N):
         for j in range(N):
-            B[i][j] = I[i][j]
+            B[i,j] = I[i,j]
 
     # Assign the values in the array
     A[0][0] = math.cos(x[0])
