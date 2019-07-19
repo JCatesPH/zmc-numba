@@ -207,9 +207,9 @@ def myInvSZ(A, I, Inverse, N):
             Matrix of size N x N that is the inverse of A
     '''
 
-    for i in range(N):
-        for j in range(N):
-            Inverse[i][j] = I[i][j]
+    #for i in range(N):
+    #    for j in range(N):
+    #        Inverse[i][j] = I[i][j]
 
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
