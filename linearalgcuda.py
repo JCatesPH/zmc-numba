@@ -208,32 +208,32 @@ def myInvSZ(A, I, N):
     '''
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
-        diag = A[k,k]
+        #diag = A[k,k]
         
         for i in range(k+1, N):
-            ratio =  A[i,k] / diag
+            #ratio =  A[i,k] / A[k,k]
 
             for j in range(N):
-                A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * I[k,j]
+                #A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - A[i,k] / A[k,k] * I[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
-        diag = A[k,k]
+        #diag = A[k,k]
         
         for i in range(k-1, -1, -1):
-            ratio = A[i,k] / diag
+            #ratio = A[i,k] / A[k,k]
 
             for j in range(N):
-                A[i,j] = A[i,j] - ratio * A[k,j]
-                I[i,j] = I[i,j] - ratio * I[k,j]
+                #A[i,j] = A[i,j] - ratio * A[k,j]
+                I[i,j] = I[i,j] - A[i,k] / A[k,k] * I[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
-        diag = A[i,i]
+        #diag = A[i,i]
 
         for j in range(N):
-            I[i,j] = I[i,j] / diag
+            I[i,j] = I[i,j] / A[i,i]
 
     return I
 
