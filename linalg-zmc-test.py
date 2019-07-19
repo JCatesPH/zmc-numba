@@ -6,7 +6,7 @@ import linearalgcuda as la
 import numpy as np
 
 N = 2
-I = np.eye(N, dtype=np.complex64)
+# I = np.eye(N, dtype=np.complex64)
 
 # user defined function
 @numba.cuda.jit(device=True)
@@ -22,7 +22,7 @@ def my_func(x):
     A[1][0] = complex( 0, -x[2])
     A[1][1] = x[3]
 
-    B = la.myInvSZ(A, I, N)
+    B = la.myInvSZ(A, B, N)
 
     return B[1][1].real
 
