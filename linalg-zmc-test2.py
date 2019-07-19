@@ -14,7 +14,7 @@ def my_func(x):
     # Declare empty arrays to be filled with the values passed into the function 
     # and the inverse of A into B
     A = numba.cuda.shared.array((N,N),dtype=numba.types.complex64)
-    B = numba.cuda.to_device(I)
+    B = numba.cuda.device_array(I)
 
     # Assign the values in the array
     A[0][0] = math.cos(x[0])
