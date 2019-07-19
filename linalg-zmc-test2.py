@@ -29,12 +29,12 @@ def my_func(x):
     return tr.real
 
 MC = ZMCIntegral.MCintegral(my_func,[
-    [0,math.pi],
-    [0,math.pi],
+    [0,1],
+    [0,1],
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 10
+MC.sigma_multiplication = 100
 MC.num_trials = 5
 
 
