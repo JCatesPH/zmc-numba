@@ -307,9 +307,6 @@ print('b = \n', b)
 print('\nnumpy result: \n', np.linalg.inv(A))
 
 
-
-
-
 tr = np.array([12j])
 tktr[1, 32](A, N, tr)
 
@@ -347,8 +344,7 @@ for k in range(0,10):
     print('numpy time = ', toc1-tic1)
     print('my time = ', toc2-tic2)
 
-'''
-#%%
+
 N = 7
 
 mat1 = np.random.randint(-50, 50, (N,N))
@@ -363,4 +359,5 @@ test = np.matmul(mat1,mat2)
 print(res)
 
 print('\nSame:', (test==res).all())
+'''
 #%%
