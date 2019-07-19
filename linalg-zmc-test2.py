@@ -22,10 +22,10 @@ def my_func(x):
             B[i,j] = I[i,j]
 
     # Assign the values in the array
-    A[0][0] = math.cos(x[0])
-    A[0][1] = complex(math.cos(x[1]), math.sin(x[2]))
-    A[1][0] = complex(math.cos(x[1]), -math.sin(x[2]))
-    A[1][1] = math.cos(x[3])
+    A[0, 0] = math.cos(x[0])
+    A[0, 1] = complex(math.cos(x[1]), math.sin(x[2]))
+    A[1, 0] = complex(math.cos(x[1]), -math.sin(x[2]))
+    A[1, 1] = math.cos(x[3])
 
     la.myInvSZ(A, B, N)
 
