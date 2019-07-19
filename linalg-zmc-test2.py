@@ -30,7 +30,9 @@ def my_func(x):
 
 MC = ZMCIntegral.MCintegral(my_func,[
     [0,1],
-    [0,1],
+    [2,3],
+    [4,5],
+    [6,7]
     ])
 
 MC.depth = 2
