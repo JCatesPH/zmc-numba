@@ -1,0 +1,3 @@
+0 hypercube(s) need(s) to be recalculated, to save time, try drastically increasing sigma_multiplication.
+result = 4.457372907132298    std = 1.6665950108099824e-06
+Time to calculate: 6.5813 s

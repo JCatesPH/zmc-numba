@@ -6,7 +6,7 @@ import linearalgcuda as la
 import numpy as np
 
 N = 2
-I = np.eye(N, dtype=np.complex64)
+#I = np.eye(N, dtype=np.complex64)
 #B = numba.cuda.to_device(I)
 
 # user defined function
@@ -17,9 +17,12 @@ def my_func(x):
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
-    #for i in range(N):
-    #    for j in range(N):
-    #        B[i,j] = I[i,j]
+    for i in range(N):
+        for j in range(N):
+            if i == j:
+                B[i,j] = complex(1,0)
+            else:
+                B[i,j] = complex(0,0)
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
@@ -27,10 +30,10 @@ def my_func(x):
     A[1, 0] = complex(math.cos(x[1]), -math.sin(x[2]))
     A[1, 1] = math.cos(x[3])
 
-    B[0, 0] = complex(1, 0)
-    B[0, 1] = complex(0, 0)
-    B[1, 0] = complex(0, 0)
-    B[1, 1] = complex(1, 0)
+    #B[0, 0] = complex(1, 0)
+    #B[0, 1] = complex(0, 0)
+    #B[1, 0] = complex(0, 0)
+    #B[1, 1] = complex(1, 0)
 
     la.myInvSZ(A, B, N)
 
