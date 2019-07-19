@@ -26,7 +26,7 @@ def my_func(x):
     A[1][0] = complex(math.cos(x[1]), -math.sin(x[2]))
     A[1][1] = math.cos(x[3])
 
-    B = la.myInvSZ(A, B, N)
+    la.myInvSZ(A, B, N)
 
     tr = la.trace(B, N)
 
