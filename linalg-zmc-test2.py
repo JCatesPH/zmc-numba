@@ -7,7 +7,7 @@ import numpy as np
 
 N = 2
 I = np.eye(N, dtype=np.complex64)
-B = numba.cuda.to_device(I)
+#B = numba.cuda.to_device(I)
 
 # user defined function
 @numba.cuda.jit(device=True)
@@ -15,7 +15,11 @@ def my_func(x):
     # Declare empty arrays to be filled with the values passed into the function 
     # and the inverse of A into B
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-    #B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
+    B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
+
+    for i in range(N):
+        for j in range(N):
+            B[i][j] = I[i][j]
 
     # Assign the values in the array
     A[0][0] = math.cos(x[0])
