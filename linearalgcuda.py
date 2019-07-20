@@ -101,11 +101,11 @@ def trace(arr, N, tr):
         tr : complex 
             The trace, or sum of diagonal entries of arr
     '''
-    tr[0] = 0+0j
+
     for i in range(0, N):
-        tr[0] = tr[0] + arr[i,i]
+        tr = tr + arr[i,i]
     
-    #return tr
+    return tr
 
 
 
@@ -166,14 +166,20 @@ def squareMatMul(A, B, C, N):
         C : NxN matrix
             Product of AB
     '''
-    for i in range(N):
-        for j in range(N):
-            C[i,j] = complex(0,0)
+    #for i in range(N):
+    #    for j in range(N):
+    #        C[i,j] = complex(0,0)
+    #C = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
     for i in range(N):
+
         for j in range(N):
+            tmp = 0+0j
+
             for l in range(N):
-                C[i,j] = A[i,l] * B[l,j] + C[i,j]
+                tmp += A[i,l] * B[l,j]
+
+            C[i,j] = tmp
     
     return C
 
@@ -260,7 +266,8 @@ def tktr(array, N, tr):
     blkdim = cuda.blockDim.x
     i = tid + blkid * blkdim
     if(i < 1):
-        tr[i] = trace(array, N, tr)
+        #tr[i] = trace(array, N, tr)
+        trace(array, N, tr)
 
 
 @numba.cuda.jit()
@@ -288,6 +295,7 @@ def gsmm(A, B, C, N):
 # # # # # # # # # # # 
 # TESTING NEW TRACE #
 # # # # # # # # # # # 
+'''
 A = np.array(
     [[2, 4],
      [3, 5]],
@@ -300,9 +308,8 @@ tr = np.array([0], dtype=np.complex64)
 tktr[1, 32](A, N, tr)
 print('tr = ', tr[0])
 
+##########################################################################
 
-#%%
-'''
 N = 5
 
 
@@ -320,16 +327,21 @@ np.set_printoptions(precision=4, suppress=True, linewidth=90)
 tkinvtz[1, 32](N, bot, inn, top, iden)
 print('Ainv = \n', iden)
 
+##########################################################################
+
 b = np.matmul(A, iden)
 print('b = \n', b)
 
 print('\nnumpy result: \n', np.linalg.inv(A))
+
+##########################################################################
 
 contran = np.ones((N,N), dtype=np.complex)
 tkcj[1, 32](A, N, contran)
 print('A = \n', A)
 print('A* = \n', contran)
 
+##########################################################################
 
 N = 1000
 
@@ -355,6 +367,9 @@ for k in range(0,10):
     print('numpy time = ', toc1-tic1)
     print('my time = ', toc2-tic2)
 
+
+
+##########################################################################
 
 N = 7
 

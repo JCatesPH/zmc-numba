@@ -6,7 +6,7 @@ import linearalgcuda as la
 import numpy as np
 
 N = 2
-I = np.eye(N, dtype=np.complex64)
+#I = np.eye(N, dtype=np.complex64)
 #B = numba.cuda.to_device(I)
 
 # user defined function
@@ -14,9 +14,9 @@ I = np.eye(N, dtype=np.complex64)
 def my_func(x):
     # Declare empty arrays to be filled with the values passed into the function 
     # and the inverse of A into B
-    A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-    B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-    C = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
+    A = numba.cuda.shared.array((N,N), dtype=numba.types.complex128)
+    B = numba.cuda.shared.array((N,N), dtype=numba.types.complex128)
+    C = numba.cuda.shared.array((N,N), dtype=numba.types.complex128)
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
@@ -29,9 +29,19 @@ def my_func(x):
     B[1, 0] = complex(math.cos(x[1]), math.sin(x[2]))
     B[1, 1] = math.cos(x[3])
 
-    la.squareMatMul(A, B, C, N)
+    #la.squareMatMul(A, B, C, N)
 
-    tr = la.trace(C, N)
+    for i in range(N):
+
+        for j in range(N):
+            tmp = 0+0j
+
+            for l in range(N):
+                tmp += A[i,l] * B[l,j]
+
+            C[i,j] = tmp
+
+    tr = C[0,0] + C[1,1]
 
     return tr.real
 
@@ -43,8 +53,8 @@ MC = ZMCIntegral.MCintegral(my_func,[
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 10
-MC.num_trials = 5
+#MC.sigma_multiplication = 10
+MC.num_trials = 7
 
 
 start = time.time()
@@ -54,7 +64,18 @@ result = MC.evaluate()
 end = time.time()
 
 # print the formatted result
-print('result = %s    std = %s' % (result[0], result[1]))
+print('''
+A =
+[[           cos x_0,  cos x_1  + i sin x_2],
+[cos x_1 - i sin x_2,               cos x_3]]
+B =
+[[           cos x_0,  cos x_1  - i sin x_2],
+[cos x_1 + i sin x_2,               cos x_3]]
 
+''')
+
+print('Testing Multiplication: ')
+
+print('result = %s    std = %s' % (result[0], result[1]))
 
 print('Time to calculate: %5.4f s' % (end-start))

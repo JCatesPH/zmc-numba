@@ -16,13 +16,7 @@ def my_func(x):
     # and the inverse of A into B
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-
-    for i in range(N):
-        for j in range(N):
-            if i == j:
-                B[i,j] = complex(1,0)
-            else:
-                B[i,j] = complex(0,0)
+    tmp = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
@@ -30,10 +24,15 @@ def my_func(x):
     A[1, 0] = complex(math.cos(x[1]), -math.sin(x[2]))
     A[1, 1] = math.cos(x[3])
 
-    #B[0, 0] = complex(1, 0)
-    #B[0, 1] = complex(0, 0)
-    #B[1, 0] = complex(0, 0)
-    #B[1, 1] = complex(1, 0)
+    for i in range(N):
+        for j in range(N):
+            tmp[i,j] = A[i,j]
+
+            if i == j:
+                B[i,j] = complex(1,0)
+        
+            else:
+                B[i,j] = complex(0,0)
 
     #la.myInvSZ(A, B, N)
 
@@ -45,8 +44,8 @@ def my_func(x):
             #ratio =  A[i,k] / A[k,k]
 
             for j in range(N):
-                B[i,j] = B[i,j] - A[i,k] / A[k,k] * B[k,j]
-                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
+                B[i,j] = B[i,j] - tmp[i,k] / tmp[k,k] * B[k,j]
+                tmp[i,j] = tmp[i,j] - tmp[i,k] / tmp[k,k] * tmp[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
@@ -56,23 +55,26 @@ def my_func(x):
             #ratio = A[i,k] / A[k,k]
 
             for j in range(N):
-                B[i,j] = B[i,j] - A[i,k] / A[k,k] * B[k,j]
-                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
+                B[i,j] = B[i,j] - tmp[i,k] / tmp[k,k] * B[k,j]
+                tmp[i,j] = tmp[i,j] - tmp[i,k] / tmp[k,k] * tmp[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
         #diag = A[i,i]
 
         for j in range(N):
-            B[i,j] = B[i,j] / A[i,i]
+            B[i,j] = B[i,j] / tmp[i,i]
 
-    tr = B[0,0] + B[1,1]
+    tmp = la.squareMatMul(A, B, tmp, N)
 
-    return tr.real
+    tr = 0 + 0j
+    tr = la.trace(tmp, N, tr)
+
+    return tr.real * (x[0] ** 2 + x[1] ** 2 + x[2] ** 2 + x[3] ** 2)
 
 MC = ZMCIntegral.MCintegral(my_func,[
     [0,1],
-    [2,3],
+    [0,1],
     [4,5],
     [6,7]
     ])
