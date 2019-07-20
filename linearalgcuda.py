@@ -83,6 +83,33 @@ def myInvTZ(N, lower, diag, upper, inv):
 
 
 ###########################################################################
+# # Trace
+###########################################################################
+@cuda.jit(device=True)
+def trace(arr, N, tr):
+    '''
+    A CUDA device function that computes the trace of a complex matrix.
+        In other words, the sum of the diagonal entries of an array.
+    Parameters 
+    ----------
+        arr : complex array
+            The complex (N x N) array that is having its trace computed
+        N : int 
+            Size of square matrix
+    Returns
+    -------
+        tr : complex 
+            The trace, or sum of diagonal entries of arr
+    '''
+    tr[0] = 0+0j
+    for i in range(0, N):
+        tr[0] = tr[0] + arr[i,i]
+    
+    #return tr
+
+
+
+###########################################################################
 # # Conjugate-Transpose
 ###########################################################################
 @cuda.jit(device=True)
@@ -226,6 +253,15 @@ def tkinvtz(N, bot, inn, top, iden):
     if(i < 1):
         iden = myInvTZ(N, bot, inn, top, iden)
 
+@numba.cuda.jit()
+def tktr(array, N, tr):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
+    i = tid + blkid * blkdim
+    if(i < 1):
+        tr[i] = trace(array, N, tr)
+
 
 @numba.cuda.jit()
 def tkcj(A, N, A_dag):
@@ -246,6 +282,23 @@ def gsmm(A, B, C, N):
     i = tid + blkid * blkdim
     if(i < 1):
         C = squareMatMul(A, B, C, N)
+
+
+#%%
+# # # # # # # # # # # 
+# TESTING NEW TRACE #
+# # # # # # # # # # # 
+A = np.array(
+    [[2, 4],
+     [3, 5]],
+     dtype=np.complex64
+)
+
+N = 2
+tr = np.array([0], dtype=np.complex64)
+
+tktr[1, 32](A, N, tr)
+print('tr = ', tr[0])
 
 
 #%%
