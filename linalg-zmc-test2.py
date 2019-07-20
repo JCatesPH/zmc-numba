@@ -35,9 +35,38 @@ def my_func(x):
     #B[1, 0] = complex(0, 0)
     #B[1, 1] = complex(1, 0)
 
-    la.myInvSZ(A, B, N)
+    #la.myInvSZ(A, B, N)
 
-    tr = la.trace(B, N)
+    # # ELIMINATE LOWER TRIANGLE
+    for k in range(N-1):
+        #diag = A[k,k]
+        
+        for i in range(k+1, N):
+            #ratio =  A[i,k] / A[k,k]
+
+            for j in range(N):
+                B[i,j] = B[i,j] - A[i,k] / A[k,k] * B[k,j]
+                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
+
+    # # ELIMINATE UPPER TRIANGLE
+    for k in range(N-1, 0, -1):
+        #diag = A[k,k]
+        
+        for i in range(k-1, -1, -1):
+            #ratio = A[i,k] / A[k,k]
+
+            for j in range(N):
+                B[i,j] = B[i,j] - A[i,k] / A[k,k] * B[k,j]
+                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
+
+    # # REDUCE ROWS
+    for i in range(N):
+        #diag = A[i,i]
+
+        for j in range(N):
+            B[i,j] = B[i,j] / A[i,i]
+
+    tr = A[0,0] + A[1,1]
 
     return tr.real
 

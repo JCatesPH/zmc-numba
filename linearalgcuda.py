@@ -83,35 +83,6 @@ def myInvTZ(N, lower, diag, upper, inv):
 
 
 ###########################################################################
-# # Trace function
-###########################################################################
-@cuda.jit(device=True)
-def trace(arr, N):
-    '''
-    A CUDA device function that computes the trace of a complex matrix.
-        In other words, the sum of the diagonal entries of an array.
-
-    Parameters 
-    ----------
-        arr : complex array
-            The complex (N x N) array that is having its trace computed
-        N : int 
-            Size of square matrix
-
-    Returns
-    -------
-        tr : complex 
-            The trace, or sum of diagonal entries of arr
-    '''
-    tr = 0+0j
-    for i in range(0, N):
-        tr = tr + arr[i,i]
-    
-    return tr
-
-
-
-###########################################################################
 # # Conjugate-Transpose
 ###########################################################################
 @cuda.jit(device=True)
@@ -218,8 +189,8 @@ def myInvSZ(A, Inverse, N):
             #ratio =  A[i,k] / A[k,k]
 
             for j in range(N):
-                #A[i,j] = A[i,j] - ratio * A[k,j]
                 Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
+                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(N-1, 0, -1):
@@ -229,8 +200,8 @@ def myInvSZ(A, Inverse, N):
             #ratio = A[i,k] / A[k,k]
 
             for j in range(N):
-                #A[i,j] = A[i,j] - ratio * A[k,j]
                 Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
+                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
 
     # # REDUCE ROWS
     for i in range(N):
@@ -255,15 +226,6 @@ def tkinvtz(N, bot, inn, top, iden):
     if(i < 1):
         iden = myInvTZ(N, bot, inn, top, iden)
 
-@numba.cuda.jit()
-def tktr(array, N, tr):
-    tid = cuda.threadIdx.x
-    blkid = cuda.blockIdx.x
-    blkdim = cuda.blockDim.x
-
-    i = tid + blkid * blkdim
-    if(i < 2):
-        tr[i] = trace(array, N)
 
 @numba.cuda.jit()
 def tkcj(A, N, A_dag):
@@ -309,14 +271,6 @@ b = np.matmul(A, iden)
 print('b = \n', b)
 
 print('\nnumpy result: \n', np.linalg.inv(A))
-
-
-tr = np.array([12j])
-tktr[1, 32](A, N, tr)
-
-print('tr = ', tr[0])
-
-
 
 contran = np.ones((N,N), dtype=np.complex)
 tkcj[1, 32](A, N, contran)
