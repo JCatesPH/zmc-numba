@@ -66,7 +66,7 @@ def my_func(x):
         for j in range(N):
             B[i,j] = B[i,j] / A[i,i]
 
-    tr = A[0,0] + A[1,1]
+    tr = B[0,0] + B[1,1]
 
     return tr.real
 
