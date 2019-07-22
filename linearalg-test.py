@@ -198,55 +198,43 @@ print('Average: %5.3E'% (diffarr.sum()/trials))
 # # # # # # # # # # # 
 # TESTING NEW INV   #
 # # # # # # # # # # # 
-N = 11
-trials = 100
+trials = 10000
+N = 5
 
-timarr = np.zeros(trials)
-stdarr = np.zeros(trials)
-comparr = np.zeros(trials)
+a = -1000.
+b = 1000.
 
-A = np.random.rand(N,N)
-I = np.eye(N)
+testarr = np.zeros(trials)
+timearr = np.zeros(trials)
 
-inv = la.myInvSZ(A, I, N)
+for i in range(trials):
+    A_re = (b - a) * np.random.random_sample((N, N)) + a
+    A_im = (b - a) * np.random.random_sample((N, N)) + a
 
+    A = np.empty((N,N), dtype=np.complex64)
+    A = A_re + A_im * 1j
 
-for x in range(trials):
-    A = np.random.rand(N, N)
-
-    I = np.eye(N)
-
-    tic = time.time()
-    test = np.linalg.inv(A)
-    toc = time.time()
-
-    stdarr[x] = toc - tic
-
+    I = np.eye(N, dtype=np.complex64)
 
     tic = time.time()
-    C = myInvSZ(A, I, N)
+    inv_np = np.linalg.inv(A)
     toc = time.time()
+    nptime = toc - tic
 
-    timarr[x] = toc - tic
+    tic = time.time()
+    inv_test = myInvSZ(A, I, N)
+    toc = time.time()
+    mytime = toc - tic
+
+    testarr[i] = np.allclose(inv_np, inv_test)
+    timearr[i] = mytime - nptime
+
+    #print('\nTime: ', mytime)
+    #print('Same: ', testarr[i])
 
 
-    if (test==C).all():
-        comparr[x] = True
-
-    else:
-        comparr[x] = False
-
-diffarr = timarr - stdarr
-
-print('\nN =', N)
-print('============')
-print(' Time diff ')
-print('============')
-for k in range(0,trials):
-    print('%8.5E | %r' % (timarr[k], comparr[k]))
-    #print(comparr[k])
-print('============')
-print('Average: %5.3E'% (diffarr.sum()/trials))
+print('Average time diff= ', timearr.mean())
+print('All equal: ', testarr.all())
 
 #%%
 #####################################################################
@@ -288,7 +276,7 @@ print('A = \n', A)
 
 np.set_printoptions(precision=4, suppress=True, linewidth=90)
 
-tkinvtz[1, 32](N, bot, inn, top, iden)
+la.tkinvtz[1, 32](N, bot, inn, top, iden)
 print('Ainv = \n', iden)
 
 ##########################################################################
