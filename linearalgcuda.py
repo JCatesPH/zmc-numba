@@ -213,35 +213,37 @@ def myInvSZ(A, Inverse, N):
         Inverse : complex matrix
             Matrix of size N x N that is the inverse of A
     '''
-
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
-        #diag = A[k,k]
-        
-        for i in range(k+1, N):
-            #ratio =  A[i,k] / A[k,k]
 
+        if (A[k,k].real != 1) or (A[k,k].imag != 0):
+            scale = A[k,k]
             for j in range(N):
-                Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
-                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
+                Inverse[k,j] = Inverse[k,j] / scale
+                A[k,j] = A[k,j] / scale
+                
+        for i in range(k+1, N):
+            if (A[i,k].real != 0) or (A[i,k].imag != 0):
+                ratio =  A[i,k]
+
+                for j in range(N):
+                    A[i,j] = A[i,j] - ratio * A[k,j]
+                    Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
+
+    if (A[N-1,N-1].real != 1) or (A[N-1,N-1].imag != 0):
+        for j in range(N):
+            Inverse[N-1,j] = Inverse[N-1,j] / A[N-1,N-1]
+
+        A[N-1,N-1] = complex(1,0)
 
     # # ELIMINATE UPPER TRIANGLE
-    for k in range(N-1, 0, -1):
-        #diag = A[k,k]
-        
-        for i in range(k-1, -1, -1):
-            #ratio = A[i,k] / A[k,k]
+    for k in range(1, N):  
+        for i in range(k):
+            ratio = A[i,k] 
 
             for j in range(N):
-                Inverse[i,j] = Inverse[i,j] - A[i,k] / A[k,k] * Inverse[k,j]
-                A[i,j] = A[i,j] - A[i,k] / A[k,k] * A[k,j]
-
-    # # REDUCE ROWS
-    for i in range(N):
-        #diag = A[i,i]
-
-        for j in range(N):
-            Inverse[i,j] = Inverse[i,j] / A[i,i]
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
 
     return Inverse
 

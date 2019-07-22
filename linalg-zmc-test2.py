@@ -16,7 +16,7 @@ def my_func(x):
     # and the inverse of A into B
     A = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
     B = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
-    tmp = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
+    #tmp = numba.cuda.shared.array((N,N), dtype=numba.types.complex64)
 
     # Assign the values in the array
     A[0, 0] = math.cos(x[0])
@@ -26,55 +26,22 @@ def my_func(x):
 
     for i in range(N):
         for j in range(N):
-            tmp[i,j] = A[i,j]
-
             if i == j:
                 B[i,j] = complex(1,0)
         
             else:
                 B[i,j] = complex(0,0)
 
-    #la.myInvSZ(A, B, N)
-
-    # # ELIMINATE LOWER TRIANGLE
-    for k in range(N-1):
-        #diag = A[k,k]
-        
-        for i in range(k+1, N):
-            #ratio =  A[i,k] / A[k,k]
-
-            for j in range(N):
-                B[i,j] = B[i,j] - tmp[i,k] / tmp[k,k] * B[k,j]
-                tmp[i,j] = tmp[i,j] - tmp[i,k] / tmp[k,k] * tmp[k,j]
-
-    # # ELIMINATE UPPER TRIANGLE
-    for k in range(N-1, 0, -1):
-        #diag = A[k,k]
-        
-        for i in range(k-1, -1, -1):
-            #ratio = A[i,k] / A[k,k]
-
-            for j in range(N):
-                B[i,j] = B[i,j] - tmp[i,k] / tmp[k,k] * B[k,j]
-                tmp[i,j] = tmp[i,j] - tmp[i,k] / tmp[k,k] * tmp[k,j]
-
-    # # REDUCE ROWS
-    for i in range(N):
-        #diag = A[i,i]
-
-        for j in range(N):
-            B[i,j] = B[i,j] / tmp[i,i]
-
-    tmp = la.squareMatMul(A, B, tmp, N)
+    la.myInvSZ(A, B, N)
 
     tr = 0 + 0j
-    tr = la.trace(tmp, N, tr)
+    tr = la.trace(B, N, tr)
 
-    return tr.real * (x[0] ** 2 + x[1] ** 2 + x[2] ** 2 + x[3] ** 2)
+    return tr.real 
 
 MC = ZMCIntegral.MCintegral(my_func,[
     [0,1],
-    [0,1],
+    [2,3],
     [4,5],
     [6,7]
     ])
