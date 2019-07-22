@@ -32,7 +32,7 @@ def my_func(x):
             else:
                 B[i,j] = complex(0,0)
 
-    la.myInvSZ(A, B, N)
+    B = la.myInvSZ(A, B, N)
 
     tr = 0 + 0j
     tr = la.trace(B, N, tr)
@@ -47,7 +47,7 @@ MC = ZMCIntegral.MCintegral(my_func,[
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 10
+MC.sigma_multiplication = 100
 MC.num_trials = 5
 
 
