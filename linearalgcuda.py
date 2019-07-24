@@ -189,7 +189,7 @@ def squareMatMul(A, B, C, N):
 # # General Inverse
 ###########################################################################
 @cuda.jit(device=True)
-def myInvSZ(A, Inverse, N):
+def myInvSZ(A, B, N):
     '''
     A CUDA device function that computes the inverse for a 
         complex-valued, square matrix.
@@ -210,7 +210,7 @@ def myInvSZ(A, Inverse, N):
         
     Returns
     -------
-        Inverse : complex matrix
+        B : complex matrix
             Matrix of size N x N that is the inverse of A
     '''
     tmp = cuda.local.array((5,5), dtype=numba.types.c16)
@@ -221,26 +221,23 @@ def myInvSZ(A, Inverse, N):
 
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
-
-        if (tmp[k,k].real != 1) or (tmp[k,k].imag != 0):
-            scale = tmp[k,k]
-            for j in range(N):
-                Inverse[k,j] = Inverse[k,j] / scale
-                tmp[k,j] = tmp[k,j] / scale
+        scale = tmp[k,k]
+        for j in range(N):
+            B[k,j] = B[k,j] / scale
+            tmp[k,j] = tmp[k,j] / scale
                 
         for i in range(k+1, N):
-            if (tmp[i,k].real != 0) and (tmp[i,k].imag != 0):
-                ratio =  tmp[i,k]
+            ratio =  tmp[i,k]
 
-                for j in range(N):
-                    tmp[i,j] = tmp[i,j] - ratio * tmp[k,j]
-                    Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
+            for j in range(N):
+                tmp[i,j] = tmp[i,j] - ratio * tmp[k,j]
+                B[i,j] = B[i,j] - ratio * B[k,j]
 
-    if (tmp[N-1,N-1].real != 1) or (tmp[N-1,N-1].imag != 0):
-        for j in range(N):
-            Inverse[N-1,j] = Inverse[N-1,j] / tmp[N-1,N-1]
 
-        tmp[N-1,N-1] = complex(1,0)
+    for j in range(N):
+        B[N-1,j] = B[N-1,j] / tmp[N-1,N-1]
+
+    tmp[N-1,N-1] = complex(1,0)
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(1, N):  
@@ -249,9 +246,9 @@ def myInvSZ(A, Inverse, N):
 
             for j in range(N):
                 tmp[i,j] = tmp[i,j] - ratio * tmp[k,j]
-                Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
+                B[i,j] = B[i,j] - ratio * B[k,j]
 
-    return Inverse
+    return B
 
 #%%
 #####################################################################
