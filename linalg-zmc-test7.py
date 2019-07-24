@@ -22,8 +22,8 @@ def my_func(x):
 
     # Assign the values in the array
     A[0, 0] = 1 / complex(x[0], x[1])
-    A[0, 1] = complex(0, 0)
-    A[1, 0] = complex(0, 0)
+    A[0, 1] = complex(2, 5)
+    A[1, 0] = complex(1, 6)
     A[1, 1] = 1 / complex(x[2], x[3])
 
     for i in range(N):
@@ -70,7 +70,7 @@ def my_func(x):
     tr = 0 + 0j
     tr = la.trace(B, N, tr)
 
-    return (tr * complex(tr.real, -tr.imag)).real
+    return (tr * complex(tr.real, - tr.imag)).real
 
 #%%
 MC = ZMCIntegral.MCintegral(my_func,[
