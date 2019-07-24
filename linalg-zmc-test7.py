@@ -97,3 +97,4 @@ print('result = %s    std = %s' % (result[0], result[1]))
 
 
 print('Time to calculate: %5.4f s' % (end-start))
+

@@ -86,7 +86,7 @@ def kernelfunc(points, results, samples):
 
 
 #%%
-samples = 100000
+samples = 10000000
 
 a1 = 1; b1 = 2
 x = (b1 - a1) * np.random.random_sample((samples,1)) + a1
@@ -103,17 +103,21 @@ results = np.zeros(samples)
 threadsperblock = 32
 blockspergrid = (samples + (threadsperblock - 1)) // threadsperblock
 
+tic = time.time()
+
 kernelfunc[blockspergrid, threadsperblock](matrix, results, samples)
 
 norm = (b1-a1) * (b2-a2) * (b3-a3) * (b4-a4)
 Q_N = norm / samples * np.sum(results)
 Q_err = np.var(results) / samples
 
+toc = time.time()
+
 #%%
 # print the formatted result
-print('result = {:.4E}, error?= {:.3E}'.format(Q_N, Q_err))
+print('result = {:.5E}, error?= {:.3E}'.format(Q_N, Q_err))
 
-# print('Time to calculate: %5.4f s' % (end-start))
+print('Time to calculate: %5.4f s' % (toc-tic))
 
 
 #%%
