@@ -1,3 +1,4 @@
+#%%
 import math
 import time
 import numba
@@ -9,6 +10,7 @@ N = 2
 #I = np.eye(N, dtype=np.complex64)
 #B = numba.cuda.to_device(I)
 
+#%%
 # user defined function
 @numba.cuda.jit(device=True)
 def my_func(x):
@@ -39,6 +41,7 @@ def my_func(x):
 
     return tr.real 
 
+#%%
 MC = ZMCIntegral.MCintegral(my_func,[
     [0,1],
     [2,3],
@@ -50,13 +53,14 @@ MC.depth = 2
 MC.sigma_multiplication = 10
 MC.num_trials = 8
 
-
+#%%
 start = time.time()
 # obtaining the result
 result = MC.evaluate()
 
 end = time.time()
 
+#%%
 # print the formatted result
 print('result = %s    std = %s' % (result[0], result[1]))
 

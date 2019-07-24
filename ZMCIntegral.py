@@ -92,7 +92,6 @@ class MCintegral():
         if len(large_std_chunk_id) == 0:
             return np.sum(MCresult_chunks,0), np.sqrt(np.sum(MCresult_std_chunks**2))
 
-#        setChunks(MCresult_chunks)
 
         return np.sum(MCresult_chunks,0), np.sqrt(np.sum(MCresult_std_chunks**2))
 

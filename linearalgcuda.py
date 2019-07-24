@@ -213,36 +213,42 @@ def myInvSZ(A, Inverse, N):
         Inverse : complex matrix
             Matrix of size N x N that is the inverse of A
     '''
+    tmp = cuda.local.array((5,5), dtype=numba.types.c16)
+
+    for i in range(N):
+        for j in range(N):
+            tmp[i,j] = A[i,j]
+
     # # ELIMINATE LOWER TRIANGLE
     for k in range(N-1):
 
-        if (A[k,k].real != 1) or (A[k,k].imag != 0):
-            scale = A[k,k]
+        if (tmp[k,k].real != 1) or (tmp[k,k].imag != 0):
+            scale = tmp[k,k]
             for j in range(N):
                 Inverse[k,j] = Inverse[k,j] / scale
-                A[k,j] = A[k,j] / scale
+                tmp[k,j] = tmp[k,j] / scale
                 
         for i in range(k+1, N):
-            if (A[i,k].real != 0) and (A[i,k].imag != 0):
-                ratio =  A[i,k]
+            if (tmp[i,k].real != 0) and (tmp[i,k].imag != 0):
+                ratio =  tmp[i,k]
 
                 for j in range(N):
-                    A[i,j] = A[i,j] - ratio * A[k,j]
+                    tmp[i,j] = tmp[i,j] - ratio * tmp[k,j]
                     Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
 
-    if (A[N-1,N-1].real != 1) or (A[N-1,N-1].imag != 0):
+    if (tmp[N-1,N-1].real != 1) or (tmp[N-1,N-1].imag != 0):
         for j in range(N):
-            Inverse[N-1,j] = Inverse[N-1,j] / A[N-1,N-1]
+            Inverse[N-1,j] = Inverse[N-1,j] / tmp[N-1,N-1]
 
-        A[N-1,N-1] = complex(1,0)
+        tmp[N-1,N-1] = complex(1,0)
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(1, N):  
         for i in range(k):
-            ratio = A[i,k] 
+            ratio = tmp[i,k] 
 
             for j in range(N):
-                A[i,j] = A[i,j] - ratio * A[k,j]
+                tmp[i,j] = tmp[i,j] - ratio * tmp[k,j]
                 Inverse[i,j] = Inverse[i,j] - ratio * Inverse[k,j]
 
     return Inverse
@@ -292,3 +298,12 @@ def gsmm(A, B, C, N):
     if(i < 1):
         C = squareMatMul(A, B, C, N)
 
+@numba.cuda.jit()
+def sqinvtz(A, B, N):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
+
+    i = tid + blkid * blkdim
+    if(i < 1):
+        inv = myInvSZ(A, B, N)

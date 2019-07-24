@@ -3,6 +3,7 @@ import time
 import numpy as np
 import linearalg as la
 
+#%%
 mu = 0.1  # Fermi-level
 hOmg = 0.3  # Photon energy eV
 a = 4  # AA
@@ -241,7 +242,10 @@ print('All equal: ', testarr.all())
 # # CUDA CALLS
 #####################################################################
 import linearalgcuda as la
+import time
+import numpy as np
 
+#%%
 # # # # # # # # # # # 
 # TESTING NEW TRACE #
 # # # # # # # # # # # 
@@ -343,3 +347,49 @@ test = np.matmul(mat1,mat2)
 print(res)
 
 print('\nSame:', (test==res).all())
+
+#%%
+##########################################################################
+# # # # # # # # # # # 
+# TESTING NEW INV   #
+# # # # # # # # # # # 
+trials = 10
+N = 5
+
+a = -1000.
+b = 1000.
+
+testarr = np.zeros(trials)
+timearr = np.zeros(trials)
+
+for i in range(trials):
+    A_re = (b - a) * np.random.random_sample((N, N)) + a
+    A_im = (b - a) * np.random.random_sample((N, N)) + a
+
+    A = np.empty((N,N), dtype=np.complex128)
+    A = A_re + A_im * 1j
+
+    I = np.eye(N, dtype=np.complex128)
+
+    tic = time.time()
+    inv_np = np.linalg.inv(A)
+    toc = time.time()
+    nptime = toc - tic
+
+    tic = time.time()
+    la.sqinvtz(A, I, N)
+    toc = time.time()
+    mytime = toc - tic
+
+    testarr[i] = np.mean(inv_np - I)
+    timearr[i] = mytime - nptime
+
+    #print('\nTime: ', mytime)
+    #print('Same: ', testarr[i])
+
+
+print('Average time diff= ', timearr.mean())
+print('All equal: ', testarr.all())
+
+
+#%%
