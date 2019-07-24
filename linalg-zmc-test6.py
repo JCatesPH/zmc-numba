@@ -45,7 +45,7 @@ def my_func(x):
                 A[k,j] = A[k,j] / scale
                 
         for i in range(k+1, N):
-            if (A[i,k].real != 0) and (A[i,k].imag != 0):
+            if (A[i,k].real != 0) or (A[i,k].imag != 0):
                 ratio =  A[i,k]
 
                 for j in range(N):
@@ -97,3 +97,4 @@ print('result = %s    std = %s' % (result[0], result[1]))
 
 
 print('Time to calculate: %5.4f s' % (end-start))
+
