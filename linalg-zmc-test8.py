@@ -70,7 +70,7 @@ def my_func(x):
     tr = 0 + 0j
     tr = la.trace(B, N, tr)
 
-    return (tr * complex(tr.real, - tr.imag)).real
+    return tr.real # (tr * complex(tr.real, - tr.imag)).real
 
 #%%
 MC = ZMCIntegral.MCintegral(my_func,[
