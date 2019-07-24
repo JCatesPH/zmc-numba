@@ -37,26 +37,23 @@ def my_func(x):
     # B = la.myInvSZ(A, B, N)
 
     for k in range(N-1):
-
-        if (A[k,k].real != 1) or (A[k,k].imag != 0):
-            scale = A[k,k]
-            for j in range(N):
-                B[k,j] = B[k,j] / scale
-                A[k,j] = A[k,j] / scale
+        scale = A[k,k]
+        for j in range(N):
+            B[k,j] = B[k,j] / scale
+            A[k,j] = A[k,j] / scale
                 
         for i in range(k+1, N):
-            if (A[i,k].real != 0) or (A[i,k].imag != 0):
-                ratio =  A[i,k]
+            ratio =  A[i,k]
 
-                for j in range(N):
-                    A[i,j] = A[i,j] - ratio * A[k,j]
-                    B[i,j] = B[i,j] - ratio * B[k,j]
+            for j in range(N):
+                A[i,j] = A[i,j] - ratio * A[k,j]
+                B[i,j] = B[i,j] - ratio * B[k,j]
 
-    if (A[N-1,N-1].real != 1) or (A[N-1,N-1].imag != 0):
-        for j in range(N):
-            B[N-1,j] = B[N-1,j] / A[N-1,N-1]
 
-        A[N-1,N-1] = complex(1,0)
+    for j in range(N):
+        B[N-1,j] = B[N-1,j] / A[N-1,N-1]
+
+    A[N-1,N-1] = complex(1,0)
 
     # # ELIMINATE UPPER TRIANGLE
     for k in range(1, N):  
@@ -70,7 +67,7 @@ def my_func(x):
     tr = 0 + 0j
     tr = la.trace(B, N, tr)
 
-    return tr.real 
+    return tr.real # (tr * tr.conjugate()).real
 
 #%%
 MC = ZMCIntegral.MCintegral(my_func,[
