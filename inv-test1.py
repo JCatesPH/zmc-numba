@@ -121,3 +121,5 @@ print('Time to calculate: %5.4f s' % (toc-tic))
 
 
 #%%
+result = 7.43323E+01, error?= 4.939E-06
+Time to calculate: 1.1564 s

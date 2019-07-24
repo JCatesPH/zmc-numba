@@ -74,14 +74,14 @@ def my_func(x):
 
 #%%
 MC = ZMCIntegral.MCintegral(my_func,[
-    [0,1],
+    [1,2],
     [2,3],
-    [4,5],
-    [6,7]
+    [3,4],
+    [4,5]
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 1000
+MC.sigma_multiplication = 10
 MC.num_trials = 8
 
 #%%
