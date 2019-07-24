@@ -2,6 +2,7 @@
 import math
 import time
 import numba
+from numba import cuda
 import ZMCIntegral
 import linearalgcuda as la
 import numpy as np
@@ -70,30 +71,49 @@ def my_func(x):
     tr = 0 + 0j
     tr = la.trace(B, N, tr)
 
-    return (tr * complex(tr.real, - tr.imag)).real
+    return (tr * tr.conjugate()).real
 
 #%%
-MC = ZMCIntegral.MCintegral(my_func,[
-    [1,2],
-    [2,3],
-    [3,4],
-    [4,5]
-    ])
+@numba.cuda.jit()
+def kernelfunc(points, results, samples):
+    tid = cuda.threadIdx.x
+    blkid = cuda.blockIdx.x
+    blkdim = cuda.blockDim.x
 
-MC.depth = 2
-MC.sigma_multiplication = 10
-MC.num_trials = 8
+    i = tid + blkid * blkdim
+    if(i < samples):
+        results[i] = my_func(points[i])
+
 
 #%%
-start = time.time()
-# obtaining the result
-result = MC.evaluate()
+samples = 100000
 
-end = time.time()
+a1 = 1; b1 = 2
+x = (b1 - a1) * np.random.random_sample((samples,1)) + a1
+a2 = 2; b2 = 3
+y = (b2 - a2) * np.random.random_sample((samples,1)) + a2
+a3 = 3; b3 = 4
+z = (b3 - a3) * np.random.random_sample((samples,1)) + a3
+a4 = 4; b4 = 5
+q = (b4 - a4) * np.random.random_sample((samples,1)) + a4
+
+matrix = np.concatenate([x, y, z, q], axis=1)
+results = np.zeros(samples)
+
+threadsperblock = 32
+blockspergrid = (samples + (threadsperblock - 1)) // threadsperblock
+
+kernelfunc[blockspergrid, threadsperblock](matrix, results, samples)
+
+norm = (b1-a1) * (b2-a2) * (b3-a3) * (b4-a4)
+Q_N = norm / samples * np.sum(results)
+Q_err = np.var(results) / samples
 
 #%%
 # print the formatted result
-print('result = %s    std = %s' % (result[0], result[1]))
+print('result = {:.4E}, error?= {:.3E}'.format(Q_N, Q_err))
+
+# print('Time to calculate: %5.4f s' % (end-start))
 
 
-print('Time to calculate: %5.4f s' % (end-start))
+#%%
