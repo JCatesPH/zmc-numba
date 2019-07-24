@@ -50,7 +50,7 @@ MC = ZMCIntegral.MCintegral(my_func,[
     ])
 
 MC.depth = 2
-MC.sigma_multiplication = 10
+MC.sigma_multiplication = 1000
 MC.num_trials = 8
 
 #%%
