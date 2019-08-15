@@ -11,7 +11,7 @@ def my_func(x):
         value = value + math.cos(math.log(x[i]) / x[i]) / x[i]
     return value
 
-MC = ZMCintegral.MCintegral(my_func,[[0,1],[0,1],[0,1],[0,1],[0,1]])
+MC = ZMCintegral.MCintegral(my_func,[[-1,1],[-1,1],[-1,1],[-1,1],[-1,1]])
 
 MC.depth = 2
 MC.sigma_multiplication = 20
