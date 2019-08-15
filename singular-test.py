@@ -14,7 +14,7 @@ def my_func(x):
 MC = ZMCintegral.MCintegral(my_func,[[0,1],[0,1],[0,1],[0,1],[0,1]])
 
 MC.depth = 2
-MC.sigma_multiplication = 5
+MC.sigma_multiplication = 20
 MC.num_trials = 5
 
 
